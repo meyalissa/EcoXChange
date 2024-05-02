@@ -1,0 +1,118 @@
+<!-- Title : EcoXchange : Waste Collection and Recycling system 
+     Date : 6/4/2024
+     Programmer : Melissa 
+
+     Page : HOME PAGE
+
+     Probem to check : z-index at navigation bar
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExcoXchange</title>
+    <!-- ++++++++ CSS ++++++++-->
+    <link rel="stylesheet" href="style/style.css">
+    <!-- ++++++++ ICONS ++++++++-->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="images/logo.png" />
+    
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="images/logo.png" class="nav_img_logo" alt="">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html" class="active">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="pages/groupMembers.html">Developer</a>
+                    </li>
+                </ul>
+                <div class="login-signup">
+                    <a href="pages/Login.html">LogIn</a>  
+                    <a href="pages/signup.html">SignUp</a>
+                </div>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="login-signup">
+                <a href="pages/Login.html">LogIn</a>  
+                <a href="pages/signup.html">SignUp</a>
+            </div>
+            <!-- Navigation Icon -->
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+    <!-- ++++++++ GREETING PAGE ++++++++-->
+    <section class="home" id="home">
+        <div class="home-container">
+         <!-- /* LEFT SIDE */ -->
+          <div class="home-text">
+            <span class="home-greet"> Hello, Welcome To</span>
+            <a href=""><img src="images/EcoXchange.png" class="EcoXchange"/></a>
+            <span class="home-system">Waste Collection &<br> Recycling System</br></span>
+            <a href="Login.html" class="button-gs">Get Started</a>
+          </div>
+        </div>
+        <!-- /* RIGHT SIDE */ -->
+        <div class="home-img">
+          <img src="images/homeimg.png" alt="" class="greenimg">
+        </div>
+      </section>
+  
+      <!-- ++++++++ ABOUT PAGE ++++++++-->
+      <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-img">
+              <img src="images/scdpageimg.png" alt="" class="secondimg">
+            </div>
+            <div class="about-text">
+                <span class="home-system">Get Paid To Recycle!</span>
+                <br>
+                <span class="home-greet"> We offer FREE pickup from your address and pay you upon collection. Wasted items trade-in & recycling made easy & rewarding.</span>
+                <a href="Login.html" class="button-gs">I want to recycle</a>
+            </div>
+        </div>
+      </section>
+
+      <!-- ++++++++ FOOTER ++++++++-->
+      <footer class="footer">
+        <div class="footer-container">
+          <div>
+            <img src="images/uitmlogo.png" class="footer-img uitm"></img>
+            <img src="images/logo-white-border.png" class="footer-img"></img>
+          </div>
+          
+          <p class="footer-quotes">"Be a recycler, be a saver"</p>
+  
+          <p class="footer-slogan">&#169; ExoXChange. Reuse, Reduce, Recycle.</p>
+        </div>
+      </footer>
+
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        nav = document.querySelector(".header-left nav");
+        hamburger.onclick = function() {
+            nav.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

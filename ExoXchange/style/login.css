@@ -1,0 +1,137 @@
+@import "style.css";
+
+body a.actives{
+    background: var(--dark-prim-color);
+}
+
+section{
+    padding: 0;
+    height: var(--screen-size);
+    font-family: "martel";
+}
+
+.main-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2, p{
+    margin:0;
+}
+.main-wrap{
+    display: flex;
+    margin:0 40px;
+}
+  
+.main-wrap > * {
+  width: 100%;
+  padding: 3rem;
+}
+
+/* Left Side */
+.main-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px 50px 60px;
+}
+
+.img{
+    width: 350px;
+}
+
+/* Right Side */
+.main-right{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.login-form{
+    background-color: var(--primary-color);
+    padding: 0px 30px;
+    border-radius: 13.5px;
+    height: 330px;
+}
+
+.login-form h3{
+    text-align: center;
+    color: var(--white-color);
+}
+
+
+.logbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 25px 0;
+    height: 40px;
+    width:230px;
+    border: none;
+    padding-left: 2px;
+    font-weight: 500;
+    background-color:var(--dark-prim-color);
+    border-radius: 20px;
+}
+
+.logbox .fa {
+    position: flex;
+    width: 25px;
+    color: var(--white-color);
+}
+
+.linebox{
+    width: 1px;
+    height: 25px;
+    background: var(--white-color);
+
+}
+.inputbox{
+    height: 25px;
+    width: 150px;
+    margin-left: 20px;
+    background: none;
+    border: none;
+    outline: none;
+    box-decoration-break: none;
+    color: white;
+}
+::placeholder{
+    color: white;
+}
+
+.btnLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 15px 0;
+    height: 40px;
+    width:230px;
+    border: none;
+    padding-left: 2px;
+    font-weight: 500;
+    background-color:var(--white-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "martel";
+}
+
+span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--small-font-size);
+}
+.btnLink{
+    text-decoration:underline;
+    color: var(--white-color);
+}
+
+@media screen and (max-width: 855px) {
+    .main-left{
+        display: none;
+    }
+}
