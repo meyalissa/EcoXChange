@@ -1,1 +1,36 @@
+@import "SidebarUser.css";
 /* Test2 */
+.sec{
+    padding:10px 5%;
+}
+.content{
+    width:310px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius:5px;
+    padding:5px;
+    margin-bottom: 20px;
+
+}
+
+.item .content img{
+    height:50px;
+    width:50px;
+}
+
+.item .content{
+    padding: 5px 20px;
+    opacity :0.8;
+}
+
+.item .content .title{
+    font-weight: 900;
+    font-size: 200px;
+    color: black;
+    padding: 0 20px;
+    align-items: center;
+
+}
+
+
+
