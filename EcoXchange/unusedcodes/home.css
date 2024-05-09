@@ -1,0 +1,254 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600");
+
+/*===== VARIABLES CSS =====*/
+:root {
+  /*===== Colors =====*/
+  --background-color: #FBF6F1;
+  --primary-color: #849B60;
+  --secondary-color: #136B40;
+  --white-color: #fff;
+  --dark-color: #353535;
+
+  /*===== Font and typography =====*/
+  --body-font: "Poppins", sans-serif, "Martel";
+  --biggest-font-size: 2.5rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*===== Font weight =====*/
+  --font-medium: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*===== Margins =====*/
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  /*===== z index =====*/
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 900px) {
+  :root {
+    --biggest-font-size: 4.5rem;
+    --h1-font-size: 2.5rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/*===== BASE ===== */
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--background-color);
+  color: var(--dark-color);
+  line-height: 1.6;
+  
+}
+
+section{
+  padding: 4rem 0 2rem;
+}
+/* ++++++++ HEADER ++++++++ */
+
+.home-header{
+  background-color:var(--background-color);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  
+}
+
+.nav-bar{
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav_menu {
+    position: fixed;
+    top: 3rem;
+    right: -100%;
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+    backdrop-filter: blur(10px);
+  }
+}
+
+.nav_logo{
+  margin-left: 20rem;
+}
+.nav_img_logo{
+  width: 80px;  
+  filter: drop-shadow(1px 1px 3px rgb(59, 59, 59));
+}
+
+.nav_menu{
+  padding: 0px 90px 0px 90px;
+  margin-right : 0;
+} 
+
+.nav_list{
+  position: relative;
+}
+
+.nav_list li{
+  list-style: none;
+  display: inline-block;
+  padding: 8px 25px;
+  position: relative;
+}
+
+.nav_list li a{
+  font-size: 99%;
+  color: var(--dark-color);
+  text-decoration: none;
+  
+} 
+
+/* INTERACTIVE BAR*/
+/* cursor move to the text and line appear */
+.nav_list li::after{
+  content: '';
+  width: 0%;
+  height: 2px;
+  background:var(--primary-color);
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+  
+}
+.nav_list li:hover::after{
+  width: 100%;
+} 
+
+/* ++++++++ MEDIA ++++++++ */
+@media screen and (min-width: 768px){
+  .nav_list{
+    display: flex;
+  }
+
+  .nav_list li{
+    margin-left: 2.5rem;
+    margin-bottom:0;
+  }
+}
+/* Navigation */
+@media(max-width: 1080px){
+  .nav_menu ul li{
+      display:block;
+  }
+  .nav_menu{
+  
+      position: absolute;
+      background: linear-gradient(rgb(30, 17, 112),rgb(44, 44, 137));
+      height: fit-content;
+      width: 158px;
+      top:0;
+      right:-200px;
+      text-align: left;
+      z-index: 2;
+      transition: 1s;
+      
+  }
+
+  nav .fa{
+      display: block;
+      color: var(--dark-color);
+      font-size: 22px;
+      cursor: pointer;
+      padding-right:10px ;
+  }
+  .nav_menu ul{
+      padding: 30px;
+  }
+}
+
+/* ++++++++ ENTRANCE PAGE ++++++++ */
+.home-container{
+  display: flex;
+  margin-top:100px;
+}
+
+.home-container > * {
+  width: 100%;
+  padding: 1rem;
+  
+}
+/* LEFT SIDE */
+
+.home-text{
+  margin: 60px 0 0 20%;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.home-greet {
+  font-size: 1.2rem;
+  font-family: "martel";
+  color: var(--dark-color);
+  font-weight: 1;
+}
+
+.home-system {
+  font-size: var(--h1-font-size);
+  margin-bottom: var(--mb-3);
+  font-family: "martel";
+  font-weight: 1000;
+  line-height: 35px;
+}
+
+.greenimg{
+  margin-left: 100px;
+  width: 60%;
+}
+.EcoXchange{
+  width: 100%;
+}
+.button-gs{
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color:var(--white-color);
+  padding:10px 30px 10px 30px;
+  width:fit-content;
+  border-radius: 10px;
+}

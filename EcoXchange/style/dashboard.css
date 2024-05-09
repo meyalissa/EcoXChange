@@ -8,6 +8,7 @@
 
 /* Box Design */
 .box1{
+    margin:20px;
     width: 250px;
     height:120px;
     padding:20px;
@@ -28,15 +29,22 @@
 .unit{
     text-align: right;
 }
-
+.row1{
+    display: flex;
+    justify-content: center;
+}
 /* Second Row */
-
-.row2 {
+.row2{
+    display:grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(150px,320px));
+}
+/* .row2 {
     margin-top:60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 /* Third Row */
 .row3{

@@ -1,0 +1,121 @@
+<!-- Title : EcoXchange : Waste Collection and Recycling system 
+     Date : 6/4/2024
+     Programmer : Melissa 
+
+     Page : USER LAYOUT
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0" />
+
+    <!-- ===== LINE AWESOME ICONS ===== -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"/>
+    
+    <!-- ===== BOX ICONS ===== -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- ===== MAIN CSS FOR SHOP ===== -->
+    <!-- <link rel="stylesheet" href="../style/main.css" /> -->
+    <link rel="stylesheet" href="../style/main.css" />
+    <link rel="stylesheet" href="../style/alert-notification.css" />
+
+    <link rel="icon" href="../images/logo.png" />
+    <title>EcoXchange | Dashboard</title>
+  </head>
+  <body>
+    
+    <input type="checkbox" id="nav-toggle" />
+    
+      <!--SIDEBAR-->
+    <div class="sidebar">
+
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <h2>
+                  <span class="la-MYTECC"><img src="../images/logo-white-border.png" class="sidebar-logo" /></span>
+                  <span>EcoXchange</span>
+                </h2>
+                <hr>
+            </div>
+            
+            <div class="sidebar-menu" id="sidebar-menu" class="active">
+                <ul class="sidebarMenu">
+                    <li>
+                        <a href="Dashboard" class="Active">
+                        <span class="bx bx-history"></span><span> Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="Items" class="Active">
+                        <span class="bx bxl-spring-boot"></span><span> Items</span></a>
+                    </li>
+                    <li>
+                        <a href="Calculator" class="Active">
+                        <span class="bx bxs-calculator"></span><span> Calculator</span></a>
+                    </li>
+                    <li>
+                        <a href="Profile" class="Active">
+                        <span class="bx bx-user-circle"></span><span> Profile</span></a>
+                    </li>
+                </ul>
+                <ul>
+                  <li>
+                    <a href="../includes/logout.inc.php" class="logout-icon">
+                    <span class="bx bx-log-out"></span><span> Log Out</span></a>
+                  </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+      
+      <!--HEADER-->
+    <header>
+        
+            <h2 id="header-name">
+              <label for="nav-toggle">
+                <span class="las la-bars"></span>
+              </label>
+            </h2>
+        
+            <form action="search" method="post" autocomplete="off">
+              <div class="search-wrapper">
+                <input type="search" name="users-search" placeholder="Search" style="margin-left:1rem;"/>
+                <button type="submit" name="submit-search" value="users" style="border:none;cursor:pointer;background-color:#fff;"><span class="bx bx-search"></span></button>
+              </div>
+            </form>
+        
+            <div class="user-wrapper">
+              <img src="../images/default-profile.png" style="width:40px;height:40px;border-radius:50%;" alt="profile picture" />
+              <div>
+                <h4>Username</h4>
+
+                <small>User</small>
+
+              </div>
+            </div>
+        
+    </header>
+    
+      <main class="main">
+        <section class="featured section" id="featured">
+          <h2 class="section-title">Dashboard</h2>
+          <div class="featured__container bd-grid">
+
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ===== WHATSAPP WIDGET ===== -->
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+    <div class="elfsight-app-cb77e803-0fac-46dc-ab86-1d1dfd9b488c"></div>
+
+    <!-- ===== MAIN JS ===== -->
+    <script src="../js/sidebar.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/alert-notification.js"></script>
+  </body>
+</html>
