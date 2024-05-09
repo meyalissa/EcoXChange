@@ -9,6 +9,7 @@
     display:grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(100px,250px));
+    
 
 }
 .item .content{
@@ -42,8 +43,7 @@
 }
 
 .nav-desc {
-    padding: 10px;
-    padding-top: 0px;
+    padding: 10px 0;
 }
 
 
