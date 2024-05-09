@@ -41,15 +41,15 @@
                     </li>
                 </ul>
                 <div class="login-signup">
-                    <a href="Login.html" class="actives">LogIn</a>  
-                    <a href="signup.html">SignUp</a>
+                    <a href="login.php" class="actives">LogIn</a>  
+                    <a href="signup.php">SignUp</a>
                 </div>
             </nav>
         </div>
         <div class="header-right">
             <div class="login-signup">
-                <a href="Login.html" class="actives">LogIn</a>  
-                <a href="signup.html">SignUp</a>
+                <a href="login.php" class="actives">LogIn</a>  
+                <a href="signup.php">SignUp</a>
             </div>
             <!-- Navigation Icon -->
             <div class="hamburger">
@@ -88,13 +88,13 @@
                             <div class="logbox" >
                                 <i class="fa fa-lock" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="password" type="password" id="password" placeholder="Password" class="inputbox">
+                                <input name="password" type="password" id="password" placeholder="Password" class="inputbox password">
                                 
                             </div>
                             
                             <input type="submit" name="Submit" value="Login" class="btnLogin">
                         </form>
-                        <span >Not registered? <a href="signup.html" class="btnLink">Create an account</a></span>
+                        <span >Not registered? <a href="signup.php" class="btnLink">Create an account</a></span>
                     </div>
                 </div>
             </div>

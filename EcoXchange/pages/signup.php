@@ -43,15 +43,15 @@
                     </li>
                 </ul>
                 <div class="login-signup">
-                    <a href="Login.html" >LogIn</a>  
-                    <a href="signup.html" class="actives">SignUp</a>
+                    <a href="login.php" >LogIn</a>  
+                    <a href="signup.php" class="actives">SignUp</a>
                 </div>
             </nav>
         </div>
         <div class="header-right">
             <div class="login-signup">
-                <a href="Login.html" >LogIn</a>  
-                <a href="signup.html" class="actives">SignUp</a>
+                <a href="login.php" >LogIn</a>  
+                <a href="signup.php" class="actives">SignUp</a>
             </div>
             <!-- Navigation Icon -->
             <div class="hamburger">
@@ -78,7 +78,7 @@
                 <div class="main-right">
                     <div class="login-form">
                         
-                        <form name="form" method="post" action="loginSession.php">
+                        <form name="form" method="post" action="../includes/signupSession.php">
                             <h3>Sign Up</h3>
                             <div class="logbox">
                                 <i class="fa fa-user" aria-hidden="true" ></i>
@@ -88,7 +88,7 @@
                             </div>
                             
                             <div class="logbox" >
-                                <i class="fa fa-lock" aria-hidden="true" ></i></i>
+                                <i class="fa fa-envelope" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
                                 <input name="email" type="email" id="email" placeholder="Email Address" class="inputbox">
                                 
@@ -98,7 +98,7 @@
                             <div class="logbox" >
                                 <i class="fa fa-lock" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="password" type="password" id="password" placeholder="Create Password" class="inputbox">
+                                <input name="password" type="password" id="password" placeholder="Create Password" class="inputbox password" >
                                 
                             </div>
 
@@ -106,19 +106,18 @@
                             <div class="logbox" >
                                 <i class="fa fa-lock" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="password2" type="password2" id="password2" placeholder="Confirm Password" class="inputbox">
+                                <input name="password2" type="password" id="password2" placeholder="Confirm Password" class="inputbox">
                                 
                             </div>
                             
-                            <input type="submit" name="Submit" value="Sign Up" class="btnSignup">
+                            <input type="submit" name="submit" value="Sign Up" class="btnSignup">
                         </form>
-                        <span >Always a member?<a href="login.html" class="btnLink"> Login</a></span>
+                        <span >Always a member?<a href="login.php" class="btnLink"> Login</a></span>
                     </div>
                 </div>
             </div>
         </div>
       </section>
-
     <!-- ++++++++ FOOTER ++++++++-->
     <footer class="footer">
         <div class="footer-container">
