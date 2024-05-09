@@ -130,10 +130,7 @@ span{
     color: var(--white-color);
 }
 
-.password{
-    background-color: white;
-    color: var(--white-color);
-}
+
 @media screen and (max-width: 855px) {
     .main-left{
         display: none;
