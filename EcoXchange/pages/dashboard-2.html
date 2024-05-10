@@ -1,26 +1,18 @@
-<!-- Title: EcoXchange: Waste Collection and Recycling system 
-     Date: 6/5/2024
-     Programmer: Melissa Sofia
-
-     Page : DASHBOARD for user
-
-
--->
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoXchange | Dashboard</title>
-    <!-- ===== BOX ICONS ===== -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/SidebarUser.css">
-    <link rel="stylesheet" href="../style/dashboard.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal Login Form</title>
+  <!-- ===== BOX ICONS ===== -->
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- ======= Styles ====== -->
+  <link rel="stylesheet" href="../style/SidebarUser.css">
+  <link rel="stylesheet" href="../style/dashboard.css">
 </head>
 
 <body>
@@ -137,114 +129,99 @@
                         <button class="btnRecycle" id="btnRecycle">
                             Reycle More
                         </button>
-
-                        <!-- +++++++++++++++ BOOKING FORM +++++++++++++++ -->
-                        <div class="booking-popup" id="booking-popup">
-                            <div class="box-popup">
-                                <div class="top-form">
-                                  <div class="close-popup" id="close-popup">
-                                    X
-                                  </div>
-                                </div>
-                                <div class = "bookingform">
-                                  
-                                  <form action="#">
-                                    <table border="0" >
-                                        <tr>
-                                            <th colspan="3">
-                                                <h2>Book vehicle to recycle</h2>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <div class="lbladdrs">
-                                                    <i class="fa fa-map-marker" aria-hidden="true" ></i>
-                                                    <span class="booklabel">Pick Up Address</span>
-                                                </div>
-                                                <div class="inpbox addr">
-                                                    <div class="txtname"></div>
-                                                    <div class="txtAddress">
-                                                        
-                                                    </div>
-                                                    <button class="btnChangeAdd">Change</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="lbladdrs">
-                                                    <span class="booklabel">Type of Vehicles</span>
-                                                </div>
-                                                
-                                                <select name="vehicle" class="inpbox">
-                                                    <option value="Motorcycle">Motorcycle</option>
-                                                    <option value="Car">Car</option>
-                                                    <option value="Truck">Truck</option>
-                                                </select>
-                                                  
-                                            </td>
-                                            <td rowspan ="2"><img src="../images/vehiclemotor.png" class="vehicleimg"></td>
-                                            <td rowspan ="2" >
-                                                <button type = "button" class = "btnCont">Continue</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="lbladdrs">
-                                                    <span class="booklabel">Pick Up Time</span>
-                                                </div>
-                                                
-                                                <select name="pickup" class="inpbox">
-                                                    <option value="Immediately">Immediately</option>
-                                                    <option value="30m">30 minutes</option>
-                                                    <option value="1h">1 hour</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                  </form>
-
-                                </div>
-                            </div>
+<!-- +++++++++++++++ BOOKING FORM +++++++++++++++ -->
+<div class="booking-popup" id="booking-popup">
+    <div class="box-popup">
+        <div class="top-form">
+          <div class="close-popup" id="close-popup">
+            X
+          </div>
+        </div>
+        <div class = "bookingform">
+          
+          <form action="#">
+            <table border="0" >
+                <tr>
+                    <th colspan="3">
+                        <h2>Book vehicle to recycle</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="lbladdrs">
+                            <i class="fa fa-map-marker" aria-hidden="true" ></i>
+                            <span class="booklabel">Pick Up Address</span>
                         </div>
-                    </div> 
-                </div>
-            </div>
+                        <div class="inpbox addr">
+                            <div class="txtname"></div>
+                            <div class="txtAddress">
+                                
+                            </div>
+                            <button class="btnChangeAdd">Change</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="lbladdrs">
+                            <span class="booklabel">Type of Vehicles</span>
+                        </div>
+                        
+                        <select name="vehicle" class="inpbox">
+                            <option value="Motorcycle">Motorcycle</option>
+                            <option value="Car">Car</option>
+                            <option value="Truck">Truck</option>
+                        </select>
+                          
+                    </td>
+                    <td rowspan ="2"><img src="../images/vehiclemotor.png" class="vehicleimg"></td>
+                    <td rowspan ="2" >
+                        <button type = "button" class = "btnCont">Continue</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="lbladdrs">
+                            <span class="booklabel">Pick Up Time</span>
+                        </div>
+                        
+                        <select name="pickup" class="inpbox">
+                            <option value="Immediately">Immediately</option>
+                            <option value="30m">30 minutes</option>
+                            <option value="1h">1 hour</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+          </form>
+
         </div>
     </div>
+</div>
+</div> 
+</div>
+</div>
+</div>
+</div>
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
-    <!-- <script>
-        $(document).ready(function(){
-        $(".btnRecycle").click(function(){
-            $("#booking-popup").fadeIn().css("display","flex");
+    <script type="text/javascript">
+        $(function() {
+    
+          $('#btnRecycle').click(function() {
+            $('#booking-popup').fadeIn().css("display", "flex");
+          });
+    
+          $('.close-popup').click(function() {
+            $('#booking-popup').fadeOut();
+          });
         });
-
-        $("#close-popup").click(function(){
-            $("#booking-popup").fadeOut();
-        });
-        });
-    </script> -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var btnRecycle = document.querySelector(".btnRecycle");
-            var closePopup = document.querySelector(".close-popup");
-            var bookingPopup = document.querySelector(".booking_popup");
-        
-            btnRecycle.addEventListener("click", function() {
-                bookingPopup.style.display = "flex";
-                fadeIn(bookingPopup); // You'll need to define the fadeIn function separately
-            });
-        
-            closePopup.addEventListener("click", function() {
-                bookingPopup.style.display = "none";
-            });
-        });
-    </script>
+      </script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
+

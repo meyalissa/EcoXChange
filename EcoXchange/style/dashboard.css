@@ -133,7 +133,7 @@
   }
   
 
-/* address */
+/* ++++++++ ADDRESS ++++++++ */
 .lbladdrs{
     display: flex;
     justify-content: flex-start;
@@ -162,7 +162,6 @@
     margin-left: auto;
     align-self: center;
 }
-
 
 .vehicleimg{
     width: 180px;
