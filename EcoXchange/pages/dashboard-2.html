@@ -133,9 +133,9 @@
 <div class="booking-popup" id="booking-popup">
     <div class="box-popup">
         <div class="top-form">
-          <div class="close-popup" id="close-popup">
-            X
-          </div>
+            <div class="close-popup" data-popup="#booking-popup">
+                X
+            </div>
         </div>
         <div class = "bookingform">
           
@@ -202,7 +202,7 @@
 <div class="changadr-popup" id="changadr-popup">
     <div class="box-popup">
         <div class="top-form">
-            <div class="close-popup" id="back-popup">
+            <div class="close-popup" data-popup="#changadr-popup">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </div>
 
@@ -213,7 +213,7 @@
 <div class="payment-popup" id="payment-popup">
     <div class="box-popup">
         <div class="top-form">
-            <div class="close-popup" id="back-popup">
+            <div class="close-popup" data-popup="#payment-popup">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </div>
 
@@ -233,42 +233,26 @@
     <script src="../js/main.js"></script>
     <script type="text/javascript">
         $(function() {
+            // Function to handle closing popups
+            $('.close-popup').click(function() {
+                var popupId = $(this).data('popup');
+                $(popupId).fadeOut();
+            });
     
-          $('#btnRecycle').click(function() {
-            $('#booking-popup').fadeIn().css("display", "flex");
-          });
+            // Code for opening popups
+            $('#btnRecycle').click(function() {
+                $('#booking-popup').fadeIn().css("display", "flex");
+            });
     
-          $('.close-popup').click(function() {
-            $('#booking-popup').fadeOut();
-          });
+            $('#btnChangeAdd').click(function() {
+                $('#changadr-popup').fadeIn().css("display", "flex");
+            });
+    
+            $('#btnCont').click(function() {
+                $('#payment-popup').fadeIn().css("display", "flex");
+            });
         });
-      </script>
-
-      <script type="text/javascript">
-        $(function() {
-    
-          $('#btnChangeAdd').click(function() {
-            $('#changadr-popup').fadeIn().css("display", "flex");
-          });
-    
-          $('.back-popup').click(function() {
-            $('#changadr-popup').fadeOut();
-          });
-        });
-      </script>
-
-      <script type="text/javascript">
-        $(function() {
-    
-          $('#btnCont').click(function() {
-            $('#payment-popup').fadeIn().css("display", "flex");
-          });
-    
-          $('.back-popup').click(function() {
-            $('#payment-popup').fadeOut();
-          });
-        });
-      </script>
+    </script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
