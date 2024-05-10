@@ -88,7 +88,7 @@
                             <div class="logbox" >
                                 <i class="fa fa-lock" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="password" type="password" id="password" placeholder="Password" class="inputbox password">
+                                <input name="password" type="password" id="password" placeholder="Password" class="inputbox">
                                 
                             </div>
                             
