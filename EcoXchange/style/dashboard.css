@@ -168,7 +168,7 @@
 }
 
 /* +++++++++++++++ CHANGE ADDRESS +++++++++++++++ */
-#booking-popup{
+.changadr-popup{
     position: fixed;
     top: 0;
     right: 0;
