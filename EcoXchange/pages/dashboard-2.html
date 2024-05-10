@@ -157,7 +157,7 @@
                             <div class="txtAddress">
                                 
                             </div>
-                            <button class="btnChangeAdd">Change</button>
+                            <button id="btnChangeAdd" class="btnChangeAdd">Change</button>
                         </div>
                     </td>
                 </tr>
@@ -198,6 +198,19 @@
         </div>
     </div>
 </div>
+<!-- +++++++++++++++ CHANGE ADDRESS +++++++++++++++ -->
+<div class="booking-popup" id="changadr-popup">
+    <div class="box-popup">
+        <div class="top-form">
+            <div class="close-popup" id="close-popup">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </div>
+          </div>
+    </div>
+</div>
+
+
+
 </div> 
 </div>
 </div>
@@ -215,6 +228,19 @@
     
           $('.close-popup').click(function() {
             $('#booking-popup').fadeOut();
+          });
+        });
+      </script>
+
+      <script type="text/javascript">
+        $(function() {
+    
+          $('#btnChangeAdd').click(function() {
+            $('#changadr-popup').fadeIn().css("display", "flex");
+          });
+    
+          $('.close-popup').click(function() {
+            $('#changadr-popup').fadeOut();
           });
         });
       </script>
