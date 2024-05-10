@@ -176,7 +176,7 @@
                     </td>
                     <td rowspan ="2"><img src="../images/vehiclemotor.png" class="vehicleimg"></td>
                     <td rowspan ="2" >
-                        <button type = "button" class = "btnCont">Continue</button>
+                        <button type = "button" class = "btnCont" id="btnCont">Continue</button>
                     </td>
                 </tr>
                 <tr>
@@ -205,7 +205,19 @@
             <div class="close-popup" id="back-popup">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </div>
-          </div>
+
+        </div>
+    </div>
+</div>
+<!-- +++++++++++++++ PAYMENT +++++++++++++++ -->
+<div class="payment-popup" id="payment-popup">
+    <div class="box-popup">
+        <div class="top-form">
+            <div class="close-popup" id="back-popup">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -241,6 +253,19 @@
     
           $('.back-popup').click(function() {
             $('#changadr-popup').fadeOut();
+          });
+        });
+      </script>
+
+      <script type="text/javascript">
+        $(function() {
+    
+          $('#btnCont').click(function() {
+            $('#payment-popup').fadeIn().css("display", "flex");
+          });
+    
+          $('.back-popup').click(function() {
+            $('#payment-popup').fadeOut();
           });
         });
       </script>
