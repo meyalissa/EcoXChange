@@ -189,8 +189,12 @@
     bottom: 0;
     left: 0;
     z-index: 100;
-    /* display: flex; */
-    display: none;
+    display: flex;
+    /* display: none; */
     justify-content: center;
     align-items: center;
+}
+.paymentimg{
+    margin: 15px 50px 0 50px;
+    height:350px;
 }
