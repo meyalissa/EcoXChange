@@ -189,8 +189,8 @@
     bottom: 0;
     left: 0;
     z-index: 100;
-    display: flex;
-    /* display: none; */
+    /* display: flex; */
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -221,3 +221,8 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.paymentbox .inpbox{
+    width: 313px;
+}
+
