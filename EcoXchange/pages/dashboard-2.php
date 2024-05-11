@@ -208,7 +208,51 @@
         </div>
         <div class = "addrcb">
             <h2>My Address</h2>
-
+            <hr class="adrdivision">
+            <form action="#">
+              <table border="0" >
+                    <!-- REPEAT -->
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="Address" value="Addr1">
+                        </td>
+                        <td>
+                            <div class="addr-info">
+                                <h3 class="pic"> Name | Phone Numb</h3>
+                                <p class="address"> Home Numb, City, Country , PostCode<p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr class="adrdivision">
+                        </td>
+                    </tr>
+                    <!-- REPEAT END-->
+                    <!-- REPEAT -->
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="Address" value="Addr1">
+                        </td>
+                        <td>
+                            <div class="addr-info">
+                                <h3 class="pic"> Name | Phone Numb</h3>
+                                <p class="address"> Home Numb, City, Country , PostCode<p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr class="adrdivision">
+                        </td>
+                    </tr>
+                    <!-- REPEAT END-->
+              </table>
+            </form>
+            
+            
+            
+            
         </div>
     </div>
 </div>

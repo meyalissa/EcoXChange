@@ -180,6 +180,15 @@
     justify-content: center;
     align-items: center;
 }
+.adrdivision{
+    border: 0.2px solid var(--text-grey);
+}
+
+.addr-info{
+    margin: 20px 50px;
+    font-size: var(--small-font-size);
+}
+
 
 /* +++++++++++++++ PAYMENT +++++++++++++++ */
 .payment-popup{
