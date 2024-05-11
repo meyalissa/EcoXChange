@@ -12,6 +12,7 @@
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/calculator.css">
 
+
 </head>
 
 <body>
@@ -100,26 +101,206 @@
                 <div clas="nav-title"><h3>Dashboard</h3></div>
                 <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
                 <div class="top-content">
-                    <div class="searchbar">
                         <div class="searchbar">
                             <label>
-                                <input type="text" placeholder="Item's name">
+                                <input type="text" name="" id="search-item" placeholder="Item's name" onkeyup="search()">
                                 <ion-icon name="search-outline"></ion-icon>
                                 
                             </label>
-                        </div>
-                    </div>       
+                        </div>       
                 </div>
 
-                <div class="items">
-                    <div class="items-content">
-                        <div class="title">Cardboard</div>
-                        <div class="img"><img src="../images/cardboard.png" alt=""></div>
+                <div class="item-list" id="item-list">
 
+                    <!---item 1-->
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Cardboard</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/cardboard.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!---item 2-->
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Old News Paper</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/newpaper.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Black & White Paper</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/bnw paper.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Glass</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/glass bottle.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Plastic Bottle</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/plasticBot.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Aluminium Can</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/alCan.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Tin</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/tin.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+
+                    <div class="items">
+                        <div class="items-content">
+                            <div class="title">Used Cooking Oil</div>
+                            <div class="items-incontent">
+                                <div class="img"><img src="../images/usedOil.png" alt=""></div>
+                                <div>
+                                    <p class="p1">Enter the weight:</p>
+                                    <div class="inputbar">
+                                        <label>
+                                            <input type="text" placeholder="0.00">
+                                        </label>
+                                    </div>
+                                    <p class="p2">Subtotal:</p>
+                                    <div class="inputbar2">
+                                        <label>
+                                            <input type="text" placeholder="RM0.00">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                    
-
 
             </div>
         </div>
@@ -127,6 +308,7 @@
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
+    <script src="../js/calculatorfunc.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
