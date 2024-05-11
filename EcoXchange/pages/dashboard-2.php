@@ -170,7 +170,7 @@
                         <select name="vehicle" class="inpbox">
                             <option value="Motorcycle">Motorcycle</option>
                             <option value="Car">Car</option>
-                            <option value="Truck">Truck</option>
+                            <option value="Truck">Lorry</option>
                         </select>
                           
                     </td>
@@ -187,8 +187,8 @@
                         
                         <select name="pickup" class="inpbox">
                             <option value="Immediately">Immediately</option>
-                            <option value="30m">30 minutes</option>
-                            <option value="1h">1 hour</option>
+                            <option value="30m">Pickup in 30 minutes</option>
+                            <option value="1h">Pickup in 1 hour</option>
                         </select>
                     </td>
                 </tr>
@@ -205,6 +205,9 @@
             <div class="close-popup" data-popup="#changadr-popup">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </div>
+        </div>
+        <div class = "addrcb">
+            <h2>My Address</h2>
 
         </div>
     </div>
@@ -301,8 +304,8 @@
             });
 
             $('#btnCancel').click(function() {
-            $('#payment-popup').fadeOut();
-            $('#booking-popup').fadeOut();
+                $('#payment-popup').fadeOut();
+                $('#booking-popup').fadeOut();
           });
         });
     </script>
