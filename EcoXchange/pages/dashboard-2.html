@@ -219,7 +219,7 @@
         </div>
         <div class = "paymentform">
             <form action="#">
-              <table border="1" >
+              <table border="0" >
                     <tr>
                         <th >
                             <h2>Pay Deposit</h2>
@@ -247,18 +247,18 @@
                     <tr>
                         <td>
                             <input type="checkbox" id="agreement1" name="agreement1" value="Agree1">
-                            <label for="agreement1"> I agree that the receipt uploaded is true</label><br>
+                            <label class="agree" for="agreement1"> I agree that the receipt uploaded is true</label><br>
                             <input type="checkbox" id="agreement2" name="agreement2" value="Agree2">
-                            <label for="agreement2"> I agree that if the receipt is fake i will need to pay for the consequences</label><br>
+                            <label class="agree" for="agreement2"> I agree that if the receipt is fake i will need to pay for the consequences</label><br>
                         </td>
                     </tr>
               </table>
             </form>
         </div>
         <div class="low-form">
-            <div>
-                <button type = "button" class = "btnCancel" id="btnCancel">Cancel</button>
-                <input type="submit" name="submit" value="Sign Up" class="btnSubmit">
+            <div class="btnGroup">
+                <button type = "button" id="btnCancel" class="btn">Cancel</button>
+                <input type="submit" name="submit" value="Sign Up" class="btn" id="btnSubmit">
             </div>
         </div>
     </div>

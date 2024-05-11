@@ -91,7 +91,7 @@
   
   .top-form{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   
   .top-form .close-popup{
@@ -197,4 +197,27 @@
 .paymentimg{
     margin: 15px 50px 0 50px;
     height:350px;
+}
+
+.btn{
+    padding: 12px 0px;
+    width: 150px;
+    background-color: var(--primary-color);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.agree{
+    margin-left: 20px;
+}
+#btnCancel{
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    border: 1px solid #d0d5d8;
+}
+.low-form{
+    display: flex;
+    justify-content: flex-end;
 }
