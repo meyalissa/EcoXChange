@@ -325,6 +325,28 @@ header .header-right .hamburger div {
     margin:0;
   }
 }
+
+  /* ++++++++ FAQ ++++++++ */ 
+.faq {
+     padding: 150px;
+  }
+.faq-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  font-family: "martel";
+ 
+}
+
+.button-faq{
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color:var(--black-color);
+  padding:10px 50px;
+  border-radius: 5px;
+}
+
+
   /* ++++++++ FOOTER PAGE ++++++++ */  
 .footer {
   background-color: var(--secondary-color);
