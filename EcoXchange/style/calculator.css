@@ -1,0 +1,109 @@
+@import "SidebarUser.css";
+
+.top-content{
+    justify-content: flex-end;
+    display: flex;
+}
+
+.searchbar {
+    width: 250px;
+    margin-right: 30px;
+  }
+  
+  .searchbar label {
+    position: relative;
+    width: 100%;
+  }
+  
+  .searchbar label input {
+    width: 100%;
+    height: 35px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--text-grey);
+  }
+  
+  .searchbar label ion-icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2rem;
+  }
+
+  .items .items-content{
+    width:85%;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius:8px;
+    margin: 35px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body{
+    overflow: hidden;
+  }
+  
+
+.item-content{
+  padding-bottom: 0px;
+}
+
+.items-content img{
+    height:180px;
+    width:180px;
+
+}
+
+.items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.title{
+    padding-left: 50px;
+}
+
+.items-incontent{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+
+.p1{
+  padding-top: 40px;
+  padding-left: 40px;
+}
+
+.p2{
+  padding-top: 40px;
+  padding-left: 40px;
+}
+
+.inputbar label input {
+  width: 68%;
+  height: 25px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid var(--text-grey)
+  
+}
+
+.inputbar2 label input {
+  font-size: 15px;
+  border: none;
+
+
+}
+
+
+
