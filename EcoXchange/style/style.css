@@ -334,18 +334,45 @@ header .header-right .hamburger div {
   display: flex;
   justify-content: center; 
   align-items: center;
-  font-family: "martel";
- 
+  font-family:"martel";
 }
-
+.faq-text{
+  font-size: var (--h1-font-size);
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .button-faq{
   text-decoration: none;
   background-color: var(--primary-color);
   color:var(--black-color);
-  padding:10px 50px;
+  padding:20px 100px;
+  width: 100%;
   border-radius: 5px;
+  font-family: "martel";
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  overflow:auto;
 }
-
+.faq-answer{
+  background-color:#94AB6F;
+  padding: 20px 100px;
+  width:100%;
+  border: 1px solid var(--primary-color);
+  border-radius:5px;
+  background-color: lightgray;
+  display:none;
+  font-family: "martel";
+  font-size: 1.2rem;
+  margin-bottom:15px;
+  overflow:auto;
+}
+/* Show/hide animation */
+.faq-answer.active {
+  display: block;
+}
 
   /* ++++++++ FOOTER PAGE ++++++++ */  
 .footer {

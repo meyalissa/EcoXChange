@@ -97,14 +97,64 @@
         <div class="faq-container">
             <div class="faq-text">
                 <h1>Frequently Asked Question (FAQ)</h1>
-
                 <button class="button-faq">
                     What is EcoXchange?
                     <i></i>
                 </button>
+                <div class="faq-answer">
+                    <p>
+                        EcoXchange is a system where consumers may recycle everything they want to without worrying about transportation because our runner will pick up the recyclables.  
+                    </p>
+                </div>
+                <div class="faq-text">
+                    <button class="button-faq">
+                        Do we need to make any payments?
+                        <i></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                             Yes, but only deposit RM10 when the runner arrives in front of your home. You can receive your RM10 back along with your recycling monetary rewards.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-text">
+                    <button class="button-faq">
+                        What type of waste does EcoXchange accept for recycling?
+                        <i></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            EcoXchange recycles used oil, newspaper, and cardboard to promote sustainability and reduce waste.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-text">
+                    <button class="button-faq">
+                        Can I track the status of my waste?
+                        <i></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Certainly! Once our runner picks up your recyclable items, you can track their status, including pending, successfully delivered, or awaiting processing.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
       </section>
+
+      <script>
+       document.addEventListener("DOMContentLoaded", function() {
+        var buttons = document.querySelectorAll(".button-faq");
+
+        buttons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            var answer = this.nextElementSibling;
+            answer.classList.toggle("active");
+            });
+        });
+            });
+      </script>
       
 
 
