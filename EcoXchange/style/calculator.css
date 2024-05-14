@@ -69,32 +69,31 @@
     padding-left: 50px;
 }
 
+
+
 .items-incontent{
   display: flex;
   flex-wrap: wrap;
 
 }
 
-.inpweight{
-  background-color: red;
-  width:auto;
-  display: inline-block;
-}
-
 .each-wlbl{
   padding-top:20px;
+  display: flex;
+  align-items: center;
 }
 
+.each-wlbl .txtcalc{
+  flex: 1;
+  margin: 0;
+}
 
-
-/* 
-.p2{
-  padding-top: 40px;
-  padding-left: 40px;
-} */
+.inputbar label{
+  flex:2;
+}
 
 .inputbar label input {
-  width: 68%;
+  width: 100%;
   height: 25px;
   border-radius: 40px;
   padding: 5px 20px;
@@ -102,14 +101,12 @@
   font-size: 15px;
   outline: none;
   border: 1px solid var(--text-grey);
-
+  
 }
 
 .inputbar2 label input {
   font-size: 15px;
   border: none;
-
-
 }
 
 
