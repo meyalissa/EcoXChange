@@ -8,12 +8,12 @@
 .searchbar {
     width: 250px;
     margin-right: 30px;
-  }
+}
   
   .searchbar label {
     position: relative;
     width: 100%;
-  }
+}
   
   .searchbar label input {
     width: 100%;
@@ -24,7 +24,7 @@
     font-size: 18px;
     outline: none;
     border: 1px solid var(--text-grey);
-  }
+}
   
   .searchbar label ion-icon {
     position: absolute;
@@ -45,7 +45,7 @@
 
   body{
     overflow: hidden;
-  }
+}
   
 
 .item-content{
@@ -75,16 +75,23 @@
 
 }
 
-
-.p1{
-  padding-top: 40px;
-  padding-left: 40px;
+.inpweight{
+  background-color: red;
+  width:auto;
+  display: inline-block;
 }
 
+.each-wlbl{
+  padding-top:20px;
+}
+
+
+
+/* 
 .p2{
   padding-top: 40px;
   padding-left: 40px;
-}
+} */
 
 .inputbar label input {
   width: 68%;
@@ -94,8 +101,8 @@
   padding-left: 35px;
   font-size: 15px;
   outline: none;
-  border: 1px solid var(--text-grey)
-  
+  border: 1px solid var(--text-grey);
+
 }
 
 .inputbar2 label input {
