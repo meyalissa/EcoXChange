@@ -24,7 +24,7 @@ else{
 		$row = mysqli_num_rows($query);
 		##to verify the user’s information exist in the db
 		if($row == 0){  ##if the user’s record is not exist
-			echo "Invalid Username/Password. Click here to <a href='login.php'>login</a>.";
+			echo "Invalid Username/Password. Click here to <a href='../pages/login.php'>login</a>.";
 		}else{##if the user’s record is not exist
 			 ##retrieve the user’s infor detail 
 			$r = mysqli_fetch_assoc($query);

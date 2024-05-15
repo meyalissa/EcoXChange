@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    <!-- testing User Info later delete -->
+    <!-- Hi, <?php echo $_SESSION['username']; ?> -->
     <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
@@ -359,4 +361,3 @@
 </body>
 
 </html>
-
