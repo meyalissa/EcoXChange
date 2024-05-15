@@ -355,6 +355,7 @@ header .header-right .hamburger div {
   font-size: 1.2rem;
   margin-bottom: 15px;
   overflow:auto;
+  
 }
 .faq-answer{
   background-color:#94AB6F;
@@ -368,6 +369,13 @@ header .header-right .hamburger div {
   font-size: 1.2rem;
   margin-bottom:15px;
   overflow:auto;
+
+  .faq-icon{
+    position:absolute;
+    right:20px;
+    width:20px;
+    height:20px;
+  }
 }
 /* Show/hide animation */
 .faq-answer.active {
