@@ -31,7 +31,7 @@ else{
 			 ##ser the session name with the current user’s info
 			$_SESSION['username'] = $r['username'];
 			 ##directly open the page menu 
-			 header("Location: ../pages/dashboard-2.html");
+			 header("Location: ../pages/dashboard-2.php");
 		}
 	}
 }

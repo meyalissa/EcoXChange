@@ -31,7 +31,7 @@
              
 
                 <li class="active" >
-                    <a href="dashboard-2.html">
+                    <a href="dashboard-2.php">
                         <span class="icon">
                             <i class='bx bx-history'></i>
                         </span>
@@ -58,7 +58,7 @@
                 </li>
 
                 <li>
-                    <a href="Profile">
+                    <a href="profile-2.html">
                         <span class="icon">
                             <i class='bx bx-user-circle'></i>
                         </span>
