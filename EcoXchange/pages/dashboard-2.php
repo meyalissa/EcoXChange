@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['username'])){
+	// store session in var
+	$username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -361,3 +368,9 @@
 </body>
 
 </html>
+<?php 
+}
+else{
+	header("Location: signup.php");
+}
+?>

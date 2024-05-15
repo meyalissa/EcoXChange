@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['username'])){
+	// store session in var
+	$username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +20,7 @@
 </head>
 
 <body>
+    Hi, <?php echo $_SESSION['username']; ?>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
@@ -28,7 +36,7 @@
              
 
                 <li class="active" >
-                    <a href="dashboard-1.html">
+                    <a href="dashboard-1.php">
                         <span class="icon">
                             <i class='bx bx-history'></i>
                         </span>
@@ -137,3 +145,10 @@
 </body>
 
 </html>
+
+<?php 
+}
+else{
+	header("Location: signup.php");
+}
+?>
