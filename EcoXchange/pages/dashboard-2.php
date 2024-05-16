@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['cust_username'])){
 	// store session in var
-	$username = $_SESSION['username'];
+	$username = $_SESSION['cust_username'];
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ if(isset($_SESSION['username'])){
 
 <body>
     <!-- testing User Info later delete -->
-    <!-- Hi, <?php echo $_SESSION['username']; ?> -->
+    Hi, <?php echo $_SESSION['cust_username']; ?>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">

@@ -83,18 +83,18 @@
                             <div class="logbox">
                                 <i class="fa fa-user" aria-hidden="true" ></i>
                                 <div class="linebox"></div>
-                                <input name="username" type="text" id="username" placeholder="Username" class="inputbox">
+                                <input name="username" type="text" id="username" placeholder="" class="inputbox">
                                
                             </div>
                             
                             <div class="logbox" >
                                 <i class="fa fa-lock" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="password" type="password" id="password" placeholder="Password" class="inputbox">
+                                <input name="password" type="password" id="password" placeholder="" class="inputbox">
                                 
                             </div>
                             
-                            <input type="submit" name="Submit" value="Login" class="btnLogin">
+                            <input type="submit" name="Submit" value="Login" class="btnLogin" onClick="return checkEmptyFields()">
                         </form>
                         <span >Not registered? <a href="signup.php" class="btnLink">Create an account</a></span>
                     </div>
@@ -121,6 +121,19 @@
         nav = document.querySelector(".header-left nav");
         hamburger.onclick = function() {
             nav.classList.toggle("active");
+        }
+        
+        function checkEmptyFields()
+        {
+        	var username = document.form.username.value;
+        	var password = document.form.password.value;
+        	if(username == "" || password == "")
+        	{
+        		alert("Please enter username/password!");
+        		return false;
+        	}
+        	else
+        		return true;
         }
     </script>
 </body>
