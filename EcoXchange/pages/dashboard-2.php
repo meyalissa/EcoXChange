@@ -103,7 +103,7 @@ if(isset($_SESSION['cust_username'])){
 
                 <div class="user">
                     <img src="../images/default-profile.png" alt="">
-            
+                    
                 </div>
             </div>
             <div class="content">
@@ -162,7 +162,7 @@ if(isset($_SESSION['cust_username'])){
                             <span class="booklabel">Pick Up Address</span>
                         </div>
                         <div class="inpbox addr">
-                            <div class="txtname"></div>
+                            <div class="txtname"><?php echo $_SESSION['username']; ?></div>
                             <div class="txtAddress">
                                 
                             </div>
