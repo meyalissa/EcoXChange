@@ -1,4 +1,25 @@
 
+<?php
+
+include 'dbconn.php';
+
+function calculateSubtotal($itemName, $weight) {
+    global $conn; 
+
+    $sql = "SELECT item_price FROM item WHERE item_name = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $itemName);
+    $stmt->execute();
+    $stmt->bind_result($price);
+    $stmt->fetch();
+    $stmt->close();
+
+    $subtotal = $price * $weight;
+
+    return 'RM' . number_format($subtotal, 2);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,7 +144,7 @@
                                         <p class="txtcalc">Enter the weight:</p>
                                         <div class="inputbar">
                                             <label>
-                                                <input type="text" placeholder="0.00">
+                                                <input type="text" id="weight-cardboard" placeholder="0.00">
                                             </label>
                                         </div>
                                     </div>
@@ -131,7 +152,7 @@
                                         <p class="txtcalc">Subtotal:</p>
                                         <div class="inputbar2">
                                             <label>
-                                               <input type="text" placeholder="RM0.00">
+                                               <input type="text" id="subtotal-cardboard" value="<?php echo calculateSubtotal('Cardboard', $_POST['weight-cardboard']); ?>" readonly>
                                             </label>
                                         </div>
                                     </div>
@@ -151,13 +172,13 @@
                                     <p class="p1">Enter the weight:</p>
                                     <div class="inputbar">
                                         <label>
-                                            <input type="text" placeholder="0.00">
+                                            <input type="text" id="weight-newspaper" placeholder="0.00">
                                         </label>
                                     </div>
                                     <p class="p2">Subtotal:</p>
                                     <div class="inputbar2">
                                         <label>
-                                            <input type="text" placeholder="RM0.00">
+                                        <input type="text" id="subtotal-newspaper" value="<?php echo calculateSubtotal('Old News Paper', $_POST['weight-newspaper']); ?>" readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -175,13 +196,13 @@
                                     <p class="p1">Enter the weight:</p>
                                     <div class="inputbar">
                                         <label>
-                                            <input type="text" placeholder="0.00">
+                                            <input type="text" id="weight-bnwpaper" placeholder="0.00">
                                         </label>
                                     </div>
                                     <p class="p2">Subtotal:</p>
                                     <div class="inputbar2">
                                         <label>
-                                            <input type="text" placeholder="RM0.00">
+                                        <input type="text" id="subtotal-bnwpaper" value="<?php echo calculateSubtotal('Black & White Paper', $_POST['weight-bnwpaper']); ?>" readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -198,13 +219,13 @@
                                     <p class="txtcalc">Enter the weight:</p>
                                     <div class="inputbar">
                                         <label>
-                                            <input type="text" placeholder="0.00">
+                                            <input type="text" id="weight-glass" placeholder="0.00">
                                         </label>
                                     </div>
                                     <p class="txtcalc">Subtotal:</p>
                                     <div class="inputbar2">
                                         <label>
-                                            <input type="text" placeholder="RM0.00">
+                                        <input type="text" id="subtotal-glass" value="<?php echo calculateSubtotal('Glass', $_POST['weight-glass']); ?>" readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -221,13 +242,13 @@
                                     <p class="p1">Enter the weight:</p>
                                     <div class="inputbar">
                                         <label>
-                                            <input type="text" placeholder="0.00">
+                                            <input type="text" id="weight-plasticbot" placeholder="0.00">
                                         </label>
                                     </div>
                                     <p class="p2">Subtotal:</p>
                                     <div class="inputbar2">
                                         <label>
-                                            <input type="text" placeholder="RM0.00">
+                                        <input type="text" id="subtotal-plasticbot" value="<?php echo calculateSubtotal('Plastic Bottle', $_POST['weight-plasticbot']); ?>" readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -244,13 +265,13 @@
                                     <p class="p1">Enter the weight:</p>
                                     <div class="inputbar">
                                         <label>
-                                            <input type="text" placeholder="0.00">
+                                            <input type="text" id="weight-alcan" placeholder="0.00">
                                         </label>
                                     </div>
                                     <p class="p2">Subtotal:</p>
                                     <div class="inputbar2">
                                         <label>
-                                            <input type="text" placeholder="RM0.00">
+                                        <input type="text" id="subtotal-alcan" value="<?php echo calculateSubtotal('Aluminium Can', $_POST['weight-alcan']); ?>" readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -267,13 +288,13 @@
                                     <p class="p1">Enter the weight:</p>
                                     <div class="inputbar">
                                         <label>
-                                            <input type="text" placeholder="0.00">
+                                            <input type="text" id="weight-tin" placeholder="0.00">
                                         </label>
                                     </div>
                                     <p class="p2">Subtotal:</p>
                                     <div class="inputbar2">
                                         <label>
-                                            <input type="text" placeholder="RM0.00">
+                                        <input type="text" id="subtotal-tin" value="<?php echo calculateSubtotal('Tin', $_POST['weight-tin']); ?>" readonly>
                                         </label>
                                     </div>
                                 </div>
@@ -291,13 +312,13 @@
                                     <p class="p1">Enter the weight:</p>
                                     <div class="inputbar">
                                         <label>
-                                            <input type="text" placeholder="0.00">
+                                            <input type="text" id="weight-usedoil" placeholder="0.00">
                                         </label>
                                     </div>
                                     <p class="p2">Subtotal:</p>
                                     <div class="inputbar2">
                                         <label>
-                                            <input type="text" placeholder="RM0.00">
+                                        <input type="text" id="subtotal-usedoil" value="<?php echo calculateSubtotal('Used Cooking Oil', $_POST['weight-usedoil']); ?>" readonly>
                                         </label>
                                     </div>
                                 </div>
