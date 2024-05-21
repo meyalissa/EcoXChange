@@ -3,6 +3,9 @@ session_start();
 if(isset($_SESSION['cust_username'])){
 	// store session in var
 	$username = $_SESSION['cust_username'];
+
+    $sql = "SELECT * FROM item";
+    $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -162,9 +165,9 @@ if(isset($_SESSION['cust_username'])){
                             <span class="booklabel">Pick Up Address</span>
                         </div>
                         <div class="inpbox addr">
-                            <div class="txtname"><?php echo $_SESSION['username']; ?></div>
+                            <div class="txtname"><?php echo $_SESSION['cust_username']; ?></div>
                             <div class="txtAddress">
-                                
+                                <?php echo $_SESSION['cust_username']; ?>
                             </div>
                             <button id="btnChangeAdd" class="btnChangeAdd">Change</button>
                         </div>
