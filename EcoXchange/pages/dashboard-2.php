@@ -29,7 +29,7 @@ if(isset($_SESSION['cust_username'])){
     <!-- Hi, <?php echo $_SESSION['cust_username']; ?> -->
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <?php include('sidebar.php'); ?>
+        <?php include('sidebar-1.php'); ?>
 
         <!-- ========================= Main ==================== -->
         <div class="main">

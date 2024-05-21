@@ -26,7 +26,7 @@ if(isset($_SESSION['cust_username'])){
     
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <?php include('sidebar.php'); ?>
+        <?php include('sidebar-2.php'); ?>
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
