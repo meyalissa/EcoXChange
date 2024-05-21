@@ -43,7 +43,7 @@ if(isset($_SESSION['cust_username'])){
                             if($num_rows == 0){
                                 echo "No item found";
                             } else {
-                                while($row = mysqli_fetch_array($query)){
+                                while($row = mysqli_fetch_array($query)){ 
                         ?>
                         <div class="item">
                             <div class="content">

@@ -1,25 +1,18 @@
 <?php
 include '../includes/dbconn.php';
 
-// Function to calculate subtotal for an item based on its weight
-function calculateSubtotal($itemName, $weight, $dbconn) {
-    // Check if the database connection is valid
-    if (!$dbconn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+function calculateSubtotal($itemName, $weight) {
+    global $dbconn;
 
-    // Prepare the SQL query to retrieve the item's price
-    $sql = "SELECT item_price FROM item WHERE item_name = ?";
+    $sql = "SELECT * FROM item WHERE item_name = ?";
     $stmt = $dbconn->prepare($sql);
-    
-    // Bind the parameters and execute the query
     $stmt->bind_param('s', $itemName);
     $stmt->execute();
-    $stmt->bind_result($price);
-    $stmt->fetch();
+    $result = $stmt->get_result();
+    $item = $result->fetch_assoc();
     $stmt->close();
 
-    // Calculate the subtotal
+    $price = $item['item_price'];
     $subtotal = $price * $weight;
 
     return 'RM' . number_format($subtotal, 2);
@@ -28,17 +21,13 @@ function calculateSubtotal($itemName, $weight, $dbconn) {
 $subtotals = [];
 $debug_info = [];
 
-// Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Iterate through the list of items
     $items = ['Cardboard', 'Old News Paper', 'Black & White Paper', 'Glass', 'Plastic Bottle', 'Aluminium Can', 'Tin', 'Used Cooking Oil'];
     foreach ($items as $item) {
         $key = 'weight-' . strtolower(str_replace(' ', '', $item));
-        // Check if the weight for the current item is set in the POST data
         if (isset($_POST[$key]) && $_POST[$key] !== '') {
             $weight = floatval($_POST[$key]);
-            // Calculate the subtotal for the current item
-            $subtotals[$item] = calculateSubtotal($item, $weight, $dbconn); // Pass $conn to the function
+            $subtotals[$item] = calculateSubtotal($item, $weight);
             $debug_info[$item] = "Weight: $weight, Subtotal: " . $subtotals[$item];
         } else {
             $subtotals[$item] = 'RM0.00';
@@ -47,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,13 +79,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="items-content">
                             <div class="title"><?php echo $item; ?></div>
                             <div class="items-incontent">
-                                <div class="img"><img src="../images/<?php echo strtolower(str_replace(' ', '', $item)); ?>.png" alt=""></div>
+                                <div class="img"><img src="../images/items <?php echo strtolower(str_replace(' ', '', $item)); ?>.png" alt=""></div>
                                 <div class="inpWeight">
                                     <div class="each-wlbl">
                                         <p class="txtcalc">Enter the weight:</p>
                                         <div class="inputbar">
                                             <label>
-                                                <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" placeholder="0.00" value="<?php echo $weightValue; ?>">
+                                                <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" placeholder="0.00 KG" value="<?php echo $weightValue; ?>">
                                             </label>
                                         </div>
                                     </div>
@@ -119,10 +107,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <?php endforeach; ?>
                 </form>
-                <div class="debug-info">
-                    <h4>Debug Information:</h4>
-                    <pre><?php print_r($debug_info); ?></pre>
-                </div>
             </div>
         </div>
     </div>
