@@ -14,3 +14,15 @@ const search = () => {
         }
     });
 }
+
+function calculateSubtotal(itemId, price) {
+    const weightInput = document.getElementById('weight-' + itemId);
+    const subtotalInput = document.getElementById('subtotal-' + itemId);
+    const weight = parseFloat(weightInput.value);
+    const subtotal = weight * price;
+
+    if(!isNaN(subtotal))
+        subtotalInput.value = subtotal.toFixed(2);
+    else
+        subtotalInput.value = '0.00';
+}

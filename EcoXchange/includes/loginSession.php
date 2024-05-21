@@ -9,7 +9,7 @@ if(isset($_POST['Submit'])){
     $password = mysqli_real_escape_string($dbconn, $_POST['password']);
     
     ## execute SQL command to check if the user is an administrator
-    $sql_admin = "SELECT * FROM staff WHERE staff_username= '$username' AND staff_password= '$password'";
+    $sql_admin = "SELECT * FROM staff WHERE staff_username= '$username' AND staff_password= '$password' ";
     $query_admin = mysqli_query($dbconn, $sql_admin) or die("Error: " . mysqli_error($dbconn));
     $rows_admin = mysqli_num_rows($query_admin);
     
@@ -26,7 +26,7 @@ if(isset($_POST['Submit'])){
     ## If the user is not an admin, check if the user is a customer
     else {
         ## execute SQL command to check if the user is a customer
-        $sql_customer = "SELECT * FROM customer WHERE cust_username= '$username' AND cust_password= '$password'";
+        $sql_customer = "SELECT * FROM customer WHERE cust_username= '$username' AND cust_password= '$password' AND cust_pict = '$picture'";
         $query_customer = mysqli_query($dbconn, $sql_customer) or die("Error: " . mysqli_error($dbconn));
         $rows_customer = mysqli_num_rows($query_customer);
         

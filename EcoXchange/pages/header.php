@@ -1,3 +1,4 @@
+
 <div class="topbar">
     <div class="toggle">
         <ion-icon name="menu-outline"></ion-icon>
@@ -12,8 +13,9 @@
     
     <div class="user">
         <img src="../images/default-profile.png" alt="">
-        <p>Username</p>
-        <p>User</p>  
+        <div class="info">
+            <p><?php echo $_SESSION['username']; ?></p>
+            <small><?php echo $_SESSION['role']; ?></small>  
+        </div>
     </div>
-
 </div>
