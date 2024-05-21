@@ -10,7 +10,7 @@
         </label>
     </div>
     
-    <div class="user">
+    <div class="user-prof">
         <img src="../images/default-profile.png" alt="">
         <p>Username</p>
         <p>User</p>  
