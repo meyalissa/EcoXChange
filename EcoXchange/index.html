@@ -97,21 +97,24 @@
         <div class="faq-container">
             <div class="faq-text">
                 <h1>Frequently Asked Question (FAQ)</h1>
-                <button class="button-faq">
+                <div class="button-faq">
+                    <img src="images/lampfaq.png" alt="" class="faq-lamp">
                     What is EcoXchange?
                     <img src="images/scrolldown.png" alt="" class="faq-icon">
                     <i></i>
-                </button>
+                </div>
                 <div class="faq-answer">
                     <p>
                         EcoXchange is a system where consumers may recycle everything they want to without worrying about transportation because our runner will pick up the recyclables.  
                     </p>
                 </div>
                 <div class="faq-text">
-                    <button class="button-faq">
+                    <div class="button-faq">
+                        <img src="images/lampfaq.png" alt="" class="faq-lamp">
                         Do we need to make any payments?
+                        <img src="images/scrolldown.png" alt="" class="faq-icon">
                         <i></i>
-                    </button>
+                    </div>
                     <div class="faq-answer">
                         <p>
                              Yes, but only deposit RM10 when the runner arrives in front of your home. You can receive your RM10 back along with your recycling monetary rewards.
@@ -119,10 +122,12 @@
                     </div>
                 </div>
                 <div class="faq-text">
-                    <button class="button-faq">
+                    <div class="button-faq">
+                        <img src="images/lampfaq.png" alt="" class="faq-lamp">
                         What type of waste does EcoXchange accept for recycling?
+                        <img src="images/scrolldown.png" alt="" class="faq-icon">
                         <i></i>
-                    </button>
+                    </div>
                     <div class="faq-answer">
                         <p>
                             EcoXchange recycles used oil, newspaper, and cardboard to promote sustainability and reduce waste.
@@ -130,10 +135,12 @@
                     </div>
                 </div>
                 <div class="faq-text">
-                    <button class="button-faq">
+                    <div class="button-faq">
+                        <img src="images/lampfaq.png" alt="" class="faq-lamp">
                         Can I track the status of my waste?
+                        <img src="images/scrolldown.png" alt="" class="faq-icon">
                         <i></i>
-                    </button>
+                    </div>
                     <div class="faq-answer">
                         <p>
                             Certainly! Once our runner picks up your recyclable items, you can track their status, including pending, successfully delivered, or awaiting processing.
@@ -146,11 +153,11 @@
 
       <script>
        document.addEventListener("DOMContentLoaded", function() {
-        var buttons = document.querySelectorAll(".button-faq");
+        var faqIcons = document.querySelectorAll(".faq .faq-icon");
 
-        buttons.forEach(function(button) {
-        button.addEventListener("click", function() {
-            var answer = this.nextElementSibling;
+        faqIcons.forEach(function(icon) {
+        icon.addEventListener("click", function() {
+            var answer = this.parentElement.nextElementSibling;
             answer.classList.toggle("active");
             });
         });

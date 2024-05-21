@@ -329,6 +329,7 @@ header .header-right .hamburger div {
   /* ++++++++ FAQ ++++++++ */ 
 .faq {
      padding: 150px;
+     background-color: var(--background-color); 
   }
 .faq-container {
   display: flex;
@@ -378,6 +379,15 @@ header .header-right .hamburger div {
   height:50px;
   justify-content: center;
   margin-right: 300px;
+}
+
+.faq-lamp{
+  position:absolute;
+  right:50px;
+  width:50px;
+  height:50px;
+  justify-content: center;
+  margin-right: 1000px;
 }
 /* Show/hide animation */
 .faq-answer.active {
