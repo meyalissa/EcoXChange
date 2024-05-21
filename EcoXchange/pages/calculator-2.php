@@ -5,21 +5,13 @@ function calculateSubtotal($itemName, $weight) {
     global $dbconn;
 
     $sql = "SELECT * FROM item WHERE item_name = ?";
-    $stmt = $dbconn->prepare($sql);
-    $stmt->bind_param('s', $itemName);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $item = $result->fetch_assoc();
-    $stmt->close();
-
+    
     $price = $item['item_price'];
     $subtotal = $price * $weight;
 
     return 'RM' . number_format($subtotal, 2);
 }
 
-$subtotals = [];
-$debug_info = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $items = ['Cardboard', 'Old News Paper', 'Black & White Paper', 'Glass', 'Plastic Bottle', 'Aluminium Can', 'Tin', 'Used Cooking Oil'];
