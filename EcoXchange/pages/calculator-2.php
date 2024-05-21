@@ -1,10 +1,9 @@
 
 <?php
+include '../includes/dbconn.php';
 
-include 'dbconn.php';
-
-function calculateSubtotal($itemName, $weight) {
-    global $conn; 
+function getItemPrice($itemName) {
+    global $conn;
 
     $sql = "SELECT item_price FROM item WHERE item_name = ?";
     $stmt = $conn->prepare($sql);
@@ -14,9 +13,17 @@ function calculateSubtotal($itemName, $weight) {
     $stmt->fetch();
     $stmt->close();
 
-    $subtotal = $price * $weight;
+    return $price;
+}
 
-    return 'RM' . number_format($subtotal, 2);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['item_name'])) {
+    $itemName = $_POST['item_name'];
+    $weight = floatval($_POST['weight']);
+    $price = getItemPrice($itemName);
+
+    $subtotal = $price * $weight;
+    echo json_encode(['subtotal' => 'RM' . number_format($subtotal, 2)]);
+    exit;
 }
 ?>
 
@@ -132,6 +139,14 @@ function calculateSubtotal($itemName, $weight) {
                 </div>
 
                 <div class="item-list" id="item-list">
+                    <form method="POST" action="calculator-2.php">
+                    <?php
+                        $items = ['Cardboard', 'Old News Paper', 'Black & White Paper', 'Glass', 'Plastic Bottle', 'Aluminium Can', 'Tin', 'Used Cooking Oil'];
+                        foreach ($items as $item):
+                            $key = 'weight-' . strtolower(str_replace(' ', '', $item));
+                            $weightValue = isset($_POST[$key]) ? htmlspecialchars($_POST[$key]) : '';
+                            $subtotalValue = isset($subtotals[$item]) ? $subtotals[$item] : 'RM0.00';
+                    ?>
 
                     <!---item 1-->
                     <div class="items">
@@ -144,7 +159,7 @@ function calculateSubtotal($itemName, $weight) {
                                         <p class="txtcalc">Enter the weight:</p>
                                         <div class="inputbar">
                                             <label>
-                                                <input type="text" id="weight-cardboard" placeholder="0.00">
+                                            <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" placeholder="0.00" value="<?php echo $weightValue; ?>">
                                             </label>
                                         </div>
                                     </div>
@@ -152,7 +167,7 @@ function calculateSubtotal($itemName, $weight) {
                                         <p class="txtcalc">Subtotal:</p>
                                         <div class="inputbar2">
                                             <label>
-                                               <input type="text" id="subtotal-cardboard" value="<?php echo calculateSubtotal('Cardboard', $_POST['weight-cardboard']); ?>" readonly>
+                                            <input type="text" id="subtotal-<?php echo strtolower(str_replace(' ', '', $item)); ?>" value="<?php echo $subtotalValue; ?>" readonly>
                                             </label>
                                         </div>
                                     </div>
@@ -326,7 +341,9 @@ function calculateSubtotal($itemName, $weight) {
                         </div>
                     </div>
                 </div>
-
+                <?php endforeach; ?>
+                        <button type="submit">Calculate</button>
+            </form>
             </div>
         </div>
     </div>
@@ -338,6 +355,25 @@ function calculateSubtotal($itemName, $weight) {
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        function calculateSubtotal(itemName, weight) {
+            if (weight === '') {
+                document.getElementById('subtotal-' + itemName.toLowerCase().replace(/\s+/g, '')).value = 'RM0.00';
+                return;
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'calculator-2.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById('subtotal-' + itemName.toLowerCase().replace(/\s+/g, '')).value = response.subtotal;
+                }
+            };
+            xhr.send('item_name=' + encodeURIComponent(itemName) + '&weight=' + encodeURIComponent(weight));
+        }
+    </script>
 </body>
 
 </html>
