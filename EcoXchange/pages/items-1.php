@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +29,7 @@
              
 
                 <li  >
-                    <a href="dashboard-1.html">
+                    <a href="dashboard-1.php">
                         <span class="icon">
                             <i class='bx bx-history'></i>
                         </span>

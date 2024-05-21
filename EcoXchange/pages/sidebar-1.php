@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoXchange | Dashboard</title>
-    <!-- ===== BOX ICONS ===== -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
-    <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/SidebarUser.css">
-</head>
-
-<body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
+<div class="navigation">
             <ul>
                 <li class = "comp-name">
                     <a href="#">
@@ -28,7 +11,7 @@
              
 
                 <li class="active" >
-                    <a href="dashboard-1.html">
+                    <a href="dashboard-1.php">
                         <span class="icon">
                             <i class='bx bx-history'></i>
                         </span>
@@ -37,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="items-1.html">
+                    <a href="items-1.php">
                         <span class="icon">
                             <i class='bx bxl-spring-boot'></i>
                         </span>
@@ -46,7 +29,7 @@
                 </li>
 
                 <li>
-                    <a href="members.html">
+                    <a href="Members">
                         <span class="icon">
                             <i class='bx bxs-group'></i>
                         </span>
@@ -55,7 +38,7 @@
                 </li>
 
                 <li>
-                    <a href="VehicleBooking.html">
+                    <a href="VehicleBooking">
                         <span class="icon">
                             <i class='bx bxs-car'></i>
                         </span>
@@ -64,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="Records.html">
+                    <a href="Records">
                         <span class="icon">
                             <i class='bx bxs-receipt'></i>
                         </span>
@@ -72,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Reports.html">
+                    <a href="Reports">
                         <span class="icon">
                             <i class='bx bxs-bar-chart-alt-2'></i>
                         </span>
@@ -80,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="profile-1.html">
+                    <a href="Profile">
                         <span class="icon">
                             <i class='bx bx-user-circle'></i>
                         </span>
@@ -98,42 +81,3 @@
                 </li>
             </ul>
         </div>
-
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                        
-                    </label>
-                </div>
-
-                <div class="user">
-                    <img src="../images/default-profile.png" alt="">
-            
-                </div>
-            </div>
-            <div class="content">
-                <div clas="nav-title"><h3>Dashboard</h3></div>
-                <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
-
-
-            </div>
-        </div>
-    </div>
-
-    <!-- =========== Scripts =========  -->
-    <script src="../js/main.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-
-</html>

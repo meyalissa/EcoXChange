@@ -2,38 +2,48 @@
 session_start();
 ## include db connection file 
 include("dbconn.php");
+
 if(isset($_POST['Submit'])){
-	## capture values from HTML form 
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	## verify if the values of username and password are correct
-	if($username == "meyalissa" && $password == "mel123"){
-		 ## set the session’s username as administrator
-		$_SESSION['username'] = "Administrator";
-		 ## directly call / open the page for menuAdmin 
-		 header("Location: ../pages/dashboard-1.html");
-	}
-	
-##If the user is not an admin, then , call find the user’s information
-else{ 
-	## execute SQL command 
-		$sql= "SELECT * FROM customer WHERE cust_username= '$username' AND cust_password= '$password'";
-		echo $sql;
-	
-		$query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
-		$row = mysqli_num_rows($query);
-		##to verify the user’s information exist in the db
-		if($row == 0){  ##if the user’s record is not exist
-			echo "Invalid Username/Password. Click here to <a href='login.php'>login</a>.";
-		}else{##if the user’s record is not exist
-			 ##retrieve the user’s infor detail 
-			$r = mysqli_fetch_assoc($query);
-			 ##ser the session name with the current user’s info
-			$_SESSION['username'] = $r['username'];
-			 ##directly open the page menu 
-			 header("Location: ../pages/dashboard-2.php");
-		}
-	}
+    ## capture values from HTML form 
+    $username = mysqli_real_escape_string($dbconn, $_POST['username']);
+    $password = mysqli_real_escape_string($dbconn, $_POST['password']);
+    
+    ## execute SQL command to check if the user is an administrator
+    $sql_admin = "SELECT * FROM staff WHERE staff_username= '$username' AND staff_password= '$password'";
+    $query_admin = mysqli_query($dbconn, $sql_admin) or die("Error: " . mysqli_error($dbconn));
+    $rows_admin = mysqli_num_rows($query_admin);
+    
+    ## check if the user is an administrator
+    if($rows_admin > 0){
+        ## set the session’s username as administrator
+        $_SESSION['username'] = $username;
+		$_SESSION['role'] = "Staff";
+        ## directly open the page for menuAdmin 
+        header("Location: ../pages/dashboard-1.php");
+        exit(); // Ensure that no further code is executed
+    }
+    
+    ## If the user is not an admin, check if the user is a customer
+    else {
+        ## execute SQL command to check if the user is a customer
+        $sql_customer = "SELECT * FROM customer WHERE cust_username= '$username' AND cust_password= '$password'";
+        $query_customer = mysqli_query($dbconn, $sql_customer) or die("Error: " . mysqli_error($dbconn));
+        $rows_customer = mysqli_num_rows($query_customer);
+        
+        ## check if the user is a customer
+        if($rows_customer > 0){
+            ## set the session’s username as customer
+            $_SESSION['username'] = $username;
+			$_SESSION['role'] = "Customer";
+            ## directly open the page for menuCustomer 
+            header("Location: ../pages/dashboard-2.php");
+            exit(); // Ensure that no further code is executed
+        }
+    }
+    
+    ## If neither admin nor customer, display error message
+    header("Location: ../pages/Login.php");
 }
-mysqli_close($dbconn);
+
+mysqli_close($dbconn); //close connection
 ?>
