@@ -20,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="Items-1.html">
+                    <a href="items-1.html">
                         <span class="icon">
                             <i class='bx bxl-spring-boot'></i>
                         </span>
