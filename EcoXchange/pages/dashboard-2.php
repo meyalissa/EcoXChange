@@ -4,8 +4,7 @@ if(isset($_SESSION['cust_username'])){
 	// store session in var
 	$username = $_SESSION['cust_username'];
 
-    $sql = "SELECT * FROM item";
-    $result = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
