@@ -4,10 +4,8 @@ session_start();
 if(isset($_SESSION['cust_username'])){
 	// store session in var
 	$username = $_SESSION['cust_username'];
-
-    
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

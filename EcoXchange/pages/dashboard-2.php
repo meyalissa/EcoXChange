@@ -1,10 +1,12 @@
 <?php
 session_start();
-if(isset($_SESSION['cust_username'])){
-	// store session in var
-	$username = $_SESSION['cust_username'];
 
-
+// Check if the user is logged in and if they are a customer
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Customer') {
+    header("Location: ../pages/Signup.php");
+    exit();
+}
+// If the user is a customer, display the customer dashboard
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +19,12 @@ if(isset($_SESSION['cust_username'])){
   <!-- ===== BOX ICONS ===== -->
   <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- ======= Styles ====== -->
   <link rel="stylesheet" href="../style/SidebarUser.css">
   <link rel="stylesheet" href="../style/dashboard.css">
+
 </head>
 
 <body>
@@ -29,7 +32,7 @@ if(isset($_SESSION['cust_username'])){
     <!-- Hi, <?php echo $_SESSION['cust_username']; ?> -->
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <?php include('sidebar-1.php'); ?>
+        <?php include('sidebar-2.php'); ?>
 
         <!-- ========================= Main ==================== -->
         <div class="main">
@@ -298,9 +301,3 @@ if(isset($_SESSION['cust_username'])){
 </body>
 
 </html>
-<?php 
-}
-else{
-	header("Location: signup.php");
-}
-?>
