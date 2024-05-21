@@ -330,6 +330,7 @@ header .header-right .hamburger div {
 .faq {
      padding: 150px;
      background-color: var(--background-color); 
+     
   }
 .faq-container {
   display: flex;
@@ -360,7 +361,7 @@ header .header-right .hamburger div {
   
 }
 .faq-answer{
-  background-color:#94AB6F;
+  
   padding: 20px 100px;
   width:100%;
   border: 1px solid var(--primary-color);
