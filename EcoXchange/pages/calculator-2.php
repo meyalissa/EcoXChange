@@ -33,7 +33,6 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
             <?php include('header.php'); ?>
             <div class="content">
                 <div class="nav-title"><h3>Calculator</h3></div>
-                <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
                 <div class="top-content">
                     <div class="searchbar">
                         <label>
@@ -46,10 +45,10 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                 <div class="item-list" id="item-list">
                     <!---item list-->
                     <?php
-                        if(mysqli_num_rows($query) == 0){
-                            echo "No item found";
-                        } else {
-                            while($row = mysqli_fetch_assoc($query)){ 
+                    if(mysqli_num_rows($query) == 0){
+                        echo "No item found";
+                    } else {
+                        while($row = mysqli_fetch_assoc($query)){ 
                     ?>
                     <div class="items">
                         <div class="items-content">
@@ -62,7 +61,6 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                                         <div class="inputbar">
                                             <label>
                                                 <input type="number" id="weight-<?php echo $row['item_ID']; ?>" placeholder="0.00" oninput="calculateSubtotal('<?php echo $row['item_ID']; ?>', <?php echo $row['item_price']; ?>)">
-                                                
                                             </label>
                                         </div>
                                     </div>
@@ -70,7 +68,7 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                                         <p class="txtcalc">Subtotal:</p>
                                         <div class="inputbar2">
                                             <label> RM
-                                               <input type="text" class="subtotal" id="subtotal-<?php echo $row['item_ID']; ?>" value="0.00"   readonly>
+                                               <input type="text" class="subtotal" id="subtotal-<?php echo $row['item_ID']; ?>" value="0.00" readonly>
                                             </label>
                                         </div>
                                     </div>
@@ -79,9 +77,21 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                         </div>
                     </div>
                     <?php 
-                            } 
                         } 
+                    } 
                     ?>
+                </div>
+                
+        
+                <div class="bottom-content">
+                    <div class="total-container">
+                        <p class="txtcalc">Total:</p>
+                        <div class="inputbar2">
+                            <label> RM
+                                <input type="text" id="total" value="0.00" readonly>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,7 +106,3 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
 </body>
 
 </html>
-<?php
-// Close the database connection after all queries are done
-mysqli_close($dbconn);
-?>
