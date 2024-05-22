@@ -1,33 +1,16 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Customer') {
+    header("Location: ../pages/Signup.php");
+    exit();
+}
+
 include '../includes/dbconn.php';
-
-function calculateSubtotal($itemName, $weight) {
-    global $dbconn;
-
-    $sql = "SELECT * FROM item WHERE item_name = ?";
-    
-    $price = $item['item_price'];
-    $subtotal = $price * $weight;
-
-    return 'RM' . number_format($subtotal, 2);
-}
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $items = ['Cardboard', 'Old News Paper', 'Black & White Paper', 'Glass', 'Plastic Bottle', 'Aluminium Can', 'Tin', 'Used Cooking Oil'];
-    foreach ($items as $item) {
-        $key = 'weight-' . strtolower(str_replace(' ', '', $item));
-        if (isset($_POST[$key]) && $_POST[$key] !== '') {
-            $weight = floatval($_POST[$key]);
-            $subtotals[$item] = calculateSubtotal($item, $weight);
-            $debug_info[$item] = "Weight: $weight, Subtotal: " . $subtotals[$item];
-        } else {
-            $subtotals[$item] = 'RM0.00';
-            $debug_info[$item] = "Weight: 0, Subtotal: RM0.00";
-        }
-    }
-}
+$sql = "SELECT * FROM item";
+$query = mysqli_query($dbconn, $sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,75 +19,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoXchange | Calculator</title>
+    <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/calculator.css">
 </head>
 
 <body>
+    <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-2.php'); ?>
-        <?php include('header.php'); ?>
-        <div class="content">
-            <div class="nav-title">
-                <h3>Dashboard</h3>
-            </div>
-            <div class="top-content">
-                <div class="searchbar">
-                    <label>
-                        <input type="text" name="" id="search-item" placeholder="Item's name" onkeyup="search()">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-            </div>
-            <div class="item-list" id="item-list">
-                <form method="POST" action="">
-                    <?php
-                    // List of items
-                    $items = ['Cardboard', 'Old News Paper', 'Black & White Paper', 'Glass', 'Plastic Bottle', 'Aluminium Can', 'Tin', 'Used Cooking Oil'];
-                    foreach ($items as $item):
-                        $key = 'weight-' . strtolower(str_replace(' ', '', $item));
-                        $weightValue = isset($_POST[$key]) ? htmlspecialchars($_POST[$key]) : '';
-                        $subtotalValue = isset($subtotals[$item]) ? $subtotals[$item] : 'RM0.00';
-                    ?>
 
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <?php include('header.php'); ?>
+            <div class="content">
+                <div class="nav-title"><h3>Dashboard</h3></div>
+                <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
+                <div class="top-content">
+                    <div class="searchbar">
+                        <label>
+                            <input type="text" name="" id="search-item" placeholder="Item's name" onkeyup="search()">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </div>       
+                </div>
+
+                <div class="item-list" id="item-list">
+                    <!---item list-->
+                    <?php
+                        if(mysqli_num_rows($query) == 0){
+                            echo "No item found";
+                        } else {
+                            while($row = mysqli_fetch_assoc($query)){ 
+                    ?>
                     <div class="items">
                         <div class="items-content">
-                            <div class="title"><?php echo $item; ?></div>
+                            <div class="title"><?php echo $row['item_name']; ?></div>
                             <div class="items-incontent">
-                                <div class="img"><img src="../images/items <?php echo strtolower(str_replace(' ', '', $item)); ?>.png" alt=""></div>
+                                <div class="img"><img src="<?php echo $row['item_pict']; ?>" alt=""></div>
                                 <div class="inpWeight">
                                     <div class="each-wlbl">
                                         <p class="txtcalc">Enter the weight:</p>
                                         <div class="inputbar">
                                             <label>
-                                                <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" placeholder="0.00 KG" value="<?php echo $weightValue; ?>">
+                                                <input type="number" id="weight-<?php echo $row['item_ID']; ?>" placeholder="0.00" oninput="calculateSubtotal('<?php echo $row['item_ID']; ?>', <?php echo $row['item_price']; ?>)">
+                                                
                                             </label>
                                         </div>
                                     </div>
                                     <div class="each-wlbl">
                                         <p class="txtcalc">Subtotal:</p>
                                         <div class="inputbar2">
-                                            <label>
-                                                <input type="text" id="subtotal-<?php echo strtolower(str_replace(' ', '', $item)); ?>" value="<?php echo $subtotalValue; ?>" readonly>
+                                            <label> RM
+                                               <input type="text" class="subtotal" id="subtotal-<?php echo $row['item_ID']; ?>" value="0.00"   readonly>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="submit-button">
-                                    <button type="submit" name="calculate-<?php echo strtolower(str_replace(' ', '', $item)); ?>">Calculate</button>
-                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <?php endforeach; ?>
-                </form>
+                    <?php 
+                            } 
+                        } 
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
     <script src="../js/calculatorfunc.js"></script>
+    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

@@ -251,10 +251,3 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Staff') {
 </body>
 
 </html>
-
-<?php 
-}
-else{
-	header("Location: signup.php");
-}
-?>

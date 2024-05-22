@@ -1,11 +1,13 @@
 <?php
 session_start();
 
-if(isset($_SESSION['cust_username'])){
-	// store session in var
-	$username = $_SESSION['cust_username'];
+// Check if the user is logged in and if they are a customer
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Customer') {
+    header("Location: ../pages/Signup.php");
+    exit();
+}
+// If the user is a customer, display the customer dashboard
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,6 +75,3 @@ if(isset($_SESSION['cust_username'])){
 </body>
 
 </html>
-<?php 
-}
-?>
