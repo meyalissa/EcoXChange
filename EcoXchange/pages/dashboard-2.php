@@ -257,9 +257,9 @@ if ($address) {
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" id="agreement1" name="agreement1" value="Agree1">
+                            <input type="checkbox" id="agreement1" name="agreement1" value="Agree1" required>
                             <label class="agree" for="agreement1"> I agree that the receipt uploaded is true</label><br>
-                            <input type="checkbox" id="agreement2" name="agreement2" value="Agree2">
+                            <input type="checkbox" id="agreement2" name="agreement2" value="Agree2" required>
                             <label class="agree" for="agreement2"> I agree that if I cancel my booking, I will not receive my deposit</label><br>
                         </td>
                     </tr>
@@ -332,33 +332,44 @@ if ($address) {
             });
 
             // Function to handle form submission
-            $('#btnSubmit').click(function () {
-                // Get the values from form fields
-                var address = $('.txtAddress').text();
-                var vehicle = $('select[name="vehicle"]').val();
-                var pickup = $('select[name="pickup"]').val();
-                // You may need to handle file upload separately
+            // Function to handle form submission
+           $('#btnSubmit').click(function () {
+               // Get the values from form fields
+               var address = $('.txtAddress').text();
+               var vehicle = $('select[name="vehicle"]').val();
+               var pickup = $('select[name="pickup"]').val();
+               // Handling file upload
+               var fileData = new FormData();
+               var inputFile = $('input[type="file"]')[0].files[0];
+               fileData.append('receipt', inputFile);
             
-                // AJAX request to submit the form data
-                $.ajax({
-                    url: 'submit_booking.php',
-                    type: 'POST',
-                    data: {
-                        address: address,
-                        vehicle: vehicle,
-                        pickup: pickup
-                        // Add more data if needed
-                    },
-                    success: function (response) {
-                        // Handle success response
-                        console.log(response);
-                    },
-                    error: function (xhr, status, error) {
-                        // Handle error response
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
+               // AJAX request to submit the form data
+               $.ajax({
+                   url: 'submit_booking.php',
+                   type: 'POST',
+                   data: {
+                       address: address,
+                       vehicle: vehicle,
+                       pickup: pickup
+                       // Do not include the receipt here, handle it separately
+                   },
+                   processData: false,
+                   contentType: false,
+                   success: function (response) {
+                       // Handle success response
+                       console.log(response);
+                       // Show success message to the user
+                       alert("Booking submitted successfully!");
+                       // You can redirect the user to the dashboard or perform any other action here
+                   },
+                   error: function (xhr, status, error) {
+                       // Handle error response
+                       console.error(xhr.responseText);
+                       // Show error message to the user
+                       alert("Error: Unable to submit booking. Please try again later.");
+                   }
+               });
+           });
         });
     </script>
 
