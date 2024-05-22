@@ -44,9 +44,9 @@
   }
 
   body{
-    overflow: hidden;
+    overflow-x: hidden;
 }
-  
+
 
 .item-content{
   padding-bottom: 0px;
