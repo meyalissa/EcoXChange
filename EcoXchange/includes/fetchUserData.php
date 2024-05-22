@@ -31,5 +31,12 @@ $id = $user["staff_id"] ?? $user["cust_ID"];
 $name = $user["staff_username"] ?? $user["cust_username"];
 $image = $user["staff_pict"] ?? $user["cust_pict"];
 
+// Fetch address data based on user ID
+$sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
+$query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching address: " . mysqli_error($dbconn));
+$address = mysqli_fetch_assoc($query_address);
+
+// Set address data to session variable for access in other files
+$_SESSION['address'] = $address;
 
 ?>

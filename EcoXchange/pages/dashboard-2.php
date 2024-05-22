@@ -1,5 +1,30 @@
-<?php include('../includes/fetchUserData.php'); ?>
+<?php
 
+include('../includes/fetchUserData.php'); 
+
+// Access address data from session
+$address = $_SESSION['address'] ?? null;
+
+// Check if address data exists
+if ($address) {
+    // Fetch data from the address array or set it manually
+    $address_ID = $address["address_ID"];
+    $add_name = $address["Name"];
+    $add_contact = $address["Contact"];
+    $house_no = $address["house_no"];
+    $street_name = $address["street_name"];
+    $city = $address["city"];
+    $postcode = $address["postcode"];
+    $state = $address["state"];
+
+    // Concatenate the address components into a single variable
+    $full_address = "$add_name, $add_contact\n$house_no, $street_name, $city, $state $postcode";
+} else {
+    // Handle case when address data is not available
+    $full_address = "Address data not found";
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +56,7 @@
 
             <!-- ============== Content ============== -->
             <div class="content">
-                <div clas="nav-title"><h3>Dashboard</h3></div>
+                <div class="nav-title"><h3>Dashboard</h3></div>
                 <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->            
                 <div class="in-content">
                     <div class="row1">
@@ -73,6 +98,7 @@
         <div class = "bookingform">
           
           <form action="#">
+            
             <table border="0" >
                 <tr>
                     <th colspan="3">
@@ -86,9 +112,9 @@
                             <span class="booklabel">Pick Up Address</span>
                         </div>
                         <div class="inpbox addr">
-                            <div class="txtname"><?php echo $_SESSION['cust_username']; ?></div>
+                            <!-- <div class="txtname"><?php echo $add_name ?></div> -->
                             <div class="txtAddress">
-                                <?php echo $_SESSION['cust_username']; ?>
+                            <?php echo nl2br($full_address) ?>
                             </div>
                             <button id="btnChangeAdd" class="btnChangeAdd">Change</button>
                         </div>
@@ -144,15 +170,25 @@
             <hr class="adrdivision">
             <form action="#">
               <table border="0" >
+                    <?php
+                        // Fetch addresses from the database based on user ID
+                        $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
+                        $query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching addresses: " . mysqli_error($dbconn));
+                        if (mysqli_num_rows($query_address) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_address)) {
+                                $addr_name= "{$row['Name']}";
+                                $addr_contact = "{$row['Contact']}";
+                                $full_address = "{$row['street_name']}, {$row['city']}, {$row['state']} {$row['postcode']}";
+                        ?>
                     <!-- REPEAT -->
                     <tr>
                         <td>
-                            <input type="checkbox" name="Address" value="Addr1">
+                            <input type="checkbox" name="selected_address" value="<?php echo $row['address_ID']; ?>">
                         </td>
                         <td>
                             <div class="addr-info">
-                                <h3 class="pic"> Name | Phone Numb</h3>
-                                <p class="address"> Home Numb, City, Country , PostCode<p>
+                                <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                <p class="address"> <?php echo $full_address ?><p>
                             </div>
                         </td>
                     </tr>
@@ -162,24 +198,13 @@
                         </td>
                     </tr>
                     <!-- REPEAT END-->
-                    <!-- REPEAT -->
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="Address" value="Addr1">
-                        </td>
-                        <td>
-                            <div class="addr-info">
-                                <h3 class="pic"> Name | Phone Numb</h3>
-                                <p class="address"> Home Numb, City, Country , PostCode<p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr class="adrdivision">
-                        </td>
-                    </tr>
-                    <!-- REPEAT END-->
+                    <?php
+                     }
+                        } else {
+                            echo "<p>No addresses found</p>";
+                        }
+                    ?>
+
               </table>
             </form>
             
