@@ -1,13 +1,10 @@
 <?php
-session_start();
 
-// Check if the user is logged in and if they are a staff member
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Staff') {
-    header("Location: ../pages/Login.php");
-    exit(); // Ensure that no further code is executed
-}
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
 
-// If the user is a staff member, display the staff dashboard
+
 ?>
 
 <!DOCTYPE html>

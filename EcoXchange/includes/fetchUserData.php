@@ -27,7 +27,7 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
 $user = mysqli_fetch_assoc($query);
 
 // Set common variables
-$id = $user["staff_id"] ?? $user["cust_ID"];
+$id = $user["staff_ID"] ?? $user["cust_ID"];
 $name = $user["staff_username"] ?? $user["cust_username"];
 $image = $user["staff_pict"] ?? $user["cust_pict"];
 

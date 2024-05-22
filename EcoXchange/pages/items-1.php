@@ -1,4 +1,11 @@
+<?php
 
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,112 +21,14 @@
 </head>
 
 <body>
+    
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="navigation">
-            <ul>
-                <li class = "comp-name">
-                    <a href="#">
-                        <span class="icon">
-                            <img src="../images/logo-white-border.png" class="sidebar-logo" />
-                        </span>
-                        <span class="title">EcoXchange</span>
-                    </a>
-                </li>
-             
-
-                <li  >
-                    <a href="dashboard-1.php">
-                        <span class="icon">
-                            <i class='bx bx-history'></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li class="active">
-                    <a href="Items">
-                        <span class="icon">
-                            <i class='bx bxl-spring-boot'></i>
-                        </span>
-                        <span class="title">Items</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="Members">
-                        <span class="icon">
-                            <i class='bx bxs-group'></i>
-                        </span>
-                        <span class="title">Members</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="VehicleBooking">
-                        <span class="icon">
-                            <i class='bx bxs-car'></i>
-                        </span>
-                        <span class="title">Vehicle Booking</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="Records">
-                        <span class="icon">
-                            <i class='bx bxs-receipt'></i>
-                        </span>
-                        <span class="title">Collection Records</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="Reports">
-                        <span class="icon">
-                            <i class='bx bxs-bar-chart-alt-2'></i>
-                        </span>
-                        <span class="title">Reports</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="Profile">
-                        <span class="icon">
-                            <i class='bx bx-user-circle'></i>
-                        </span>
-                        <span class="title">Profile</span>
-                    </a>
-                </li>
-
-                <li class="sign-out">
-                    <a href="../includes/logout.inc.php">
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign Out</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <?php include('sidebar-1.php'); ?>
 
         <!-- ========================= Main ==================== -->
         <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                        
-                    </label>
-                </div>
-
-                <div class="user">
-                    <img src="../images/default-profile.png" alt="">
-            
-                </div>
-            </div>
+            <?php include('header.php'); ?>
 
             <div class="nav-title"><h3>Items</h3></div>
             <div class="nav-desc">These are the items that we accept:</div>
