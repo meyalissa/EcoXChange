@@ -223,8 +223,10 @@ body {
   height: 40px;
 }
 .user p{
-  margin-bottom: 0;
-  gap: 0px;
+  margin-bottom: -20px;
+}
+.user small{
+  margin-top: -20px;
 }
 /* .user-prof {
   position: relative;
