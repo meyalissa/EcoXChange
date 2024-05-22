@@ -1,13 +1,4 @@
-<?php
-session_start();
-
-// Check if the user is logged in and if they are a customer
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Customer') {
-    header("Location: ../pages/Signup.php");
-    exit();
-}
-// If the user is a customer, display the customer dashboard
-?>
+<?php include('../includes/fetchUserData.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +20,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Customer') {
 
 <body>
     <!-- testing User Info later delete -->
-    <!-- Hi, <?php echo $_SESSION['cust_username']; ?> -->
+    <!-- Hi, <?php echo $name; ?> -->
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-2.php'); ?>

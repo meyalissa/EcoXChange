@@ -72,9 +72,7 @@
 
 
 .items-incontent{
-  display: flex;
-  flex-wrap: wrap;
-
+  width: 100%;
 }
 
 .each-wlbl{
@@ -93,6 +91,7 @@
 }
 
 .inputbar label input {
+  
   width: 100%;
   height: 25px;
   border-radius: 40px;

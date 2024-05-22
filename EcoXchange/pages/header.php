@@ -12,10 +12,10 @@
     </div>
     
     <div class="user">
-        <img src="../images/default-profile.png" alt="">
+        <img src="<?php echo $image; ?>" alt="">
         <div class="info">
-            <p><?php echo $_SESSION['username']; ?></p>
-            <small><?php echo $_SESSION['role']; ?></small>  
+            <p><?php echo $name; ?></p>
+            <small><?php echo $role; ?></small>  
         </div>
     </div>
 </div>
