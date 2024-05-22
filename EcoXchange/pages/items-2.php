@@ -75,3 +75,8 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
 </body>
 
 </html>
+
+<?php
+// Close the database connection after all queries are done
+mysqli_close($dbconn);
+?>

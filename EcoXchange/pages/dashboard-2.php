@@ -292,3 +292,7 @@
 </body>
 
 </html>
+<?php
+// Close the database connection after all queries are done
+mysqli_close($dbconn);
+?>
