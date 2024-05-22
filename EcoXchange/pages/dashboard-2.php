@@ -282,9 +282,12 @@ if ($address) {
 </div>
 </div>
 
+
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
     <script type="text/javascript">
+
+  
         $(function () {
                 // Function to handle closing popups
             $('.close-popup').click(function() {

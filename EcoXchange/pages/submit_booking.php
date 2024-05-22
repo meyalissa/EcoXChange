@@ -71,12 +71,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (mysqli_query($dbconn, $sql)) {
         echo "New record created successfully";
+        
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
     }
+
+    
 } else {
     echo "Invalid request method";
 }
+header("Location: ../pages/dashboard-2.php");
+location.reload();
 
 // Close the database connection after all queries are done
 mysqli_close($dbconn);
