@@ -3,6 +3,11 @@
 include('../includes/dbconn.php');
 include('../includes/fetchUserData.php');
 
+// Start session if not started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Check if the address ID is provided via POST
 if (isset($_POST['address_id'])) {
     // Sanitize the input to prevent SQL injection
@@ -26,11 +31,11 @@ if (isset($_POST['address_id'])) {
         echo $full_address;
     } else {
         // If the query fails, return an error message
-        echo "Error: Unable to fetch address details";
+        echo "Error fetching address details.";
     }
 } else {
     // If the address ID is not provided, return an error message
-    echo "Error: Address ID not provided";
+    echo "No address ID provided.";
 }
 
 // Close the database connection

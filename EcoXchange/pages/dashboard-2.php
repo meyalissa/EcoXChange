@@ -97,7 +97,7 @@ if ($address) {
         </div>
         <div class = "bookingform">
           
-          <form action="#">
+          <form action= "submit_booking.php" method = "post">
             
             <table border="0" >
                 <tr>
@@ -224,7 +224,7 @@ if ($address) {
             </div>
         </div>
         <div class = "paymentform">
-            <form action="#">
+            <form action= "submit_booking.php" method = "post">
               <table border="0" >
                     <tr>
                         <th >
@@ -264,14 +264,15 @@ if ($address) {
                         </td>
                     </tr>
               </table>
-            </form>
-        </div>
-        <div class="low-form">
+              <div class="low-form">
             <div class="btnGroup">
                 <button type = "button" id="btnCancel" class="btn">Cancel</button>
                 <input type="submit" name="submit" value="Submit" class="btn" id="btnSubmit">
             </div>
         </div>
+            </form>
+        </div>
+        
     </div>
 </div>
 
@@ -333,43 +334,40 @@ if ($address) {
 
             // Function to handle form submission
             // Function to handle form submission
-           $('#btnSubmit').click(function () {
-               // Get the values from form fields
-               var address = $('.txtAddress').text();
-               var vehicle = $('select[name="vehicle"]').val();
-               var pickup = $('select[name="pickup"]').val();
-               // Handling file upload
-               var fileData = new FormData();
-               var inputFile = $('input[type="file"]')[0].files[0];
-               fileData.append('receipt', inputFile);
-            
-               // AJAX request to submit the form data
-               $.ajax({
-                   url: 'submit_booking.php',
-                   type: 'POST',
-                   data: {
-                       address: address,
-                       vehicle: vehicle,
-                       pickup: pickup
-                       // Do not include the receipt here, handle it separately
-                   },
-                   processData: false,
-                   contentType: false,
-                   success: function (response) {
-                       // Handle success response
-                       console.log(response);
-                       // Show success message to the user
-                       alert("Booking submitted successfully!");
-                       // You can redirect the user to the dashboard or perform any other action here
-                   },
-                   error: function (xhr, status, error) {
-                       // Handle error response
-                       console.error(xhr.responseText);
-                       // Show error message to the user
-                       alert("Error: Unable to submit booking. Please try again later.");
-                   }
-               });
-           });
+            $('#btnSubmit').click(function () {
+                // Get the values from form fields
+                var address = $('.txtAddress').text();
+                var vehicle = $('select[name="vehicle"]').val();
+                var pickup = $('select[name="pickup"]').val();
+                // Handling file upload
+                var formData = new FormData();
+                formData.append('address', address);
+                formData.append('vehicle', vehicle);
+                formData.append('pickup', pickup);
+                formData.append('receipt', $('input[type="file"]')[0].files[0]);
+
+                // AJAX request to submit the form data
+                $.ajax({
+                  url: 'submit_booking.php',
+                  type: 'POST',
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    // Handle success response
+                    console.log(response);
+                    // Show success message to the user
+                    alert("Booking submitted successfully!");
+                    // You can redirect the user to the dashboard or perform any other action here
+                  },
+                  error: function (xhr, status, error) {
+                    // Handle error response
+                    console.error(xhr.responseText);
+                    // Show error message to the user
+                    alert("Error: Unable to submit booking. Please try again later.");
+                    }
+                });
+            });
         });
     </script>
 
