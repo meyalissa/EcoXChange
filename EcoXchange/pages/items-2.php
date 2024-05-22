@@ -1,12 +1,12 @@
 <?php
-session_start();
 
-// Check if the user is logged in and if they are a customer
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Customer') {
-    header("Location: ../pages/Signup.php");
-    exit();
-}
-// If the user is a customer, display the customer dashboard
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
+
+// Fetch items from the database
+$sql = "SELECT * FROM item";
+$query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,14 +1,12 @@
 <?php
-session_start();
 
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Customer') {
-    header("Location: ../pages/Signup.php");
-    exit();
-}
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
 
-include '../includes/dbconn.php';
+// Fetch items from the database
 $sql = "SELECT * FROM item";
-$query = mysqli_query($dbconn, $sql);
+$query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
 ?>
 
 <!DOCTYPE html>
@@ -98,3 +96,7 @@ $query = mysqli_query($dbconn, $sql);
 </body>
 
 </html>
+<?php
+// Close the database connection after all queries are done
+mysqli_close($dbconn);
+?>

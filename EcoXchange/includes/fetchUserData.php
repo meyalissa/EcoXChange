@@ -31,6 +31,5 @@ $id = $user["staff_id"] ?? $user["cust_ID"];
 $name = $user["staff_username"] ?? $user["cust_username"];
 $image = $user["staff_pict"] ?? $user["cust_pict"];
 
-// Close the connection
-mysqli_close($dbconn);
+
 ?>
