@@ -112,7 +112,6 @@ if ($address) {
                             <span class="booklabel">Pick Up Address</span>
                         </div>
                         <div class="inpbox addr">
-                            <!-- <div class="txtname"><?php echo $add_name ?></div> -->
                             <div class="txtAddress">
                             <?php echo nl2br($full_address) ?>
                             </div>
@@ -293,20 +292,20 @@ if ($address) {
                 var popupId = $(this).data('popup');
                 $(popupId).fadeOut();
             });
-        
+
             // Code for opening popups
             $('#btnRecycle').click(function() {
                 $('#booking-popup').fadeIn().css("display", "flex");
             });
-        
+
             $('#btnChangeAdd').click(function() {
                 $('#changadr-popup').fadeIn().css("display", "flex");
             });
-        
+
             $('#btnCont').click(function() {
                 $('#payment-popup').fadeIn().css("display", "flex");
             });
-        
+
             $('#btnCancel').click(function() {
                 $('#payment-popup').fadeOut();
                 $('#booking-popup').fadeOut();
@@ -327,6 +326,35 @@ if ($address) {
                         $('#changadr-popup').fadeOut();
                     },
                     error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            // Function to handle form submission
+            $('#btnSubmit').click(function () {
+                // Get the values from form fields
+                var address = $('.txtAddress').text();
+                var vehicle = $('select[name="vehicle"]').val();
+                var pickup = $('select[name="pickup"]').val();
+                // You may need to handle file upload separately
+            
+                // AJAX request to submit the form data
+                $.ajax({
+                    url: 'submit_booking.php',
+                    type: 'POST',
+                    data: {
+                        address: address,
+                        vehicle: vehicle,
+                        pickup: pickup
+                        // Add more data if needed
+                    },
+                    success: function (response) {
+                        // Handle success response
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle error response
                         console.error(xhr.responseText);
                     }
                 });
