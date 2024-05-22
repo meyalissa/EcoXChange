@@ -82,11 +82,12 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                     ?>
                 </div>
                 
-        
+                
+            </div>
                 <div class="bottom-content">
                     <div class="total-container">
-                        <p class="txtcalc">Total:</p>
-                        <div class="inputbar2">
+                        <p class="txtcalc1">Total:</p>
+                        <div class="inputbar3">
                             <label> RM
                                 <input type="text" id="total" value="0.00" readonly>
                             </label>
@@ -100,7 +101,6 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
     <script src="../js/calculatorfunc.js"></script>
-  
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
