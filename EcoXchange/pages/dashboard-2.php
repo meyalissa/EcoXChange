@@ -170,42 +170,44 @@ if ($address) {
             <hr class="adrdivision">
             <form action="#">
               <table border="0" >
-                    <?php
-                        // Fetch addresses from the database based on user ID
-                        $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
-                        $query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching addresses: " . mysqli_error($dbconn));
-                        if (mysqli_num_rows($query_address) > 0) {
-                            while ($row = mysqli_fetch_assoc($query_address)) {
-                                $addr_name= "{$row['Name']}";
-                                $addr_contact = "{$row['Contact']}";
-                                $full_address = "{$row['street_name']}, {$row['city']}, {$row['state']} {$row['postcode']}";
-                        ?>
-                    <!-- REPEAT -->
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="selected_address" value="<?php echo $row['address_ID']; ?>">
-                        </td>
-                        <td>
-                            <div class="addr-info">
-                                <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
-                                <p class="address"> <?php echo $full_address ?><p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr class="adrdivision">
-                        </td>
-                    </tr>
-                    <!-- REPEAT END-->
-                    <?php
-                     }
-                        } else {
-                            echo "<p>No addresses found</p>";
+                <?php
+                    // Fetch addresses from the database based on user ID
+                    $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
+                    $query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching addresses: " . mysqli_error($dbconn));
+                    if (mysqli_num_rows($query_address) > 0) {
+                        while ($row = mysqli_fetch_assoc($query_address)) {
+                            $addr_id = "{$row['address_ID']}";
+                            $addr_name= "{$row['Name']}";
+                            $addr_contact = "{$row['Contact']}";
+                            $full_address = "{$row['street_name']}, {$row['city']}, {$row['state']} {$row['postcode']}";
+                ?>
+                            <!-- LOOP -->
+                            <tr>
+                                <td>
+                                    <input type="radio" name="selected_address" value="<?php echo $addr_id ?>">
+                                </td>
+                                <td>
+                                    <div class="addr-info">
+                                        <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                        <p class="address"> <?php echo $full_address ?><p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <hr class="adrdivision">
+                                </td>
+                            </tr>
+                            <!-- LOOP END-->
+                            <?php
                         }
+                    } else {
+                        echo "<p>No addresses found</p>";
+                }
                     ?>
-
               </table>
+              <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
+
             </form>
             
             
@@ -285,32 +287,53 @@ if ($address) {
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
     <script type="text/javascript">
-        $(function() {
-            // Function to handle closing popups
+        $(function () {
+                // Function to handle closing popups
             $('.close-popup').click(function() {
                 var popupId = $(this).data('popup');
                 $(popupId).fadeOut();
             });
-    
+        
             // Code for opening popups
             $('#btnRecycle').click(function() {
                 $('#booking-popup').fadeIn().css("display", "flex");
             });
-    
+        
             $('#btnChangeAdd').click(function() {
                 $('#changadr-popup').fadeIn().css("display", "flex");
             });
-    
+        
             $('#btnCont').click(function() {
                 $('#payment-popup').fadeIn().css("display", "flex");
             });
-
+        
             $('#btnCancel').click(function() {
                 $('#payment-popup').fadeOut();
                 $('#booking-popup').fadeOut();
-          });
+            });
+            // Function to handle changing the address
+            $('#btnChange').click(function () {
+                // Fetch the selected address
+                var selectedAddress = $('input[name="selected_address"]:checked').val();
+                // AJAX request to fetch the address details based on the selected address ID
+                $.ajax({
+                    url: 'fetch_address.php',
+                    type: 'POST',
+                    data: { address_id: selectedAddress },
+                    success: function (response) {
+                        // Update the content of the txtAddress div with the new address information
+                        $('.txtAddress').html(response);
+                        // Close the "Change Address" popup
+                        $('#changadr-popup').fadeOut();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
         });
     </script>
+
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
