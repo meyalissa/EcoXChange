@@ -34,7 +34,7 @@ $query = mysqli_query($dbconn, $sql);
         <div class="main">
             <?php include('header.php'); ?>
             <div class="content">
-                <div class="nav-title"><h3>Dashboard</h3></div>
+                <div class="nav-title"><h3>Calculator</h3></div>
                 <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
                 <div class="top-content">
                     <div class="searchbar">
