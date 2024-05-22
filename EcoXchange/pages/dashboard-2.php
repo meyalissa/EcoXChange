@@ -97,8 +97,8 @@ if ($address) {
         </div>
         <div class = "bookingform">
           
-          <form action= "submit_booking.php" method = "post">
-            
+        <form action="submit_booking.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="cust_ID" value="<?php echo $id; ?>">
             <table border="0" >
                 <tr>
                     <th colspan="3">
@@ -113,9 +113,10 @@ if ($address) {
                         </div>
                         <div class="inpbox addr">
                             <div class="txtAddress">
-                            <?php echo nl2br($full_address) ?>
+                                
+                                <?php echo nl2br($full_address) ?>
                             </div>
-                            <button id="btnChangeAdd" class="btnChangeAdd">Change</button>
+                            <button type="button" id="btnChangeAdd" class="btnChangeAdd">Change</button>
                         </div>
                     </td>
                 </tr>
@@ -151,7 +152,7 @@ if ($address) {
                     </td>
                 </tr>
             </table>
-          </form>
+          
 
         </div>
     </div>
@@ -167,7 +168,7 @@ if ($address) {
         <div class = "addrcb">
             <h2>My Address</h2>
             <hr class="adrdivision">
-            <form action="#">
+            
               <table border="0" >
                 <?php
                     // Fetch addresses from the database based on user ID
@@ -183,6 +184,7 @@ if ($address) {
                             <!-- LOOP -->
                             <tr>
                                 <td>
+                                    
                                     <input type="radio" name="selected_address" value="<?php echo $addr_id ?>">
                                 </td>
                                 <td>
@@ -207,11 +209,8 @@ if ($address) {
               </table>
               <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
 
-            </form>
             
-            
-            
-            
+  
         </div>
     </div>
 </div>
@@ -224,8 +223,7 @@ if ($address) {
             </div>
         </div>
         <div class = "paymentform">
-            <form action= "submit_booking.php" method = "post">
-              <table border="0" >
+                <table border="0" >
                     <tr>
                         <th >
                             <h2>Pay Deposit</h2>
@@ -241,7 +239,7 @@ if ($address) {
                                <div class="inpbox">
     
                                 
-                                <input class="inpfile" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                                <input class="inpfile" type="file" id="file" name="file" accept="image/png, image/jpeg" />
                                 <i class="fa fa-download" aria-hidden="true"></i>
                                </div>
                                
@@ -263,19 +261,19 @@ if ($address) {
                             <label class="agree" for="agreement2"> I agree that if I cancel my booking, I will not receive my deposit</label><br>
                         </td>
                     </tr>
-              </table>
-              <div class="low-form">
-            <div class="btnGroup">
-                <button type = "button" id="btnCancel" class="btn">Cancel</button>
-                <input type="submit" name="submit" value="Submit" class="btn" id="btnSubmit">
-            </div>
-        </div>
-            </form>
+                
+                </table>
+                    <div class="low-form">
+                         <div class="btnGroup">
+                            <button type = "button" id="btnCancel" class="btn">Cancel</button>
+                            <input type="submit" name="submit" value="Submit" class="btn" id="btnSubmit">
+                        </div>
+                    </div>    
+        </form>
         </div>
         
     </div>
 </div>
-
 
 
 </div> 
@@ -323,6 +321,7 @@ if ($address) {
                     success: function (response) {
                         // Update the content of the txtAddress div with the new address information
                         $('.txtAddress').html(response);
+                        
                         // Close the "Change Address" popup
                         $('#changadr-popup').fadeOut();
                     },
@@ -367,6 +366,16 @@ if ($address) {
                     alert("Error: Unable to submit booking. Please try again later.");
                     }
                 });
+            });
+
+            $(document).ready(function() {
+                $('input[type="file"]').val('');
+                $('input[type="text"]').val('');
+                $('select').prop('selectedIndex', 0);
+            });
+            $(document).ready(function() {
+                // Set the first radio button for selected_address as checked
+                $('input[name="selected_address"]:first').prop('checked', true);
             });
         });
     </script>
