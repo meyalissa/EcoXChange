@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="reports.php">
+                    <a href="../pages/Reports.php">
                         <span class="icon">
                             <i class='bx bxs-bar-chart-alt-2'></i>
                         </span>
