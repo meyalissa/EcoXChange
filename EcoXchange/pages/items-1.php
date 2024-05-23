@@ -4,7 +4,6 @@
 include('../includes/dbconn.php');
 include('../includes/fetchUserData.php');
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +18,6 @@ include('../includes/fetchUserData.php');
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/items-1.css">
 </head>
-
 <body>
     
     <!-- =============== Navigation ================ -->
@@ -29,90 +27,61 @@ include('../includes/fetchUserData.php');
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
+            <div class="content">
+                 <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
+                 <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Item</h2>
+                        <a href="add-item.php" class="btn">Add Item</a>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <?php include('header.php'); ?>
 
             <div class="nav-title"><h3>Items</h3></div>
-            <div class="nav-desc">These are the items that we accept:</div>
-            <div class="in-content">
-                <div class="grid-content">
-                    <!---item 1-->
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/cardboard.png" alt=""></div>
-                            <div class="title">Cardboard</div>
-                            <div class="price">RM 0.25/KG</div>
-                            <div class="box"></div>
-                        </div>
+  
                     </div>
-                    <!---item 2-->
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/newpaper.png" alt=""></div>
-                            <div class="title">Old News Paper</div>
-                            <div class="price">RM 0.20/KG</div>
-                            <div class="box"></div>
-                        </div>
-                    </div>
-                    <!---item 3-->
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/bnw paper.png" alt=""></div>
-                            <div class="title">Black & White Paper</div>
-                            <div class="price">RM 0.35/KG</div>
-                            <div class="box"></div>
-                        </div>
-                     </div>
-                    <!---item 4-->
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/glass bottle.png" alt=""></div>
-                            <div class="title">Glass</div>
-                            <div class="price">RM 0.40/KG</div>
-                            <div class="box"></div>
-                        </div>
-                    </div>
-                    <!---item 5-->
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/plasticBot.png" alt=""></div>
-                            <div class="title">Plastic Bottle</div>
-                            <div class="price">RM 0.40/KG</div>
-                            <div class="box"></div>
-                        </div>
-                     </div>
-                    <!---item 6-->
-                   
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/alCan.png" alt=""></div>
-                            <div class="title">Aluminium Can</div>
-                            <div class="price">RM 3.00/KG</div>
-                            <div class="box"></div>
-                        </div>
-                     </div>
-                    <!---item 7-->
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/tin.png" alt=""></div>
-                            <div class="title">Tin</div>
-                            <div class="price">RM 0.45/KG</div>
-                            <div class="box"></div>
-                        </div>
-                    </div>
-                    <!---item 8-->
+                    <?php
+                        include("../includes/dbconn.php");
+                        $sql = "SELECT * FROM item";
+                        $query = mysqli_query($dbconn, $sql);
+                        $num_rows = mysqli_num_rows($query);
+                        if($num_rows == 0){
+                            echo "No item found";
+                        } else {
+                            echo '<table class="table1">';
+                            echo "<thead>";
+                            echo"<tr>";
+                            echo"<td>Item Id</td>";
+                            echo"<td>Item Name</td>";
+                            echo"<td>Item Price</td>";
+                            echo"<td>Item Picture</td>";
+                            echo"<td>Edit</td>";
+                            echo"</tr>";
+                            echo "</thead>";
+
+
+                            while($row = mysqli_fetch_array($query)){ 
+                                echo "<tbody>";
+                                echo"<tr>";
+                                echo"<td>".$row["item_ID"]."</td>";
+                                echo"<td>".$row["item_name"]."</td>";
+                                echo"<td>".$row["item_price"]."</td>";
+                                echo '<td><img src="' . $row['item_pict'] . '" alt=""></td>';
+                                echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
+                                echo"</tr>";
+                                echo "</tbody>";
+                            }
+                            echo '</table>';
                     
-                    <div class="item">
-                        <div class="content">
-                            <div class="img"><img src="../images/usedOil.png" alt=""></div>
-                            <div class="title">Used Cooking Oil</div>
-                            <div class="price">RM 3.00/KG</div>
-                            <div class="box"></div>
-                        </div>
+                        } 
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <!-- =========== Scripts =========  -->
@@ -122,5 +91,5 @@ include('../includes/fetchUserData.php');
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
+

@@ -85,6 +85,7 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                 
             </div>
                 <div class="bottom-content">
+
                     <div class="total-container">
                         <p class="txtcalc1">Total:</p>
                         <div class="inputbar3">
@@ -94,7 +95,6 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 

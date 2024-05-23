@@ -46,4 +46,31 @@
     padding: 10px 0;
 }
 
+.content {
+   width: 100%;
+}
+.table1 tr{
+    background-color: white ;
+    color: black;
+}
+.table1 td, .table1 th{
+
+    text-align: center;
+}
+
+.table1 th{
+    background-color: white ;}
+
+.button-add button{
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background:  #94AB6F;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+
 
