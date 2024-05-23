@@ -77,12 +77,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     
+
+
+    // Close the database connection after all queries are done
+    mysqli_close($dbconn);
+    
+    header("Location: ../pages/dashboard-2.php");
+    exit();
+
 } else {
     echo "Invalid request method";
 }
-header("Location: ../pages/dashboard-2.php");
-location.reload();
-
-// Close the database connection after all queries are done
-mysqli_close($dbconn);
 ?>
+
