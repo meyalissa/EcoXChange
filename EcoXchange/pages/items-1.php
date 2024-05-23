@@ -23,7 +23,6 @@ include('../includes/fetchUserData.php');
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-1.php'); ?>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
@@ -31,11 +30,10 @@ include('../includes/fetchUserData.php');
                  <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
                 <div class="details">
                     <div class="itemlist">
-                        <div class="cardHeader">
+                        <div class="tableHeader">
                             <h2>Item</h2>
                             <a href="add-item.php" class="btn">Add Item</a>
                         </div>
-
                         <?php
                             include("../includes/dbconn.php");
                             $sql = "SELECT * FROM item";
@@ -49,7 +47,7 @@ include('../includes/fetchUserData.php');
                                 echo"<tr>";
                                 echo"<td>Item Id</td>";
                                 echo"<td>Item Name</td>";
-                                echo"<td>Item Price</td>";
+                                echo"<td>Item Price per KG</td>";
                                 echo"<td>Item Picture</td>";
                                 echo"<td>Edit</td>";
                                 echo"</tr>";
@@ -58,13 +56,13 @@ include('../includes/fetchUserData.php');
 
                                 while($row = mysqli_fetch_array($query)){ 
                                     echo "<tbody>";
-                                    echo"<tr>";
-                                    echo"<td>".$row["item_ID"]."</td>";
-                                    echo"<td>".$row["item_name"]."</td>";
-                                    echo"<td>".$row["item_price"]."</td>";
-                                    echo '<td><img src="' . $row['item_pict'] . '" alt=""></td>';
-                                    echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
-                                    echo"</tr>";
+                                        echo"<tr>";
+                                            echo"<td>".$row["item_ID"]."</td>";
+                                            echo"<td>".$row["item_name"]."</td>";
+                                            echo"<td>".$row["item_price"]."</td>";
+                                            echo '<td><img src="' . $row['item_pict'] . '" alt=""></td>';
+                                            echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
+                                        echo"</tr>";
                                     echo "</tbody>";
                                 }
                                 echo '</table>';

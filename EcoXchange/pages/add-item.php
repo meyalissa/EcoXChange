@@ -22,7 +22,7 @@
                     <input type="text" name="itemname" value="">
                 </div>
                 <div class="input-box">
-                    <label for="itemprice">Item Price</label>
+                    <label for="itemprice">Item Price per KG</label>
                     <input type="text" name="itemprice" value="">
                 </div>
                 <div class="input-box">

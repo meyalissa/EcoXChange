@@ -10,8 +10,6 @@
     display:grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(100px,250px));
-    
-
 }
 .item .content{
     width:200px;
@@ -20,13 +18,10 @@
     border-radius:8px;
     padding:5px;
     margin: 20px;
-
 }
 
 .content img{
-    height:180px;
-    width:180px;
-
+    width:50px;
 }
 .price{
     text-align: center;
@@ -69,7 +64,7 @@
     color: #fff;
     border: none;
     border-radius: 5px;
-    background:  #94AB6F;
+    background: var(--primary-color);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -78,10 +73,6 @@
     position: relative;
     width: 100%;
     padding: 20px;
-    /* display: grid; */
-    /* grid-template-columns: 2fr 1fr; */
-    /* grid-gap: 30px; */
-    /* margin-top: 10px; */
   }
   
   .details .itemlist {
@@ -94,16 +85,16 @@
     border-radius: 20px;
   }
   
-  .details .cardHeader {
+  .details .tableHeader {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
-  .cardHeader h2 {
+  .tableHeader h2 {
     font-weight: 600;
     color: var(--primary-color);
   }
-  .cardHeader .btn {
+  .tableHeader .btn {
     position: relative;
     padding: 5px 10px;
     background: var(--primary-color);
@@ -111,7 +102,9 @@
     color: var(--white-color);
     border-radius: 6px;
   }
-  
+  .tableHeader .btn:hover {
+    background: var(--dark-prim-color);
+  }
   .details table {
     width: 100%;
     border-collapse: collapse;
@@ -125,7 +118,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   .details .itemlist table tr:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   .details .itemlist table tbody tr:hover {
     background: var(--primary-color);
@@ -170,7 +163,7 @@
     .details {
       grid-template-columns: 1fr;
     }
-    .itemlist {
+    .item {
       overflow-x: auto;
     }
     .status.inProgress {
@@ -182,7 +175,7 @@
     .cardBox {
       grid-template-columns: repeat(1, 1fr);
     }
-    .cardHeader h2 {
+    .tableHeader h2 {
       font-size: 20px;
     }
     .user {
