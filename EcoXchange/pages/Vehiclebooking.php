@@ -32,7 +32,12 @@ include('../includes/fetchUserData.php');
                     <div class="itemlist">
                         <div class="tableHeader">
                             <h2>Vehicle Booking</h2>
-                            
+                            <div class="searchbar">
+                                <label>
+                                <input type="text" name="" id="search-member" placeholder="member's name" onkeyup="searchmember()">
+                                <ion-icon name="search-outline"></ion-icon>
+                                </label>
+                            </div>
                         </div>
                         <?php
                             include("../includes/dbconn.php");
@@ -88,7 +93,7 @@ include('../includes/fetchUserData.php');
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
-
+    <script src="../js/searchbar.js"></script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

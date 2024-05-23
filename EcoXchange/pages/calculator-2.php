@@ -36,7 +36,7 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                 <div class="top-content">
                     <div class="searchbar">
                         <label>
-                            <input type="text" name="" id="search-item" placeholder="Item's name" onkeyup="search()">
+                            <input type="text" name="" id="search-item" placeholder="Item's name" onkeyup="searchcalc()">
                             <ion-icon name="search-outline"></ion-icon>
                         </label>
                     </div>       
@@ -101,6 +101,7 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
     <script src="../js/calculatorfunc.js"></script>
+    <script src="../js/searchbar.js"></script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

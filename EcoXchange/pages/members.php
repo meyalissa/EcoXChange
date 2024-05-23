@@ -32,10 +32,16 @@ include('../includes/fetchUserData.php');
                     <div class="itemlist">
                         <div class="tableHeader">
                             <h2>Members</h2>
-                            
-                        </div>
+                            <div class="searchbar">
+                                <label>
+                                <input type="text" name="" id="search-member" placeholder="member's name" onkeyup="searchmember()">
+                                <ion-icon name="search-outline"></ion-icon>
+                                </label>
+                            </div>
+                         
+                    </div>
                         <?php
-                            include("../includes/dbconn.php");
+                            
                             $sql = "SELECT * FROM customer";
                             $query = mysqli_query($dbconn, $sql);
                             $num_rows = mysqli_num_rows($query);
@@ -60,7 +66,8 @@ include('../includes/fetchUserData.php');
                                 while($row = mysqli_fetch_array($query)){ 
                                     echo "<tbody>";
                                         echo"<tr>";
-                                            echo"<td>".$row["cust_ID"]."</td>";
+                                            echo '<td class="idcust">' . $row["cust_ID"] . "</td>";
+                                            
                                             echo"<td>".$row["cust_username"]."</td>";
                                             echo"<td>".$row["cust_first_name"]."</td>";
                                             echo"<td>".$row["cust_last_name"]."</td>";
@@ -84,6 +91,7 @@ include('../includes/fetchUserData.php');
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
+    <script src="../js/searchbar.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

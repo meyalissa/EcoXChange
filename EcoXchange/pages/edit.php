@@ -2,7 +2,7 @@
 include('../includes/dbconn.php');
 
 	
-	$itemID= $_POST['item_ID'];
+	$itemID= $_REQUEST['item_ID'];
 	$sql= "SELECT * FROM item WHERE item_ID= '$itemID'";
 	$query = mysqli_query($dbconn, $sql) or die ("Error: " . mysqli_error());
 	$row = mysqli_num_rows($query);
@@ -21,7 +21,7 @@ include('../includes/dbconn.php');
 	
 ?>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@ include('../includes/dbconn.php');
     <link rel="stylesheet" href="../style/form.css">
     <title>Edit Item</title>
 </head>
-<body> -->
+<body>
     <div class="Container">
         <form action="update.php" method="post">
             <h2>Item Detail</h2>
@@ -56,5 +56,5 @@ include('../includes/dbconn.php');
             </div>
          </form>
     </div>
-<!-- </body>
-</html> -->
+</body>
+</html>

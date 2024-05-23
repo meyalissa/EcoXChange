@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
-    }
+    } 
    
     // =============================Generate book_ID=============================
     $result = mysqli_query($dbconn, "SELECT MAX(book_ID) AS max_id FROM booking");
