@@ -1,25 +1,49 @@
 <?php
-session_start();
 
-// Check if the user is logged in and if they are a staff member
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Staff') {
-    header("Location: login.php");
-    exit(); // Ensure that no further code is executed
-}
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
+
+
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoXchange | Reports</title>
+    <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../style/Reports.css">
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="../style/SidebarUser.css">
 </head>
 <body>
-    <!-- Your report content goes here -->
-    <h1>Reports Page</h1>
+    
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <?php include('sidebar-1.php'); ?>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <?php include('header.php'); ?>
+            <!-- ============== Content ============== -->
+            <div class="content">
+                <div class="nav-title"><h3>Reports</h3></div>
+                <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->       
+            </div>
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="../js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

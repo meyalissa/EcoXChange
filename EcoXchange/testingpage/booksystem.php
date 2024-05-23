@@ -1,25 +1,24 @@
 <?php
 session_start();
-// Include your database connection file if not already included
+
+// Include database connection
 include('../includes/dbconn.php');
 
-// Check if the form data is received
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $addr_id = $_POST['selected_address'];
-    // $address = $_POST['txtAddress'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $address = $_POST['txtAddress'];
     $vehicle = $_POST['vehicle'];
     $pickup = $_POST['pickup'];
-    $file = $_FILES['file'];
+    $avatar = $_FILES['avatar'];
     $cust_ID = $_POST['cust_ID'];
 
     // =============================File upload handling=============================
     $target_dir = "../filepdf/";
-    $target_file = $target_dir . basename($file["name"]);
+    $target_file = $target_dir . basename($avatar["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // Check if image file is an actual image or fake image
-    $check = getimagesize($file["tmp_name"]);
+    $check = getimagesize($avatar["tmp_name"]);
     if ($check !== false) {
         $uploadOk = 1;
     } else {
@@ -28,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check file size
-    if ($file["size"] > 5000000) { // 5MB max
+    if ($avatar["size"] > 5000000) { // 5MB max
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
@@ -43,13 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
     } else {
-        if (move_uploaded_file($file["tmp_name"], $target_file)) {
-            echo "The file ". htmlspecialchars(basename($file["name"])) . " has been uploaded.";
+        if (move_uploaded_file($avatar["tmp_name"], $target_file)) {
+            echo "The file ". htmlspecialchars(basename($avatar["name"])) . " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
     }
-   
+
     // =============================Generate book_ID=============================
     $result = mysqli_query($dbconn, "SELECT MAX(book_ID) AS max_id FROM booking");
     $row = mysqli_fetch_assoc($result);
@@ -64,25 +63,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // =============================DATABASE=============================
-    // Insert the data into the database
-    $sql = "INSERT INTO booking (book_ID, vehicle_type, pickup_date, pickup_time, deposit_receipt, deposit_status, book_status, address_ID, cust_ID) 
-            VALUES ('$book_ID','$vehicle', CURDATE(), '$pickup','$target_file', 'Pending', 'Pending', '$addr_id', '$cust_ID')";
-    
-    
-    if (mysqli_query($dbconn, $sql)) {
+    // Insert data into the database
+    $sqlInsert = "INSERT INTO booking (book_ID, address_ID, vehicle_type, pickup_time, deposit_receipt, cust_ID) VALUES
+     ('$book_ID', '$address', '$vehicle', '$pickup', '$target_file', '$cust_ID')";
+    if (mysqli_query($dbconn, $sqlInsert)) {
         echo "New record created successfully";
-        
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
+        echo "Error: " . $sqlInsert . "<br>" . mysqli_error($dbconn);
     }
 
-    
-} else {
-    echo "Invalid request method";
+    echo "<br>";
+    echo "The following information has been recorded in the DB";
+    echo "<br>Book ID: " . $book_ID;
+    echo "<br>Pick Up Address: " . $address;
+    echo "<br>Type of Vehicle: " . $vehicle;
+    echo "<br>Pick Up Time: " . $pickup;
+    echo "<br>Deposit Receipt: " . $target_file;
+    echo "<br><a href='viewData.php'>Main page</a>";
 }
-header("Location: ../pages/dashboard-2.php");
-location.reload();
-
-// Close the database connection after all queries are done
-mysqli_close($dbconn);
 ?>
