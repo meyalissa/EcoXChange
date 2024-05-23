@@ -30,7 +30,7 @@ include('../includes/fetchUserData.php');
             <div class="content">
                  <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
                 <div class="details">
-                    <div class="recentOrders">
+                    <div class="itemlist">
                         <div class="cardHeader">
                             <h2>Item</h2>
                             <a href="add-item.php" class="btn">Add Item</a>

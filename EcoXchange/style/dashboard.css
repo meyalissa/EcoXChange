@@ -235,38 +235,3 @@
     width: 313px;
 }
 
-/* Popup styles */
-.popup {
-    display: none; /* Hidden by default */
-    position: fixed; /* Position it on top of the page content */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
-    z-index: 9999; /* Ensure it appears on top of other elements */
-  }
-  
-  .popup-content {
-    background-color: white;
-    margin: 20% auto; /* Center the popup vertically and horizontally */
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%; /* 80% of the viewport width */
-    max-width: 400px; /* Maximum width */
-    text-align: center;
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
