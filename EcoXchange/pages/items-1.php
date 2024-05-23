@@ -17,7 +17,10 @@ include('../includes/fetchUserData.php');
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/items-1.css">
+    <link rel="stylesheet" href="../style/form.css">
+    
 </head>
+
 <body>
     
     <!-- =============== Navigation ================ -->
@@ -61,7 +64,13 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["item_name"]."</td>";
                                             echo"<td>".$row["item_price"]."</td>";
                                             echo '<td><img src="' . $row['item_pict'] . '" alt=""></td>';
-                                            echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
+                                            echo '<td>
+                                                <form class="edit-form" action="edit.php" method="GET">
+                                                    <input type="hidden" name="item_ID" value="' . $row["item_ID"] . '">
+                                                    <button type="button" class="btnedit" data-item-id="' . $row["item_ID"] . '">Edit</button>
+                                                </form>
+                                            </td>';
+                                            // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
@@ -71,6 +80,11 @@ include('../includes/fetchUserData.php');
                         ?>
                     </div>
                 </div>
+                <!-- +++++++++++++++ EDIT FORM +++++++++++++++ -->
+                <div class="edit-popup" id="edit-popup">
+                    <?php include('edit.php'); ?>
+
+                </div>
             </div>
         </div>
     </div>
@@ -78,7 +92,25 @@ include('../includes/fetchUserData.php');
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
 
+            // Function to handle closing popups
+            $('.close-popup').click(function() {
+                var popupId = $(this).data('popup');
+                $(popupId).fadeOut();
+            });
+
+            // Code for opening popups
+            $('.btnedit').click(function() {
+                $('#edit-popup').fadeIn().css("display", "flex");
+            });
+
+        });
+    </script>
+    
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
