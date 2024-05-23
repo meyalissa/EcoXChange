@@ -4,11 +4,7 @@
 include('../includes/dbconn.php');
 include('../includes/fetchUserData.php');
 
-// Fetch items from the database
-$sql = "SELECT * FROM item";
-$query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +19,11 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
     <link rel="stylesheet" href="../style/items-1.css">
 </head>
 <body>
+    
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-1.php'); ?>
+
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
@@ -36,6 +34,13 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                     <div class="cardHeader">
                         <h2>Item</h2>
                         <a href="add-item.php" class="btn">Add Item</a>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <?php include('header.php'); ?>
+
+            <div class="nav-title"><h3>Items</h3></div>
+  
                     </div>
                     <?php
                         include("../includes/dbconn.php");

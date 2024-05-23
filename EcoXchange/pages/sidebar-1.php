@@ -29,7 +29,7 @@
                 </li>
 
                 <li>
-                    <a href="Members">
+                    <a href="Members.php">
                         <span class="icon">
                             <i class='bx bxs-group'></i>
                         </span>
@@ -38,7 +38,7 @@
                 </li>
 
                 <li>
-                    <a href="VehicleBooking">
+                    <a href="VehicleBooking.php">
                         <span class="icon">
                             <i class='bx bxs-car'></i>
                         </span>
@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="Records">
+                    <a href="records.php">
                         <span class="icon">
                             <i class='bx bxs-receipt'></i>
                         </span>
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Reports">
+                    <a href="reports.php">
                         <span class="icon">
                             <i class='bx bxs-bar-chart-alt-2'></i>
                         </span>
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Profile">
+                    <a href="profile.php">
                         <span class="icon">
                             <i class='bx bx-user-circle'></i>
                         </span>

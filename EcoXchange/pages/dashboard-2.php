@@ -1,5 +1,30 @@
-<?php include('../includes/fetchUserData.php'); ?>
+<?php
 
+include('../includes/fetchUserData.php'); 
+
+// Access address data from session
+$address = $_SESSION['address'] ?? null;
+
+// Check if address data exists
+if ($address) {
+    // Fetch data from the address array or set it manually
+    $address_ID = $address["address_ID"];
+    $add_name = $address["Name"];
+    $add_contact = $address["Contact"];
+    $house_no = $address["house_no"];
+    $street_name = $address["street_name"];
+    $city = $address["city"];
+    $postcode = $address["postcode"];
+    $state = $address["state"];
+
+    // Concatenate the address components into a single variable
+    $full_address = "$add_name, $add_contact\n$house_no, $street_name, $city, $state $postcode";
+} else {
+    // Handle case when address data is not available
+    $full_address = "Address data not found";
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +56,7 @@
 
             <!-- ============== Content ============== -->
             <div class="content">
-                <div clas="nav-title"><h3>Dashboard</h3></div>
+                <div class="nav-title"><h3>Dashboard</h3></div>
                 <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->            
                 <div class="in-content">
                     <div class="row1">
@@ -72,7 +97,8 @@
         </div>
         <div class = "bookingform">
           
-          <form action="#">
+        <form action="submit_booking.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="cust_ID" value="<?php echo $id; ?>">
             <table border="0" >
                 <tr>
                     <th colspan="3">
@@ -86,11 +112,11 @@
                             <span class="booklabel">Pick Up Address</span>
                         </div>
                         <div class="inpbox addr">
-                            <div class="txtname"><?php echo $_SESSION['cust_username']; ?></div>
                             <div class="txtAddress">
-                                <?php echo $_SESSION['cust_username']; ?>
+                                
+                                <?php echo nl2br($full_address) ?>
                             </div>
-                            <button id="btnChangeAdd" class="btnChangeAdd">Change</button>
+                            <button type="button" id="btnChangeAdd" class="btnChangeAdd">Change</button>
                         </div>
                     </td>
                 </tr>
@@ -126,7 +152,7 @@
                     </td>
                 </tr>
             </table>
-          </form>
+          
 
         </div>
     </div>
@@ -142,50 +168,49 @@
         <div class = "addrcb">
             <h2>My Address</h2>
             <hr class="adrdivision">
-            <form action="#">
+            
               <table border="0" >
-                    <!-- REPEAT -->
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="Address" value="Addr1">
-                        </td>
-                        <td>
-                            <div class="addr-info">
-                                <h3 class="pic"> Name | Phone Numb</h3>
-                                <p class="address"> Home Numb, City, Country , PostCode<p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr class="adrdivision">
-                        </td>
-                    </tr>
-                    <!-- REPEAT END-->
-                    <!-- REPEAT -->
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="Address" value="Addr1">
-                        </td>
-                        <td>
-                            <div class="addr-info">
-                                <h3 class="pic"> Name | Phone Numb</h3>
-                                <p class="address"> Home Numb, City, Country , PostCode<p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr class="adrdivision">
-                        </td>
-                    </tr>
-                    <!-- REPEAT END-->
+                <?php
+                    // Fetch addresses from the database based on user ID
+                    $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
+                    $query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching addresses: " . mysqli_error($dbconn));
+                    if (mysqli_num_rows($query_address) > 0) {
+                        while ($row = mysqli_fetch_assoc($query_address)) {
+                            $addr_id = "{$row['address_ID']}";
+                            $addr_name= "{$row['Name']}";
+                            $addr_contact = "{$row['Contact']}";
+                            $full_address = "{$row['street_name']}, {$row['city']}, {$row['state']} {$row['postcode']}";
+                ?>
+                            <!-- LOOP -->
+                            <tr>
+                                <td>
+                                    
+                                    <input type="radio" name="selected_address" value="<?php echo $addr_id ?>">
+                                </td>
+                                <td>
+                                    <div class="addr-info">
+                                        <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                        <p class="address"> <?php echo $full_address ?><p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <hr class="adrdivision">
+                                </td>
+                            </tr>
+                            <!-- LOOP END-->
+                            <?php
+                        }
+                    } else {
+                        echo "<p>No addresses found</p>";
+                }
+                    ?>
               </table>
-            </form>
+              <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
+
             
-            
-            
-            
+  
         </div>
     </div>
 </div>
@@ -198,8 +223,7 @@
             </div>
         </div>
         <div class = "paymentform">
-            <form action="#">
-              <table border="0" >
+                <table border="0" >
                     <tr>
                         <th >
                             <h2>Pay Deposit</h2>
@@ -215,7 +239,7 @@
                                <div class="inpbox">
     
                                 
-                                <input class="inpfile" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                                <input class="inpfile" type="file" id="file" name="file" accept="image/png, image/jpeg" />
                                 <i class="fa fa-download" aria-hidden="true"></i>
                                </div>
                                
@@ -231,24 +255,25 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" id="agreement1" name="agreement1" value="Agree1">
+                            <input type="checkbox" id="agreement1" name="agreement1" value="Agree1" required>
                             <label class="agree" for="agreement1"> I agree that the receipt uploaded is true</label><br>
-                            <input type="checkbox" id="agreement2" name="agreement2" value="Agree2">
+                            <input type="checkbox" id="agreement2" name="agreement2" value="Agree2" required>
                             <label class="agree" for="agreement2"> I agree that if I cancel my booking, I will not receive my deposit</label><br>
                         </td>
                     </tr>
-              </table>
-            </form>
+                
+                </table>
+                    <div class="low-form">
+                         <div class="btnGroup">
+                            <button type = "button" id="btnCancel" class="btn">Cancel</button>
+                            <input type="submit" name="submit" value="Submit" class="btn" id="btnSubmit">
+                        </div>
+                    </div>    
+        </form>
         </div>
-        <div class="low-form">
-            <div class="btnGroup">
-                <button type = "button" id="btnCancel" class="btn">Cancel</button>
-                <input type="submit" name="submit" value="Submit" class="btn" id="btnSubmit">
-            </div>
-        </div>
+        
     </div>
 </div>
-
 
 
 </div> 
@@ -257,25 +282,28 @@
 </div>
 </div>
 
+
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
     <script type="text/javascript">
-        $(function() {
-            // Function to handle closing popups
+
+  
+        $(function () {
+                // Function to handle closing popups
             $('.close-popup').click(function() {
                 var popupId = $(this).data('popup');
                 $(popupId).fadeOut();
             });
-    
+
             // Code for opening popups
             $('#btnRecycle').click(function() {
                 $('#booking-popup').fadeIn().css("display", "flex");
             });
-    
+
             $('#btnChangeAdd').click(function() {
                 $('#changadr-popup').fadeIn().css("display", "flex");
             });
-    
+
             $('#btnCont').click(function() {
                 $('#payment-popup').fadeIn().css("display", "flex");
             });
@@ -283,9 +311,78 @@
             $('#btnCancel').click(function() {
                 $('#payment-popup').fadeOut();
                 $('#booking-popup').fadeOut();
-          });
+            });
+            // Function to handle changing the address
+            $('#btnChange').click(function () {
+                // Fetch the selected address
+                var selectedAddress = $('input[name="selected_address"]:checked').val();
+                // AJAX request to fetch the address details based on the selected address ID
+                $.ajax({
+                    url: 'fetch_address.php',
+                    type: 'POST',
+                    data: { address_id: selectedAddress },
+                    success: function (response) {
+                        // Update the content of the txtAddress div with the new address information
+                        $('.txtAddress').html(response);
+                        
+                        // Close the "Change Address" popup
+                        $('#changadr-popup').fadeOut();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            // Function to handle form submission
+            // Function to handle form submission
+            $('#btnSubmit').click(function () {
+                // Get the values from form fields
+                var address = $('.txtAddress').text();
+                var vehicle = $('select[name="vehicle"]').val();
+                var pickup = $('select[name="pickup"]').val();
+                // Handling file upload
+                var formData = new FormData();
+                formData.append('address', address);
+                formData.append('vehicle', vehicle);
+                formData.append('pickup', pickup);
+                formData.append('receipt', $('input[type="file"]')[0].files[0]);
+
+                // AJAX request to submit the form data
+                $.ajax({
+                  url: 'submit_booking.php',
+                  type: 'POST',
+                  data: formData,
+                  processData: false,
+                  contentType: false,
+                  success: function (response) {
+                    // Handle success response
+                    console.log(response);
+                    // Show success message to the user
+                    alert("Booking submitted successfully!");
+                    // You can redirect the user to the dashboard or perform any other action here
+                  },
+                  error: function (xhr, status, error) {
+                    // Handle error response
+                    console.error(xhr.responseText);
+                    // Show error message to the user
+                    alert("Error: Unable to submit booking. Please try again later.");
+                    }
+                });
+            });
+
+            $(document).ready(function() {
+                $('input[type="file"]').val('');
+                $('input[type="text"]').val('');
+                $('select').prop('selectedIndex', 0);
+            });
+            $(document).ready(function() {
+                // Set the first radio button for selected_address as checked
+                $('input[name="selected_address"]:first').prop('checked', true);
+            });
         });
     </script>
+
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
