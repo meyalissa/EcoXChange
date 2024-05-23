@@ -18,7 +18,7 @@ include('../includes/fetchUserData.php');
     <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/SidebarUser.css">
+    <link rel="stylesheet" href="../style/dashboard-1.css">
 </head>
 
 <body>

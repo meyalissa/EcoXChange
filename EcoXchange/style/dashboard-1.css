@@ -1,86 +1,61 @@
-/* @import "SidebarUser.css"; */
-@import "style.css";
-/* Test2 */
+@import "SidebarUser.css";
 
-.in-content{
-    margin: 5px 50px;
-    
-}
-.grid-content{
-    display:grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(100px,250px));
-    
-
-}
-.item .content{
-    width:200px;
-    background: white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border-radius:8px;
-    padding:5px;
-    margin: 20px;
-
-}
-
-.content img{
-    height:180px;
-    width:180px;
-
-}
-.price{
-    text-align: center;
-}
-
- .item .content .title{
-    color: black;
-    padding: 0 20px;
-   text-align: center;
-
-}
-
-.nav-title {
-    padding: 10px;
-}
-
-.nav-desc {
-    padding: 10px 0;
-}
-
-.content {
-   width: 100%;
-}
-.table1 tr{
-    background-color: white ;
-    color: black;
-}
-.table1 td, .table1 th{
-
-    text-align: center;
-}
-
-.table1 th{
-    background-color: white ;}
-
-.button-add button{
-    margin-top: 10px;
-    padding: 5px;
-    font-size: 18px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    background:  #94AB6F;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* ================== Item List ============== */
-.details {
+/* ======================= Cards ====================== */
+.cardBox {
     position: relative;
     width: 100%;
     padding: 20px;
-    /* display: grid; */
-    /* grid-template-columns: 2fr 1fr; */
-    /* grid-gap: 30px; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+  }
+  
+  .cardBox .card {
+    position: relative;
+    background: var(--white-color);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  .cardBox .card .numbers {
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+  }
+  
+  .cardBox .card .cardName {
+    color: var(--black2);
+    font-size: 1.1rem;
+    margin-top: 5px;
+  }
+  
+  .cardBox .card .iconBx {
+    font-size: 3.5rem;
+    color: var(--black2);
+  }
+  
+  .cardBox .card:hover {
+    background: var(--primary-color);
+  }
+  .cardBox .card:hover .numbers,
+  .cardBox .card:hover .cardName,
+  .cardBox .card:hover .iconBx {
+    color: var(--white-color);
+  }
+  
+  /* ================== Order Details List ============== */
+  .details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
     /* margin-top: 10px; */
   }
   
@@ -143,7 +118,39 @@
   .details .recentOrders table tr td:nth-child(3) {
     text-align: center;
   }
-
+  .status.delivered {
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .status.pending {
+    padding: 2px 4px;
+    background: #e9b10a;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .status.return {
+    padding: 2px 4px;
+    background: #f00;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .status.inProgress {
+    padding: 2px 4px;
+    background: #1795ce;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
   .recentCustomers {
     position: relative;
     display: grid;
@@ -186,70 +193,4 @@
   }
   .recentCustomers table tr:hover td h4 span {
     color: var(--white-color);
-  }
-  
-  /* ====================== Responsive Design ========================== */
-@media (max-width: 991px) {
-    .navigation {
-      left: -300px;
-    }
-    .navigation.active {
-      width: 300px;
-      left: 0;
-    }
-    .main {
-      width: 100%;
-      left: 0;
-    }
-    .main.active {
-      left: 300px;
-    }
-    .cardBox {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .details {
-      grid-template-columns: 1fr;
-    }
-    .recentOrders {
-      overflow-x: auto;
-    }
-    .status.inProgress {
-      white-space: nowrap;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .cardBox {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    .cardHeader h2 {
-      font-size: 20px;
-    }
-    .user {
-      min-width: 40px;
-    }
-    .navigation {
-      width: 100%;
-      left: -100%;
-      z-index: 1000;
-    }
-    .navigation.active {
-      width: 100%;
-      left: 0;
-    }
-    .toggle {
-      z-index: 10001;
-    }
-    .main.active .toggle {
-      color: #fff;
-      position: fixed;
-      right: 0;
-      left: initial;
-    }
-  }
-  .content{
-    padding:20px;
   }

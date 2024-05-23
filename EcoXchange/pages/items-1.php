@@ -29,53 +29,47 @@ include('../includes/fetchUserData.php');
             <?php include('header.php'); ?>
             <div class="content">
                  <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
-                 <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Item</h2>
-                        <a href="add-item.php" class="btn">Add Item</a>
+                <div class="details">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+                            <h2>Item</h2>
+                            <a href="add-item.php" class="btn">Add Item</a>
+                        </div>
 
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <?php include('header.php'); ?>
-
-            <div class="nav-title"><h3>Items</h3></div>
-  
-                    </div>
-                    <?php
-                        include("../includes/dbconn.php");
-                        $sql = "SELECT * FROM item";
-                        $query = mysqli_query($dbconn, $sql);
-                        $num_rows = mysqli_num_rows($query);
-                        if($num_rows == 0){
-                            echo "No item found";
-                        } else {
-                            echo '<table class="table1">';
-                            echo "<thead>";
-                            echo"<tr>";
-                            echo"<td>Item Id</td>";
-                            echo"<td>Item Name</td>";
-                            echo"<td>Item Price</td>";
-                            echo"<td>Item Picture</td>";
-                            echo"<td>Edit</td>";
-                            echo"</tr>";
-                            echo "</thead>";
-
-
-                            while($row = mysqli_fetch_array($query)){ 
-                                echo "<tbody>";
+                        <?php
+                            include("../includes/dbconn.php");
+                            $sql = "SELECT * FROM item";
+                            $query = mysqli_query($dbconn, $sql);
+                            $num_rows = mysqli_num_rows($query);
+                            if($num_rows == 0){
+                                echo "No item found";
+                            } else {
+                                echo '<table class="table1">';
+                                echo "<thead>";
                                 echo"<tr>";
-                                echo"<td>".$row["item_ID"]."</td>";
-                                echo"<td>".$row["item_name"]."</td>";
-                                echo"<td>".$row["item_price"]."</td>";
-                                echo '<td><img src="' . $row['item_pict'] . '" alt=""></td>';
-                                echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
+                                echo"<td>Item Id</td>";
+                                echo"<td>Item Name</td>";
+                                echo"<td>Item Price</td>";
+                                echo"<td>Item Picture</td>";
+                                echo"<td>Edit</td>";
                                 echo"</tr>";
-                                echo "</tbody>";
-                            }
-                            echo '</table>';
-                    
-                        } 
+                                echo "</thead>";
+
+
+                                while($row = mysqli_fetch_array($query)){ 
+                                    echo "<tbody>";
+                                    echo"<tr>";
+                                    echo"<td>".$row["item_ID"]."</td>";
+                                    echo"<td>".$row["item_name"]."</td>";
+                                    echo"<td>".$row["item_price"]."</td>";
+                                    echo '<td><img src="' . $row['item_pict'] . '" alt=""></td>';
+                                    echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
+                                    echo"</tr>";
+                                    echo "</tbody>";
+                                }
+                                echo '</table>';
+                            
+                            } 
                         ?>
                     </div>
                 </div>
