@@ -81,163 +81,73 @@ include('../includes/fetchUserData.php');
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
+                        <h2>Recent Booking</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
+                    <?php
+                        include("../includes/dbconn.php");
+                        $sql = "SELECT * FROM booking";
+                        $query = mysqli_query($dbconn, $sql);
+                        $num_rows = mysqli_num_rows($query);
+                        if($num_rows == 0){
+                            echo "No item found";
+                        } else {
+                            echo '<table class="table">';
+                            echo "<thead>";
+                            echo"<tr>";
+                            echo"<td>Book Id</td>";
+                            echo"<td>Pickup Date</td>";
+                            echo"<td>Pickup Time</td>";
+                            echo"<td>Status</td>";
+                            echo"</tr>";
+                            echo "</thead>";
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            while($row = mysqli_fetch_array($query)){ 
+                                echo "<tbody>";
+                                echo"<tr>";
+                                echo"<td>".$row["book_ID"]."</td>";
+                                echo"<td>".$row["pickup_date"]."</td>";
+                                echo"<td>".$row["pickup_time"]."</td>";
+                                echo"<td>".$row["book_status"]."</td>";
+                                echo"</tr>";
+                                echo "</tbody>";
+                            }
+                            echo '</table>';
+                    
+                        } 
+                    ?>
                 </div>
 
-                <!-- ================= New Customers ================ -->
+                <!-- ================= List members  ================ -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
-                        <h2>Recent Customers</h2>
+                        <h2>Members</h2>
                     </div>
-
                     <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
+                    <?php
+                    include("../includes/dbconn.php");
+                    $sql = "SELECT * FROM customer";
+                    $query = mysqli_query($dbconn, $sql);
+                    $num_rows = mysqli_num_rows($query);
+                    if ($num_rows > 0) {
+                        while ($row = mysqli_fetch_array($query)) {
+                            echo '<tr>';
+                            echo '<td width="30px">';
+                            echo '<div class="imgBx"><img src="' . $row["cust_pict"] . '" alt=""></div>';
+                            echo '</td>';
+                            echo '<td>';
+                            echo '<h4>' . $row["cust_username"] . '</h4>';
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+                    } else {
+                        echo '<tr><td colspan="2">No members found</td></tr>';
+                    }
+                    ?>
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
