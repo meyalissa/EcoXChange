@@ -19,7 +19,7 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
     <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/items-1.css">
+    <link rel="stylesheet" href="../style/items-2.css">
 </head>
 
 <body>

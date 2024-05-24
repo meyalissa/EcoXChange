@@ -1,1 +1,71 @@
-/* testtt */
+@import "SidebarUser.css";
+@import "style.css";
+
+/* Test2 */
+
+.in-content{
+    margin: 5px 50px;
+    
+}
+.grid-content{
+    display:grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px,250px));
+}
+.item .content{
+    width:200px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius:8px;
+    padding:5px;
+    margin: 20px;
+}
+
+.content img{
+    width:180px;
+    height:180px;
+}
+.price{
+    text-align: center;
+}
+
+ .item .content .title{
+    color: black;
+    padding: 0 20px;
+   text-align: center;
+
+}
+
+.nav-title {
+    padding: 10px;
+}
+
+.nav-desc {
+    padding: 10px 0;
+}
+
+.content {
+   width: 100%;
+}
+.table1 tr{
+    background-color: white ;
+    color: black;
+}
+.table1 td, .table1 th{
+
+    text-align: center;
+}
+
+.table1 th{
+    background-color: white ;}
+
+.button-add button{
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}

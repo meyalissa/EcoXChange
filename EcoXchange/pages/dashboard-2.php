@@ -87,200 +87,198 @@ if ($address) {
                         <button class="btnRecycle" id="btnRecycle">
                             Reycle More
                         </button>
-<!-- +++++++++++++++ BOOKING FORM +++++++++++++++ -->
-<div class="booking-popup" id="booking-popup">
-    <div class="box-popup">
-        <div class="top-form">
-            <div class="close-popup" data-popup="#booking-popup">
-                X
-            </div>
-        </div>
-        <div class = "bookingform">
-          
-        <form action="submit_booking.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="cust_ID" value="<?php echo $id; ?>">
-            <table border="0" >
-                <tr>
-                    <th colspan="3">
-                        <h2>Book vehicle to recycle</h2>
-                    </th>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div class="lbladdrs">
-                            <i class="fa fa-map-marker" aria-hidden="true" ></i>
-                            <span class="booklabel">Pick Up Address</span>
-                        </div>
-                        <div class="inpbox addr">
-                            <div class="txtAddress">
-                                
-                                <?php echo nl2br($full_address) ?>
+                    </div> 
+                    <!-- +++++++++++++++ BOOKING FORM +++++++++++++++ -->
+                    <div class="booking-popup" id="booking-popup">
+                        <div class="box-popup">
+                            <div class="top-form">
+                                <div class="close-popup" data-popup="#booking-popup">
+                                    X
+                                </div>
                             </div>
-                            <button type="button" id="btnChangeAdd" class="btnChangeAdd">Change</button>
+                            <div class = "bookingform">
+                              
+                            <form action="submit_booking.php" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="cust_ID" value="<?php echo $id; ?>">
+                                <table border="0" >
+                                    <tr>
+                                        <th colspan="3">
+                                            <h2>Book vehicle to recycle</h2>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="lbladdrs">
+                                                <i class="fa fa-map-marker" aria-hidden="true" ></i>
+                                                <span class="booklabel">Pick Up Address</span>
+                                            </div>
+                                            <div class="inpbox addr">
+                                                <div class="txtAddress">
+                                                    
+                                                    <?php echo nl2br($full_address) ?>
+                                                </div>
+                                                <button type="button" id="btnChangeAdd" class="btnChangeAdd">Change</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="lbladdrs">
+                                                <span class="booklabel">Type of Vehicles</span>
+                                            </div>
+                                            
+                                            <select name="vehicle" class="inpbox">
+                                                <option value="Motorcycle">Motorcycle</option>
+                                                <option value="Car">Car</option>
+                                                <option value="Truck">Lorry</option>
+                                            </select>
+                                              
+                                        </td>
+                                        <td rowspan ="2"><img src="../images/vehiclemotor.png" class="vehicleimg"></td>
+                                        <td rowspan ="2" >
+                                            <button type = "button" class = "btnCont" id="btnCont">Continue</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="lbladdrs">
+                                                <span class="booklabel">Pick Up Time</span>
+                                            </div>
+                                            
+                                            <select name="pickup" class="inpbox">
+                                                <option value="Immediately">Immediately</option>
+                                                <option value="30m">Pickup in 30 minutes</option>
+                                                <option value="1h">Pickup in 1 hour</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                              
+                    
+                            </div>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="lbladdrs">
-                            <span class="booklabel">Type of Vehicles</span>
+                    </div>
+                    <!-- +++++++++++++++ CHANGE ADDRESS +++++++++++++++ -->
+                    <div class="changadr-popup" id="changadr-popup">
+                        <div class="box-popup">
+                            <div class="top-form">
+                                <div class="close-popup" data-popup="#changadr-popup">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class = "addrcb">
+                                <h2>My Address</h2>
+                                <hr class="adrdivision">
+                                
+                                  <table border="0" >
+                                    <?php
+                                        // Fetch addresses from the database based on user ID
+                                        $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
+                                        $query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching addresses: " . mysqli_error($dbconn));
+                                        if (mysqli_num_rows($query_address) > 0) {
+                                            while ($row = mysqli_fetch_assoc($query_address)) {
+                                                $addr_id = "{$row['address_ID']}";
+                                                $addr_name= "{$row['Name']}";
+                                                $addr_contact = "{$row['Contact']}";
+                                                $full_address = "{$row['street_name']}, {$row['city']}, {$row['state']} {$row['postcode']}";
+                                    ?>
+                                                <!-- LOOP -->
+                                                <tr>
+                                                    <td>
+                                                        
+                                                        <input type="radio" name="selected_address" value="<?php echo $addr_id ?>">
+                                                    </td>
+                                                    <td>
+                                                        <div class="addr-info">
+                                                            <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                                            <p class="address"> <?php echo $full_address ?><p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <hr class="adrdivision">
+                                                    </td>
+                                                </tr>
+                                                <!-- LOOP END-->
+                                                <?php
+                                            }
+                                        } else {
+                                            echo "<p>No addresses found</p>";
+                                    }
+                                        ?>
+                                  </table>
+                                  <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
+                                
+                                
+                                
+                            </div>
                         </div>
-                        
-                        <select name="vehicle" class="inpbox">
-                            <option value="Motorcycle">Motorcycle</option>
-                            <option value="Car">Car</option>
-                            <option value="Truck">Lorry</option>
-                        </select>
-                          
-                    </td>
-                    <td rowspan ="2"><img src="../images/vehiclemotor.png" class="vehicleimg"></td>
-                    <td rowspan ="2" >
-                        <button type = "button" class = "btnCont" id="btnCont">Continue</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="lbladdrs">
-                            <span class="booklabel">Pick Up Time</span>
-                        </div>
-                        
-                        <select name="pickup" class="inpbox">
-                            <option value="Immediately">Immediately</option>
-                            <option value="30m">Pickup in 30 minutes</option>
-                            <option value="1h">Pickup in 1 hour</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-          
-
-        </div>
-    </div>
-</div>
-<!-- +++++++++++++++ CHANGE ADDRESS +++++++++++++++ -->
-<div class="changadr-popup" id="changadr-popup">
-    <div class="box-popup">
-        <div class="top-form">
-            <div class="close-popup" data-popup="#changadr-popup">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class = "addrcb">
-            <h2>My Address</h2>
-            <hr class="adrdivision">
-            
-              <table border="0" >
-                <?php
-                    // Fetch addresses from the database based on user ID
-                    $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
-                    $query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching addresses: " . mysqli_error($dbconn));
-                    if (mysqli_num_rows($query_address) > 0) {
-                        while ($row = mysqli_fetch_assoc($query_address)) {
-                            $addr_id = "{$row['address_ID']}";
-                            $addr_name= "{$row['Name']}";
-                            $addr_contact = "{$row['Contact']}";
-                            $full_address = "{$row['street_name']}, {$row['city']}, {$row['state']} {$row['postcode']}";
-                ?>
-                            <!-- LOOP -->
-                            <tr>
-                                <td>
+                    </div>
+                    <!-- +++++++++++++++ PAYMENT +++++++++++++++ -->
+                    <div class="payment-popup" id="payment-popup">
+                        <div class="box-popup">
+                            <div class="top-form">
+                                <div class="close-popup" data-popup="#payment-popup">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class = "paymentform">
+                                    <table border="0" >
+                                        <tr>
+                                            <th >
+                                                <h2>Pay Deposit</h2>
+                                            </th>
+                                            <td rowspan="4">
+                                                <img src="../images/Qrcode.png" class="paymentimg">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="paymentbox">
+                                                   <label for="avatar">Prove of payment</label>
+                                                   <div class="inpbox">
+                                
+                                                    
+                                                    <input class="inpfile" type="file" id="file" name="file" accept="image/png, image/jpeg" />
+                                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                                   </div>
+                                                   
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>The deposit will receive with rewards after the items successfully collected</p>
+                                            </td>
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" id="agreement1" name="agreement1" value="Agree1" required>
+                                                <label class="agree" for="agreement1"> I agree that the receipt uploaded is true</label><br>
+                                                <input type="checkbox" id="agreement2" name="agreement2" value="Agree2" required>
+                                                <label class="agree" for="agreement2"> I agree that if I cancel my booking, I will not receive my deposit</label><br>
+                                            </td>
+                                        </tr>
                                     
-                                    <input type="radio" name="selected_address" value="<?php echo $addr_id ?>">
-                                </td>
-                                <td>
-                                    <div class="addr-info">
-                                        <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
-                                        <p class="address"> <?php echo $full_address ?><p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <hr class="adrdivision">
-                                </td>
-                            </tr>
-                            <!-- LOOP END-->
-                            <?php
-                        }
-                    } else {
-                        echo "<p>No addresses found</p>";
-                }
-                    ?>
-              </table>
-              <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
-
-            
-  
-        </div>
-    </div>
-</div>
-<!-- +++++++++++++++ PAYMENT +++++++++++++++ -->
-<div class="payment-popup" id="payment-popup">
-    <div class="box-popup">
-        <div class="top-form">
-            <div class="close-popup" data-popup="#payment-popup">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                    </table>
+                                        <div class="low-form">
+                                             <div class="btnGroup">
+                                                <button type = "button" id="btnCancel" class="btn">Cancel</button>
+                                                <input type="submit" name="submit" value="Submit" class="btn" id="btnSubmit">
+                                            </div>
+                                        </div>    
+                            </form>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class = "paymentform">
-                <table border="0" >
-                    <tr>
-                        <th >
-                            <h2>Pay Deposit</h2>
-                        </th>
-                        <td rowspan="4">
-                            <img src="../images/Qrcode.png" class="paymentimg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="paymentbox">
-                               <label for="avatar">Prove of payment</label>
-                               <div class="inpbox">
-    
-                                
-                                <input class="inpfile" type="file" id="file" name="file" accept="image/png, image/jpeg" />
-                                <i class="fa fa-download" aria-hidden="true"></i>
-                               </div>
-                               
-                            </div>
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>The deposit will receive with rewards after the items successfully collected</p>
-                        </td>
-                       
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="agreement1" name="agreement1" value="Agree1" required>
-                            <label class="agree" for="agreement1"> I agree that the receipt uploaded is true</label><br>
-                            <input type="checkbox" id="agreement2" name="agreement2" value="Agree2" required>
-                            <label class="agree" for="agreement2"> I agree that if I cancel my booking, I will not receive my deposit</label><br>
-                        </td>
-                    </tr>
-                
-                </table>
-                    <div class="low-form">
-                         <div class="btnGroup">
-                            <button type = "button" id="btnCancel" class="btn">Cancel</button>
-                            <input type="submit" name="submit" value="Submit" class="btn" id="btnSubmit">
-                        </div>
-                    </div>    
-        </form>
-        </div>
-        
     </div>
-</div>
-
-
-</div> 
-</div>
-</div>
-</div>
-</div>
 
 
     <!-- =========== Scripts =========  -->
