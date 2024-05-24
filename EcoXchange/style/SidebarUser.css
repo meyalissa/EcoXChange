@@ -321,8 +321,9 @@ body {
 .details table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  
 }
+
 .details table thead td {
   font-weight: 600;
 }
@@ -338,7 +339,7 @@ body {
   color: var(--white-color);
 }
 .details .recentOrders table tr td {
-  padding: 10px;
+  padding: 20px;
 }
 .details .recentOrders table tr td:last-child {
   text-align: end;
@@ -393,8 +394,8 @@ body {
 }
 .recentCustomers .imgBx {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50px;
   overflow: hidden;
 }
@@ -406,8 +407,9 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
 .recentCustomers table tr td {
-  padding: 12px 10px;
+  padding: 20px 20px;
 }
 .recentCustomers table tr td h4 {
   font-size: 16px;
