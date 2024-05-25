@@ -73,8 +73,8 @@ include('../includes/fetchUserData.php');
                                             echo '<td><img src="' . $row['deposit_receipt'] . '" alt=""></td>';
                                             echo"<td>".$row["deposit_status"]."</td>";
                                             echo"<td>".$row["book_status"]."</td>";
-                                            echo"<td></td>";
-                                            // echo"<td>".$row["cust_email"]."</td>";
+                                    
+                                            echo '<td><button type="button" class="btnAddress" id="btnAddress">Show</button></td>';
                                             echo"<td>".$row["cust_username"]."</td>";
                                             // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
