@@ -1,6 +1,6 @@
 @import "items-1.css";
 
-#bank-popup {
+#addr-popup {
     position: fixed;
     top: 0;
     right: 0;
@@ -37,8 +37,8 @@
     font-size: 20px;
   }
 
-  .btnBank{
-    padding: 12px 0px;
+  .btnAddr{
+    padding: 5px 12px;
     width: 90px;
     background-color: var(--primary-color);
     border: 0;
@@ -46,12 +46,4 @@
     color: white;
     margin: 10px auto;
     cursor: pointer;
-  }
-
-  .info{
-    padding-left: 20px;
-  }
-
-  tr{
-    padding: 10px 0;
   }

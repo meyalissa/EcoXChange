@@ -1,9 +1,7 @@
 <?php
-
 // Include database connection and fetch user data
 include('../includes/dbconn.php');
 include('../includes/fetchUserData.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +14,7 @@ include('../includes/fetchUserData.php');
     <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/items-1.css">
+    <link rel="stylesheet" href="../style/booking-1.css">
 </head>
 <body>
     
@@ -73,10 +71,8 @@ include('../includes/fetchUserData.php');
                                             echo '<td><img src="' . $row['deposit_receipt'] . '" alt=""></td>';
                                             echo"<td>".$row["deposit_status"]."</td>";
                                             echo"<td>".$row["book_status"]."</td>";
-                                    
-                                            echo '<td><button type="button" class="btnAddress" id="btnAddress">Show</button></td>';
+                                            echo '<td><a href="?address_id='.$row["address_ID"].'" class="btnAddr">Show</a></td>';
                                             echo"<td>".$row["cust_username"]."</td>";
-                                            // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
@@ -86,17 +82,65 @@ include('../includes/fetchUserData.php');
                         ?>
                     </div>
                 </div>
+                <!-- +++++++++++++++ ADDRESS DETAILS +++++++++++++++ -->
+                <?php
+                if (isset($_GET['address_id'])) {
+                    // Sanitize the input to prevent SQL injection
+                    $address_id = mysqli_real_escape_string($dbconn, $_GET['address_id']);
+
+                    // Fetch the address details from the database based on the provided address ID
+                    $sql = "SELECT * FROM address WHERE address_ID = '$address_id'";
+                    $result = mysqli_query($dbconn, $sql);
+
+                    // Check if the query was successful
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        // Fetch the address details as an associative array
+                        $row = mysqli_fetch_assoc($result);
+
+                        // Construct the full address string
+                        $full_address = $row['Name'] . ", " . $row['Contact'] . "<br>" .
+                                        $row['house_no'] . ", " . $row['street_name'] . ", " .
+                                        $row['city'] . ", " . $row['state'] . " " . $row['postcode'];
+
+                        echo '
+                        <div class="addr-popup" id="addr-popup" style="display: flex;">
+                            <div class="box-popup">
+                                <div class="top-form">
+                                    <h2>Address Details</h2>
+                                    <div class="close-popup" onclick="closePopup()">
+                                        X
+                                    </div>
+                                </div>
+                                <div class="addrdt">
+                                    <hr>
+                                    <div class="addr-info">
+                                        <h3 class="pic">' . $row['Name'] . ' | ' . $row['Contact'] . '</h3>
+                                        <p class="address">' . $full_address . '<p>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>';
+                    } else {
+                        echo "<p>Error fetching address details.</p>";
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
 
 
     <!-- =========== Scripts =========  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/searchbar.js"></script>
+    <script type="text/javascript">
+        function closePopup() {
+            document.getElementById('addr-popup').style.display = 'none';
+        }
+    </script>   
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-
