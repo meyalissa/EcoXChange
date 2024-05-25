@@ -1,3 +1,25 @@
+.container {
+    display: flex;
+}
+
+.view-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.view-toggle-container h4 {
+    margin: 0;
+}
+
+.view-toggle-container select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
 #monthlyChart {
     display: block;
     position: absolute;
@@ -10,7 +32,7 @@
     margin:50px;
     margin-left: 150px;
     width: 800px;
-    height:400px;
+    box-sizing: border-box;
     padding:50px;
     background:white;
     border-radius: 8px;
