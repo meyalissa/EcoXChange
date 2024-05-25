@@ -210,8 +210,7 @@ if ($address) {
                                   </table>
                                   <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
                                 
-                                
-                                
+
                             </div>
                         </div>
                     </div>

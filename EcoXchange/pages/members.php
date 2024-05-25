@@ -16,7 +16,7 @@ include('../includes/fetchUserData.php');
     <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/items-1.css">
+    <link rel="stylesheet" href="../style/members.css">
 </head>
 <body>
     
@@ -83,6 +83,9 @@ include('../includes/fetchUserData.php');
                             } 
                         ?>
                     </div>
+                </div>
+                <div class=bank-popup>
+                        
                 </div>
             </div>
         </div>
