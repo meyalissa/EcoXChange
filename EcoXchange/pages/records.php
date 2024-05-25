@@ -35,7 +35,7 @@ include('../includes/fetchUserData.php');
                         </div>
                         <?php
                             include("../includes/dbconn.php");
-                            $sql = "SELECT * FROM collection_record";
+                            $sql = "SELECT * FROM collection_record r JOIN staff s ON r.staff_ID = s.staff_ID;";
                             $query = mysqli_query($dbconn, $sql);
                             $num_rows = mysqli_num_rows($query);
                             if($num_rows == 0){
@@ -68,7 +68,7 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["collect_time"]."</td>";
                                             echo"<td>".$row["reward_status"]."</td>";
                                             echo"<td>".$row["book_ID"]."</td>";
-                                            echo"<td></td>";
+                                            echo"<td>".$row["staff_username"]."</td>";
                                             
                                             // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
