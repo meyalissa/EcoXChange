@@ -90,7 +90,7 @@ include('../includes/fetchUserData.php');
                                 X
                             </div>
                         </div>
-                        <div class="addrcb">
+                        <div class="bankdt">
                             <hr>
                             <table>
                                 <tr>
