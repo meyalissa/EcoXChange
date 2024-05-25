@@ -74,6 +74,7 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["cust_contact_no"]."</td>";
                                             echo"<td>".$row["cust_email"]."</td>";
                                             echo '<td><img src="' . $row['cust_pict'] . '" alt=""></td>';
+                                            echo '<td><button type="button" class="btnBank" id="btnBank">Open Bank Details  </button> </td>';
                                             // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
@@ -84,8 +85,15 @@ include('../includes/fetchUserData.php');
                         ?>
                     </div>
                 </div>
-                <div class=bank-popup>
-                        
+                <!-- +++++++++++++++ BANK DETAILS +++++++++++++++ -->
+                <div class=bank-popup id="bank-popup">
+                    <div class="box-popup">
+                            <div class="top-form">
+                                <div class="close-popup" data-popup="#bank-popup">
+                                    X
+                                </div>
+                            </div>
+                    </div>  
                 </div>
             </div>
         </div>
@@ -93,8 +101,23 @@ include('../includes/fetchUserData.php');
 
 
     <!-- =========== Scripts =========  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery Library -->
     <script src="../js/main.js"></script>
     <script src="../js/searchbar.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Function to handle closing popups
+            $('.close-popup').click(function() {
+                var popupId = $(this).data('popup');
+                $(popupId).fadeOut();
+            });
+
+            // Function to open bank details popups
+            $('.btnBank').click(function() {
+                $('#bank-popup').fadeIn().css("display", "flex");
+            });
+        });
+    </script>   
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

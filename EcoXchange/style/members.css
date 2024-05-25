@@ -1,14 +1,37 @@
 @import "items-1.css";
 
-.bank-popup{
+#bank-popup {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 100;
-    display: flex;
-    /* display: none; */
+    /* display: flex; */
+    display: none;
     justify-content: center;
     align-items: center;
 }
+
+.box-popup {
+    background-color: var(--white-color);
+    padding: 20px; /* Simplified padding for better layout */
+    border-radius: 10px;
+    width: 80%; /* Use a percentage to make the width flexible */
+    max-width: 500px; /* Ensure the width doesn't exceed 500px */
+    min-width: 300px; /* Ensure a minimum width for smaller screens */
+    height: auto; /* Adjust height based on content */
+    text-align: left;
+    margin: 0 auto; /* Center align the box */
+}
+
+.top-form{
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .top-form .close-popup{
+    cursor: pointer;
+    font-size: 20px;
+  }
