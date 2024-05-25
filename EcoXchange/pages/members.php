@@ -89,10 +89,11 @@ include('../includes/fetchUserData.php');
                 <div class=bank-popup id="bank-popup">
                     <div class="box-popup">
                         <div class="top-form">
+                            <h2>Bank Details</h2>
                             <div class="close-popup" data-popup="#bank-popup">
                                 X
                             </div>
-                            <h2>Bank Details</h2>
+                            
                         </div>
                         <div class = "addrcb">
                             
@@ -102,7 +103,7 @@ include('../includes/fetchUserData.php');
                                     <td>
                                         Bank Name: 
                                     </td>
-                                    <td>
+                                    <td class="info">
                                         Maybank
                                     </td>
                                 </tr>
@@ -110,7 +111,7 @@ include('../includes/fetchUserData.php');
                                     <td>
                                         Account No:
                                     </td>
-                                    <td>
+                                    <td  class="info">
                                         0129102910291212
                                     </td>
                                 </tr>
@@ -118,7 +119,7 @@ include('../includes/fetchUserData.php');
                                     <td>
                                         Full Name :
                                     </td>
-                                    <td>
+                                    <td  class="info">
                                         Melissa Sofia Binti Shahran
                                     </td>
                                 </tr>

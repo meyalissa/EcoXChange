@@ -28,8 +28,8 @@
 
 .top-form{
     display: flex;
-    justify-content: flex-start;
-    gap:50px;
+    
+    justify-content: space-between;
   }
   
   .top-form .close-popup{
@@ -46,4 +46,12 @@
     color: white;
     margin: 10px auto;
     cursor: pointer;
+  }
+
+  .info{
+    padding-left: 20px;
+  }
+
+  tr{
+    padding: 10px 0;
   }
