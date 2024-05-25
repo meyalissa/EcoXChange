@@ -152,9 +152,10 @@
   }
   
   .recentCustomers {
-    position: relative;
+    /* position: relative; */
     display: grid;
-    min-height: 500px;
+    /* min-height: 500px; */
+    height:auto;
     padding: 20px;
     background: var(--white-color);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);

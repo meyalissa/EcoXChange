@@ -74,7 +74,7 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["cust_contact_no"]."</td>";
                                             echo"<td>".$row["cust_email"]."</td>";
                                             echo '<td><img src="' . $row['cust_pict'] . '" alt=""></td>';
-                                            echo '<td><button type="button" class="btnBank" id="btnBank">Open Bank Details  </button> </td>';
+                                            echo '<td><button type="button" class="btnBank" id="btnBank">Show</button> </td>';
                                             // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
