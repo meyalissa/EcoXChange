@@ -39,12 +39,7 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(150px,320px));
 }
-/* .row2 {
-    margin-top:60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
+
 
 /* Third Row */
 .row3{

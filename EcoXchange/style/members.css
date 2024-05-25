@@ -29,9 +29,21 @@
 .top-form{
     display: flex;
     justify-content: flex-start;
+    gap:50px;
   }
   
   .top-form .close-popup{
     cursor: pointer;
     font-size: 20px;
+  }
+
+  .btnBank{
+    padding: 12px 0px;
+    width: 150px;
+    background-color: var(--primary-color);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
   }

@@ -88,11 +88,44 @@ include('../includes/fetchUserData.php');
                 <!-- +++++++++++++++ BANK DETAILS +++++++++++++++ -->
                 <div class=bank-popup id="bank-popup">
                     <div class="box-popup">
-                            <div class="top-form">
-                                <div class="close-popup" data-popup="#bank-popup">
-                                    X
-                                </div>
+                        <div class="top-form">
+                            <div class="close-popup" data-popup="#bank-popup">
+                                X
                             </div>
+                            <h2>Bank Details</h2>
+                        </div>
+                        <div class = "addrcb">
+                            
+                            <hr>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Bank Name: 
+                                    </td>
+                                    <td>
+                                        Maybank
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Account No:
+                                    </td>
+                                    <td>
+                                        0129102910291212
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Full Name :
+                                    </td>
+                                    <td>
+                                        Melissa Sofia Binti Shahran
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
                     </div>  
                 </div>
             </div>
