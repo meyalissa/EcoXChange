@@ -118,7 +118,7 @@
   .details .recentOrders table tr td:nth-child(3) {
     text-align: center;
   }
-  .status.delivered {
+  .status.success {
     padding: 2px 4px;
     background: #8de02c;
     color: var(--white-color);
@@ -134,7 +134,7 @@
     font-size: 14px;
     font-weight: 500;
   }
-  .status.return {
+  .status.cancel {
     padding: 2px 4px;
     background: #f00;
     color: var(--white-color);

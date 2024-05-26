@@ -16,7 +16,7 @@ include('../includes/fetchUserData.php');
     <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/items-1.css">
+    <link rel="stylesheet" href="../style/records.css">
 </head>
 <body>
     
@@ -34,8 +34,12 @@ include('../includes/fetchUserData.php');
                             <h2>Collection Records</h2>
                         </div>
                         <?php
-                            include("../includes/dbconn.php");
-                            $sql = "SELECT * FROM collection_record r JOIN staff s ON r.staff_ID = s.staff_ID;";
+                            
+                            $sql = 
+                            "SELECT * FROM collection_record r 
+                            JOIN staff s ON r.staff_ID = s.staff_ID 
+                            JOIN item i ON r.item_ID = i.item_ID;";
+
                             $query = mysqli_query($dbconn, $sql);
                             $num_rows = mysqli_num_rows($query);
                             if($num_rows == 0){
@@ -61,16 +65,22 @@ include('../includes/fetchUserData.php');
                                     echo "<tbody>";
                                         echo"<tr>";
                                             echo"<td>".$row["collect_ID"]."</td>";
-                                            echo"<td></td>";
+                                            echo"<td>".$row["item_name"]."</td>";
                                             echo"<td>".$row["collect_weight"]."</td>";
                                             echo"<td>".$row["total_amount"]."</td>";
                                             echo"<td>".$row["collect_date"]."</td>";
                                             echo"<td>".$row["collect_time"]."</td>";
-                                            echo"<td>".$row["reward_status"]."</td>";
+                                            //Change Status when click
+                                            echo"<td><button class='"; 
+                                                if($row["reward_status"] == 'success') {
+                                                    echo "success";
+                                                } else {
+                                                    echo "pending";
+                                                }
+                                            echo "'>".$row["reward_status"]."</button></td>";                                             
+                                            
                                             echo"<td>".$row["book_ID"]."</td>";
                                             echo"<td>".$row["staff_username"]."</td>";
-                                            
-                                            // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
