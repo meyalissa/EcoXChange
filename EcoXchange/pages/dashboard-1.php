@@ -32,10 +32,12 @@ include('../includes/fetchUserData.php');
             <?php include('header.php'); ?>
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
+                    
+
                 <div class="card">
                     <div>
                         <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
+                        <div class="cardName">Members</div>
                     </div>
 
                     <div class="iconBx">
@@ -46,7 +48,7 @@ include('../includes/fetchUserData.php');
                 <div class="card">
                     <div>
                         <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="cardName">Waste Collected</div>
                     </div>
 
                     <div class="iconBx">
@@ -57,7 +59,7 @@ include('../includes/fetchUserData.php');
                 <div class="card">
                     <div>
                         <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
+                        <div class="cardName">Rewards</div>
                     </div>
 
                     <div class="iconBx">
@@ -67,8 +69,8 @@ include('../includes/fetchUserData.php');
 
                 <div class="card">
                     <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
+                        <div class="numbers">8</div>
+                        <div class="cardName">Recycle Centre</div>
                     </div>
 
                     <div class="iconBx">
