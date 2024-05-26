@@ -30,53 +30,64 @@ include('../includes/fetchUserData.php');
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
-                    </div>
+        <!-- ======================= Cards ================== -->
+        <div class="cardBox">
+            <?php
+                include("../includes/dbconn.php");
+                $sql = "SELECT 
+                        (SELECT COUNT(*) FROM staff) as total_members,
+                        (SELECT COUNT(*) FROM collection_record) as total_collection_record";
+                $query = mysqli_query($dbconn, $sql);
+                if ($query) {
+                    $data = mysqli_fetch_assoc($query);
+                } else {
+                    $data = [
+                        'total_members' => 0,
+                        'total_collection_record' => 0
+                    ];
+                }
+            ?>
 
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
+            <div class="card">
+                <div>
+                    <div class="numbers"><?php echo $data['total_members']; ?></div>
+                    <div class="cardName">Members</div>
                 </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
+                <div class="iconBx">
+                    <ion-icon name="people-outline"></ion-icon>
                 </div>
             </div>
 
+            <div class="card">
+                <div>
+                    <div class="numbers"><?php echo $data['total_collection_record']; ?></div>
+                    <div class="cardName">Waste Collected</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="cart-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">284</div>
+                    <div class="cardName">Rewards</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="cash-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">8</div>
+                    <div class="cardName">Recycle Centre</div>
+                </div>
+                <div class="iconBx">
+                    <ion-icon name="outlet-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
             <!-- ================ Order Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
