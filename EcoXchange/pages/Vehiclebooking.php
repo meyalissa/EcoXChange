@@ -70,7 +70,14 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["pickup_time"]."</td>";
                                             echo '<td><img src="' . $row['deposit_receipt'] . '" alt=""></td>';
                                             echo"<td>".$row["deposit_status"]."</td>";
-                                            echo"<td>".$row["book_status"]."</td>";
+                                            echo"<td><button class='"; 
+                                                if($row["book_status"] == 'success') {
+                                                    echo "success";
+                                                } else {
+                                                    echo "pending";
+                                                }
+                                            echo "'>".$row["book_status"]."</button></td>";                                             
+                                            
                                             echo '<td><a href="?address_id='.$row["address_ID"].'" class="btnAddr">Show</a></td>';
                                             echo"<td>".$row["cust_username"]."</td>";
                                         echo"</tr>";

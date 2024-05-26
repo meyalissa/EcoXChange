@@ -47,3 +47,37 @@
     margin: 10px auto;
     cursor: pointer;
   }
+
+  /* Button Status */
+  .success {
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .pending {
+    padding: 2px 4px;
+    background: #e9b10a;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .cancel {
+    padding: 2px 4px;
+    background: #f00;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+ .inProgress {
+    padding: 2px 4px;
+    background: #1795ce;
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
