@@ -1,9 +1,9 @@
 @import "items-1.css";
 
 .success {
-    padding: 2px 4px;
+    padding: 4px 10px;
     background: #8de02c;
-    color: var(--white-color);
+    
     border: none;
     border-radius: 4px;
     font-size: 14px;
@@ -11,12 +11,16 @@
     cursor: pointer;
   }
 .pending {
-    padding: 2px 4px;
+    padding: 4px 10px;
     background: #e9b10a;
-    color: var(--white-color);
     border: none;
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+  }
+
+  a{
+    text-decoration: none;
+    color: var(--white-color);
   }
