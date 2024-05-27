@@ -93,7 +93,7 @@ include('../includes/fetchUserData.php');
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Booking</h2>
-                        <a href="#" class="btn">View All</a>
+                        <a href="VehicleBooking.php" class="btn">View All</a>
                     </div>
                     <?php
                         include("../includes/dbconn.php");
