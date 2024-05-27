@@ -134,9 +134,6 @@ input[type=submit]:hover {
             <?php include('header.php'); ?>
             <div class="content">
                 <div clas="nav-title"><h3>Profile</h3></div>
-
-
-
                 <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
 
                 <!--PROFILE PIC-->
