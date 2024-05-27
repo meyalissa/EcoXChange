@@ -67,7 +67,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="profile.php">
+                    <a href="profile-1.php">
                         <span class="icon">
                             <i class='bx bx-user-circle'></i>
                         </span>
