@@ -1,9 +1,10 @@
-<!-- Title: EcoXchange: Waste Collection and Recycling system 
-     Date: 3/5/20241
-     Programmer: Melissa Sofia
+<?php
 
-     Page: SIDEBAR for user
--->
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
