@@ -81,15 +81,6 @@ if ($result) {
             <div class="content">
                 <div class="nav-title"><h3>Reports</h3></div>  
                 <div class="box1">
-                    <!-- Add year selection -->
-                       <div class="select-year">
-                          <label for="yearSelect">Select Year:</label>
-                          <select id="yearSelect">
-                          <?php foreach ($years as $yr): ?>
-                            <option value="<?php echo $yr; ?>" <?php echo $yr == $year ? 'selected' : ''; ?>><?php echo $yr; ?></option>
-                          <?php endforeach; ?>
-                          </select>
-                        </div>
                     <?php if($view=='monthly'): ?>
                     <div class="overall-sales">
                         Overall Sales
@@ -98,6 +89,15 @@ if ($result) {
                     <?php endif; ?>
                     <canvas id="salesChart" style="width:100%;max-width:700px"></canvas>
                 </div>
+                <!-- Add year selection -->
+                <div class="select-year">
+                          <label for="yearSelect">Select Year:</label>
+                          <select id="yearSelect">
+                          <?php foreach ($years as $yr): ?>
+                            <option value="<?php echo $yr; ?>" <?php echo $yr == $year ? 'selected' : ''; ?>><?php echo $yr; ?></option>
+                          <?php endforeach; ?>
+                          </select>
+                        </div>
             </div>
         </div>
     </div>

@@ -39,11 +39,11 @@
     border-radius: 8px;
     box-shadow: 0px -8px 0 0px var(--primary-color);
 }
-.box1 .select-year {
-    margin-left: 10px; /* Adjust this value to move the select year dropdown to the right */
+.select-year {
+    position: absolute;
+    top: 170px; 
+    right: 250px; 
 }
-
-
 .overall-sales {
     position: relative;
     bottom:40px;
