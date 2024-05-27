@@ -109,7 +109,7 @@ include('../includes/fetchUserData.php');
                             echo"<td>Book Id</td>";
                             echo"<td>Pickup Date</td>";
                             echo"<td>Pickup Time</td>";
-                            echo"<td>Status</td>";
+                            echo"<td>Book Status</td>";
                             echo"</tr>";
                             echo "</thead>";
 
@@ -120,7 +120,31 @@ include('../includes/fetchUserData.php');
                                 echo"<td>".$row["book_ID"]."</td>";
                                 echo"<td>".$row["pickup_date"]."</td>";
                                 echo"<td>".$row["pickup_time"]."</td>";
-                                echo"<td>".$row["book_status"]."</td>";
+
+                                echo"<td> <button id=btnstat class='"; 
+                                    //class name to change colour
+                                    if($row["book_status"] == 'success') {
+                                        echo "success";
+                                    } elseif ($row["book_status"] == 'pending'){
+                                        echo "pending";
+                                    } elseif ($row["book_status"] == 'inProgress'){
+                                        echo "inProgress";
+                                    } else {
+                                        echo "cancel";
+                                    }
+                                    echo "'>";
+
+                                    //Change format of the status
+                                    if($row["book_status"] == 'success') {
+                                        echo 'Success';
+                                    } elseif ($row["book_status"] == 'pending'){
+                                        echo 'Pending';
+                                    } elseif ($row["book_status"] == 'inProgress'){
+                                        echo 'In Progress';
+                                    } else {
+                                        echo 'Cancel';
+                                    }    
+                                    echo "</button></td>";   
                                 echo"</tr>";
                                 echo "</tbody>";
                             }
