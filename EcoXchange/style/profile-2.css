@@ -1,5 +1,15 @@
 @import "SidebarUser.css";
 
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    grid-gap: 30px;
+    /* margin-top: 10px; */
+    
+  }
   /* Style inputs */
   input[type=text], select, textarea {
     width: 100%;
@@ -25,7 +35,7 @@
     background-color: #45a049;
   }
   
-  /* Create three columns that float next to eachother */
+  Create three columns that float next to eachother
   .column {
     float: left;
     width: 33.33%; /* Set the width of each column to 33.33% */
