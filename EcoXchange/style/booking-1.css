@@ -47,3 +47,42 @@
     margin: 10px auto;
     cursor: pointer;
   }
+
+  /* Button Status */
+  .success {
+    padding: 4px 10px;
+    background: #8de02c;
+    border:0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .pending {
+    padding: 4px 10px;
+    background: #e9b10a;
+    border:0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .cancel {
+    padding: 4px 10px;
+    background: rgb(249, 84, 84);
+    border:0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+ .inProgress {
+    padding: 4px 5px;
+    background: #1795ce;
+    border:0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  a{
+    text-decoration: none;
+    color: var(--white-color);
+  }

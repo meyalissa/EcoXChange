@@ -70,7 +70,34 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["pickup_time"]."</td>";
                                             echo '<td><img src="' . $row['deposit_receipt'] . '" alt=""></td>';
                                             echo"<td>".$row["deposit_status"]."</td>";
-                                            echo"<td>".$row["book_status"]."</td>";
+
+
+                                            echo"<td><button class='"; 
+                                                //class name to change colour
+                                                if($row["book_status"] == 'success') {
+                                                    echo "success";
+                                                } elseif ($row["book_status"] == 'pending'){
+                                                    echo "pending";
+                                                } elseif ($row["book_status"] == 'inProgress'){
+                                                    echo "inProgress";
+                                                } else {
+                                                    echo "cancel";
+                                                }
+                                                echo "'>";
+                                                
+                                                //change status in database if click
+                                                if($row["book_status"] == 'success') {
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=inProgress">Success</a>';
+                                                } elseif ($row["book_status"] == 'pending'){
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=cancel">Pending</a>';
+                                                } elseif ($row["book_status"] == 'inProgress'){
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=pending">In Progress</a>';
+                                                } else {
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=success">Cancel</a>';
+                                                }     
+
+                                                echo "</button></td>";        //                                     
+                                            
                                             echo '<td><a href="?address_id='.$row["address_ID"].'" class="btnAddr">Show</a></td>';
                                             echo"<td>".$row["cust_username"]."</td>";
                                         echo"</tr>";

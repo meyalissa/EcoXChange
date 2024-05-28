@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="../pages/Reports.php">
+                    <a href="javascript:void(0);" onclick="toggleDropdown()">
                         <span class="icon">
                             <i class='bx bxs-bar-chart-alt-2'></i>
                         </span>
@@ -67,7 +67,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="profile.php">
+                    <a href="profile-1.php">
                         <span class="icon">
                             <i class='bx bx-user-circle'></i>
                         </span>
@@ -86,8 +86,8 @@
             </ul>
         </div>
 
-        <style>
-        /* Dropdown container */
+<style>
+/* Dropdown container */
 .dropdown {
     position: relative;
     display: inline-block;

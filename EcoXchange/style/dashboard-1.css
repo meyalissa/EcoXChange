@@ -121,34 +121,39 @@
   .details .recentOrders table tr td:nth-child(3) {
     text-align: center;
   }
-  .status.delivered {
-    padding: 2px 4px;
+
+  /* Button Status */
+  #btnstat{
+    color: var(--white-color);
+  }
+  .success {
+    padding: 4px 10px;
     background: #8de02c;
-    color: var(--white-color);
+    border:0;
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
   }
-  .status.pending {
-    padding: 2px 4px;
+  .pending {
+    padding: 4px 10px;
     background: #e9b10a;
-    color: var(--white-color);
+    border:0;
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
   }
-  .status.return {
-    padding: 2px 4px;
-    background: #f00;
-    color: var(--white-color);
+  .cancel {
+    padding: 4px 10px;
+    background: rgb(249, 84, 84);
+    border:0;
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
   }
-  .status.inProgress {
-    padding: 2px 4px;
+ .inProgress {
+    padding: 4px 5px;
     background: #1795ce;
-    color: var(--white-color);
+    border:0;
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;

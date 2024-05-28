@@ -1,13 +1,9 @@
 <?php
-
-// Include database connection and fetch user data
 include('../includes/dbconn.php');
 include('../includes/fetchUserData.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,10 +12,9 @@ include('../includes/fetchUserData.php');
     <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/items-1.css">
+    <link rel="stylesheet" href="../style/records.css">
 </head>
 <body>
-    
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-1.php'); ?>
@@ -34,8 +29,10 @@ include('../includes/fetchUserData.php');
                             <h2>Collection Records</h2>
                         </div>
                         <?php
-                            include("../includes/dbconn.php");
-                            $sql = "SELECT * FROM collection_record r JOIN staff s ON r.staff_ID = s.staff_ID;";
+                            $sql = 
+                            "SELECT * FROM collection_record r 
+                            JOIN staff s ON r.staff_ID = s.staff_ID 
+                            JOIN item i ON r.item_ID = i.item_ID;";
                             $query = mysqli_query($dbconn, $sql);
                             $num_rows = mysqli_num_rows($query);
                             if($num_rows == 0){
@@ -55,27 +52,31 @@ include('../includes/fetchUserData.php');
                                 echo"<td>PIC Staff</td>";
                                 echo"</tr>";
                                 echo "</thead>";
-
-
                                 while($row = mysqli_fetch_array($query)){ 
                                     echo "<tbody>";
                                         echo"<tr>";
                                             echo"<td>".$row["collect_ID"]."</td>";
-                                            echo"<td></td>";
+                                            echo"<td>".$row["item_name"]."</td>";
                                             echo"<td>".$row["collect_weight"]."</td>";
                                             echo"<td>".$row["total_amount"]."</td>";
                                             echo"<td>".$row["collect_date"]."</td>";
                                             echo"<td>".$row["collect_time"]."</td>";
-                                            echo"<td>".$row["reward_status"]."</td>";
+                                            // Change Status when clicked
+                                            echo"<td><button class='"; 
+                                                echo $row["reward_status"] == 'success' ? "success" : "pending";
+                                            echo "'>";
+                                            if($row["reward_status"] == 'success') {
+                                                echo '<a href="status.php?collect_ID='.$row["collect_ID"].'&reward_status=pending">Success</a>';
+                                            } else {
+                                                echo '<a href="status.php?collect_ID='.$row["collect_ID"].'&reward_status=success">Pending</a>';
+                                            }                                             
+                                            echo "</button></td>";
                                             echo"<td>".$row["book_ID"]."</td>";
                                             echo"<td>".$row["staff_username"]."</td>";
-                                            
-                                            // echo"<td><a href='edit.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
                                 echo '</table>';
-                            
                             } 
                         ?>
                     </div>
@@ -83,14 +84,10 @@ include('../includes/fetchUserData.php');
             </div>
         </div>
     </div>
-
-
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
-
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-
