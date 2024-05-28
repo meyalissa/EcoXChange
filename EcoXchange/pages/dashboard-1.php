@@ -35,7 +35,7 @@ include('../includes/fetchUserData.php');
             <?php
                 include("../includes/dbconn.php");
                 $sql = "SELECT 
-                        (SELECT COUNT(*) FROM staff) as total_members,
+                        (SELECT COUNT(*) FROM customer) as total_members,
                         (SELECT SUM(total_amount) FROM collection_record) as rewards,
                         (SELECT COUNT(*) FROM collection_record) as total_collection_record";
                 $query = mysqli_query($dbconn, $sql);
