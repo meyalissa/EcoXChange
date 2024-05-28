@@ -36,6 +36,7 @@ include('../includes/fetchUserData.php');
                 include("../includes/dbconn.php");
                 $sql = "SELECT 
                         (SELECT COUNT(*) FROM staff) as total_members,
+                        (SELECT SUM(total_amount) FROM collection_record) as rewards,
                         (SELECT COUNT(*) FROM collection_record) as total_collection_record";
                 $query = mysqli_query($dbconn, $sql);
                 if ($query) {
@@ -70,7 +71,7 @@ include('../includes/fetchUserData.php');
 
             <div class="card">
                 <div>
-                    <div class="numbers">284</div>
+                    <div class="numbers"><?php echo $data['rewards']; ?></div>
                     <div class="cardName">Rewards</div>
                 </div>
                 <div class="iconBx">
