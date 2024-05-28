@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecoxchangedb`
 --
+DROP DATABASE IF EXISTS `ecoxchangedb`;
+CREATE DATABASE IF NOT EXISTS `ecoxchangedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ecoxchangedb`;
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
