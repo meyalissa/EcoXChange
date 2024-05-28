@@ -159,14 +159,15 @@
     font-weight: 500;
   }
   
+  /* List Of Members */
   .recentCustomers {
     position: relative;
     display: grid;
-    min-height: 500px;
-    /* height:auto; */
+    /* min-height: 500px; */
+    height:auto;
     padding: 20px;
     background: var(--white-color);
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 7px 25px rgba(168, 98, 98, 0.08);
     border-radius: 20px;
   }
   .recentCustomers .imgBx {
@@ -185,7 +186,7 @@
     object-fit: cover;
   }
   .recentCustomers table tr td {
-    padding: 30px 15px;
+    padding: 10px 15px;
   }
   .recentCustomers table tr td h4 {
     font-size: 16px;

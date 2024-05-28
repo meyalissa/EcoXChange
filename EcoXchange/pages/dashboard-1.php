@@ -157,6 +157,7 @@ include('../includes/fetchUserData.php');
                 </div>
 
                 <!-- ================= List members  ================ -->
+                <div >
                 <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2>Members</h2>
@@ -184,6 +185,7 @@ include('../includes/fetchUserData.php');
                     ?>
                     </table>
                 </div>
+                </div >
             </div>
 
     <!-- =========== Scripts =========  -->
