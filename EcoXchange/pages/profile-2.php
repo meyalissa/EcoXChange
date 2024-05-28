@@ -1,9 +1,31 @@
-<!-- Title: EcoXchange: Waste Collection and Recycling system 
-     Date: 3/5/20241
-     Programmer: Melissa Sofia
+<?php
 
-     Page: SIDEBAR for user
--->
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
+
+// // Access address data from session
+// $address = $_SESSION['address'] ?? null;
+
+// // Check if address data exists
+// if ($address) {
+//     // Fetch data from the address array or set it manually
+//     $address_ID = $address["address_ID"];
+//     $add_name = $address["Name"];
+//     $add_contact = $address["Contact"];
+//     $house_no = $address["house_no"];
+//     $street_name = $address["street_name"];
+//     $city = $address["city"];
+//     $postcode = $address["postcode"];
+//     $state = $address["state"];
+
+//     // Concatenate the address components into a single variable
+//     $full_address = "$add_name, $add_contact\n$house_no, $street_name, $city, $state $postcode";
+// } else {
+//     // Handle case when address data is not available
+//     $full_address = "Address data not found";
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,207 +37,25 @@
     <!-- ===== BOX ICONS ===== -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../style/SidebarUser.css">
-
-    <!-------------------STYLE PROFILE SECTION--------------------->
-    <style>
-      body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* Style inputs */
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-/* Create three columns that float next to eachother */
-.column {
-  float: left;
-  width: 33.33%; /* Set the width of each column to 33.33% */
-  margin-top: 6px;
-  padding: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-
-/*Style add profile pic*/
-
-.profile {
-  display: flex;
-  align-items: center;
-}
-
-.avatar {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.change-text {
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 4px 8px;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.avatar:hover .change-text {
-  opacity: 1;
-}
-
-.avatar {
-  vertical-align: middle;
-  width: 150px;
-  height: 150px;
-  border-radius: 150%;
-}
-    </style>
-    <!------------------STYLE PROFILE SECTION--------------------->
-
-
-
+    <link rel="stylesheet" href="../style/profile-2.css">
+   
 </head>
 
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="navigation">
-            <ul>
-                <li class = "comp-name">
-                    <a href="#">
-                        <span class="icon">
-                            <img src="../images/logo-white-border.png" class="sidebar-logo" />
-                        </span>
-                        <span class="title">EcoXchange</span>
-                    </a>
-                </li>
-             
-
-                <li class="active" >
-                    <a href="dashboard-2.php">
-                        <span class="icon">
-                            <i class='bx bx-history'></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="items-2.php">
-                        <span class="icon">
-                            <i class='bx bxl-spring-boot'></i>
-                        </span>
-                        <span class="title">Items</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="calculator-2.php">
-                        <span class="icon">
-                            <i class='bx bxs-calculator'></i>
-                        </span>
-                        <span class="title">Calculator</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="profile-2.php">
-                        <span class="icon">
-                            <i class='bx bx-user-circle'></i>
-                        </span>
-                        <span class="title">Profile</span>
-                    </a>
-                </li>
-
-                <li class="sign-out">
-                    <a href="../includes/logout.inc.php">
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign Out</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
+        <?php include('sidebar-1.php'); ?>
         <!-- ========================= Main ==================== -->
         <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                        
-                    </label>
-                </div>
-
-                <div class="user">
-                    <img src="../images/default-profile.png" alt="">
-            
-                </div>
-            </div>
+            <?php include('header.php'); ?>
             <div class="content">
                 <div clas="nav-title"><h3>Profile</h3></div>
-
-
-
+                
                 <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
 
-                <!--PROFILE PIC-->
+                <!-- +++++++++++++++++++PROFILE PIC<+++++++++++++++++++--> 
                 <div class="row">
-                  <div class="column">                    
+                  <div class="column1">                    
                     <div class="profile">
                       <label for="profile-picture" class="avatar">
                         <img src="../images/avatar.png" alt="Avatar" class="avatar">
@@ -224,28 +64,54 @@ input[type=submit]:hover {
                       <input type="file" id="profile-picture" accept="image/*" hidden>
                     </div>
                   </div>
-                  <!--PROFILE PIC-->
+                  
 
-
-                  <!--PROFILE DETAILS-->
+                <!-- +++++++++++++++++++PROFILE DETAILS<+++++++++++++++++++--> 
+                  
                   <div class="column">
                     <form action="/action_page.php">
                       <label for="uname">Username</label>
-                      <input type="text" id="uname" name="username" placeholder="Enter username">
+                      <input type="text" id="uname" name="username" value="<?php echo $name ?>">
+
                       <label for="fname">First Name</label>
-                      <input type="text" id="fname" name="firstname" placeholder="Enter first name">
+                      <input type="text" id="fname" name="firstname" <?php if($first == "") {echo 'placeholder="Enter First Name"';} else {echo 'value="' . $first . '"';} ?>>
+
                       <label for="lname">Last Name</label>
-                      <input type="text" id="lname" name="lastname" placeholder="Enter name">
+                      <input type="text" id="lname" name="lastname" <?php if($last == "") {echo 'placeholder="Enter Last Name"';} else {echo 'value="' . $last . '"';} ?>>
                       
                       <label for="nphone">Phone</label>
-                      <input type="text" id="nphone" name="nophone" placeholder="Enter phone">
+                      <input type="text" id="nphone" name="nophone" <?php if($contact == "") {echo 'placeholder="Enter Phone Number"';} else {echo 'value="' . $contact . '"';} ?>>
                       <label for="aemail">Email</label>
-                      <input type="text" id="aemail" name="addemail" placeholder="Enter email">
+                      <input type="text" id="aemail" name="addemail" value="<?php echo $email ?>">
                       
+
                       </div>
-                     <div class = "column">
-                      <label for="address">Address</label>
-                      <textarea id="address" name="address" placeholder="Enter address" style="height:170px"></textarea>
+                      <div class = "column1">
+                      <label for="address"> My Address</label>
+                      <?php
+                           // Fetch addresses from the database based on user ID
+                           $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
+                           $query_address = mysqli_query($dbconn, $sql_address) or die("Error fetching addresses: " . mysqli_error($dbconn));
+                           if (mysqli_num_rows($query_address) > 0) {
+                               while ($row = mysqli_fetch_assoc($query_address)) {
+                                   $addr_id = "{$row['address_ID']}";
+                                   $addr_name= "{$row['Name']}";
+                                   $addr_contact = "{$row['Contact']}";
+                                   $full_address = "{$row['street_name']}, {$row['city']}, {$row['state']} {$row['postcode']}";
+                       ?>
+                                  <div class="inpbox addr">
+                                      <div class="txtAddress">
+                                        <h4 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                        <p class="address"> <?php echo $full_address ?><p>
+                                      </div>
+
+                                  </div>
+                      <?php
+                                }
+                            } else {
+                                echo "<p>No addresses found</p>";
+                        }
+                            ?>       
                       <input type="submit" value="Submit">
                       </div>
                     </form>

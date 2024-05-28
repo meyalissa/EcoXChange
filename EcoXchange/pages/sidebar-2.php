@@ -33,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="profile-2.html">
+            <a href="profile-2.php">
                 <span class="icon">
                     <i class='bx bx-user-circle'></i>
                 </span>
