@@ -57,6 +57,7 @@
     grid-template-columns: 2fr 1fr;
     grid-gap: 30px;
     /* margin-top: 10px; */
+    
   }
   
   .details .recentOrders {
@@ -64,9 +65,10 @@
     display: grid;
     min-height: 500px;
     background: var(--white-color);
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    
   }
   
   .details .cardHeader {
@@ -75,6 +77,7 @@
     align-items: flex-start;
   }
   .cardHeader h2 {
+    font-size: 20px;
     font-weight: 600;
     color: var(--primary-color);
   }
@@ -90,7 +93,7 @@
   .details table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    
   }
   .details table thead td {
     font-weight: 600;
@@ -99,15 +102,15 @@
     color: var(--dark-color);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-  .details .recentOrders table tr:last-child {
+  /*.details .recentOrders table tr:last-child {
     border-bottom: none;
-  }
+  }*/
   .details .recentOrders table tbody tr:hover {
     background: var(--primary-color);
     color: var(--white-color);
   }
   .details .recentOrders table tr td {
-    padding: 10px;
+    padding: 25px;
   }
   .details .recentOrders table tr td:last-child {
     text-align: end;
@@ -170,7 +173,7 @@
     position: relative;
     width: 40px;
     height: 40px;
-    border-radius: 50px;
+    border-radius: 30px;
     overflow: hidden;
   }
   .recentCustomers .imgBx img {
@@ -182,12 +185,11 @@
     object-fit: cover;
   }
   .recentCustomers table tr td {
-    padding: 12px 10px;
+    padding: 30px 15px;
   }
   .recentCustomers table tr td h4 {
     font-size: 16px;
     font-weight: 500;
-    line-height: 1.2rem;
   }
   .recentCustomers table tr td h4 span {
     font-size: 14px;
