@@ -69,8 +69,16 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["pickup_date"]."</td>";
                                             echo"<td>".$row["pickup_time"]."</td>";
                                             echo '<td><img src="' . $row['deposit_receipt'] . '" alt=""></td>';
-                                            echo"<td>".$row["deposit_status"]."</td>";
-
+                                        
+                                            echo"<td><button class='"; 
+                                                echo $row["deposit_status"] == 'success' ? "success" : "pending";
+                                            echo "'>";
+                                            if($row["deposit_status"] == 'success') {
+                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=pending">Success</a>';
+                                            } else {
+                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=success">Pending</a>';
+                                            }                                             
+                                            echo "</button></td>";
 
                                             echo"<td><button class='"; 
                                                 //class name to change colour
