@@ -3,12 +3,31 @@
 .details {
     position: relative;
     width: 100%;
-    padding: 20px;
+    padding: 20px ;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr;
+    grid-template-columns: 0.9fr 0.7fr 1fr;
     grid-gap: 30px;
     /* margin-top: 10px; */
     
+  }
+
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bankdata{
+    margin-top: 20px;
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 30px;
+    /* font-size: small; */
+  }
+
+ 
+  .userdata {
+    padding: 0 10px;
   }
   /* Style inputs */
   input[type=text], select, textarea {
@@ -35,41 +54,10 @@
     background-color: #45a049;
   }
   
-  Create three columns that float next to eachother
-  .column {
-    float: left;
-    width: 33.33%; /* Set the width of each column to 33.33% */
-    margin-top: 6px;
-    padding: 20px;
-  }
-  .column1 {
-    float: left;
-    width: auto; /* Set the width of each column to 33.33% */
-    margin-top: 6px;
-    padding: 20px;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .column, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
-    }
-  }
   
   /*Style add profile pic*/
   
-  .profile {
-    display: flex;
-    align-items: center;
-  }
+
   
   .avatar {
     position: relative;
@@ -119,3 +107,18 @@
     background-color: var(--white-color);
     border-radius: 10px;
   }
+
+.labelb{
+  padding-right: 10px;
+}
+  .linkEdit{
+    
+    color: var(--primary-color);
+  }
+
+  .topbarprof{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  

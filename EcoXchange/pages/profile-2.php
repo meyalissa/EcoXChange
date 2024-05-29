@@ -46,21 +46,37 @@ $bankfullname = $row["bank_full_name"];
                             <input type="file" id="profile-picture" accept="image/*" hidden>
                         </div>
                         <div class=bankdata>
-                            <div clas="nav-title"><h4>Bank Details</h4></div>
-                            <label for="bankname">Bank Name</label>
+                            <div class="topbarprof">
+                                <div class="nav-title"><h4>Bank Details</h4></div>
+                                <div ><a href="editBank.php?bank_id=<?php echo htmlspecialchars($row['bank_id'], ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit">Edit</a></div>
+                            </div>
+                            <table>
+                                <tr>
+                                    <td class="labelb">Bank Name:</td>
+                                    <td class="info" id="bank-name"><?php echo $bankname ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="labelb">Account No:</td>
+                                    <td class="info" id="bank-acc-no"><?php echo $bankacc ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="labelb">Full Name:</td>
+                                    <td class="info" id="bank-full-name"><?php echo $bankfullname ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                            <!-- <label for="bankname">Bank Name</label>
                             <input type="text" id="bankname" name="bankname" <?php if($bankname == "") {echo 'placeholder="Enter Bank Name"';} else {echo 'value="' . $bankname . '"';} ?>>
                             <label for="bankacc">Bank Account Number</label>
                             <input type="text" id="bankacc" name="bankacc" <?php if($bankacc == "") {echo 'placeholder="Enter Bank Account No"';} else {echo 'value="' . $bankacc . '"';} ?>>
                             <label for="bankfullname">Bank Full Name</label>
-                            <input type="text" id="bankfullname" name="bankfullname" <?php if($bankfullname == "") {echo 'placeholder="Enter Bank Full Name"';} else {echo 'value="' . $bankfullname . '"';} ?>>
-                        </div>
+                            <input type="text" id="bankfullname" name="bankfullname" <?php if($bankfullname == "") {echo 'placeholder="Enter Bank Full Name"';} else {echo 'value="' . $bankfullname . '"';} ?>> -->
+                        
                     </div>
 
                     <!-- +++++++++++++++++++PROFILE DETAILS<+++++++++++++++++++-->
                         <div class=userdata>
                             <div clas="nav-title"><h4>User Details</h4></div>
-                            <label for="fname">First Name</label>
-                            <input type="text" id="fname" name="firstname" <?php if($first == "") {echo 'placeholder="Enter First Name"';} else {echo 'value="' . $first . '"';} ?>>
                     <form action="/action_page.php">
                         
                             <label for="uname">Username</label>
@@ -81,6 +97,7 @@ $bankfullname = $row["bank_full_name"];
                         <!-- +++++++++++++++++++ADDRESS DETAILS<+++++++++++++++++++--> 
                         <div class=addrdata>
                             <div clas="nav-title"><h4>My Address</h4></div>
+                            
                             <?php
                                  // Fetch addresses from the database based on user ID
                                  $sql_address = "SELECT * FROM address WHERE cust_ID = '$id'";
@@ -94,7 +111,10 @@ $bankfullname = $row["bank_full_name"];
                             ?>
                                         <div class="inpbox addr">
                                             <div class="txtAddress">
-                                              <h4 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                                <div class="topbarprof">
+                                                    <h4 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                                    <div ><a href="editAddr.php?addr_ID=<?php echo htmlspecialchars($addr_id, ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit">Edit</a></div>
+                                                </div>
                                               <p class="address"> <?php echo $full_address ?><p>
                                             </div>
                                         </div>
