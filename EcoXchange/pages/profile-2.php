@@ -30,7 +30,7 @@ $bankfullname = $row["bank_full_name"];
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <?php include('sidebar-1.php'); ?>
+        <?php include('sidebar-2.php'); ?>
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
@@ -40,7 +40,7 @@ $bankfullname = $row["bank_full_name"];
                     <div class="column1">
                         <div class="profile">
                             <label for="profile-picture" class="avatar">
-                                <img src="../images/avatar.png" alt="Avatar" class="avatar">
+                                <img src="<?php echo $image?>" alt="Avatar" class="avatar">
                                 <span class="change-text">Tap to change</span>
                             </label>
                             <input type="file" id="profile-picture" accept="image/*" hidden>
