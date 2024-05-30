@@ -130,6 +130,20 @@ function updateItem($dbconn) {
     exit();
 }
 
+function updateBank($dbconn) {
+    if(isset($_POST['update']) && $_POST['update'] === 'updateBank'){
+        $bank_ID = $_POST['bank_id'];
+        $bank_name = $_POST['bank_name'];
+        $accno = $_POST['bank_acc_no'];
+        $fullname = $_POST['bank_full_name'];
+    
+        $sqlUpdate = "UPDATE bank_details SET bank_name = '$bank_name', bank_acc_no = '$accno', bank_full_name = '$fullname' WHERE bank_ID = '$bank_ID'";
+        mysqli_query($dbconn, $sqlUpdate);
+    }
+    header("Location: ../pages/profile-2.php");
+    exit();
+}
+
 
 // Main processing logic
 if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET") {
@@ -144,6 +158,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
             break;
         case 'updateItem':
             updateItem($dbconn);
+            break;
+        case 'updateBank':
+            updateBank($dbconn);
             break;
         default:
             echo "Invalid action.";

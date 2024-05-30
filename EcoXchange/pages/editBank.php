@@ -50,8 +50,11 @@ include('../includes/dbconn.php');
 </head>
 <body>
     <div class="Container">
-        <form action="update.php" method="post">
+        <form action="../includes/process.php" method="post">
+            <input type="hidden" name="action" value="updateBank">
             <h2>Bank Detail</h2>
+            <input type="hidden" name="bank_id" value="<?php echo $bank_id; ?>">
+            
             <div class="content">
                 <div class="input-box">
                     <label for="bank_id">Bank Id</label>
@@ -77,7 +80,7 @@ include('../includes/dbconn.php');
                     <input type="text" name="bank_full_name" value="<?php echo $bank_full_name; ?>">
                 </div>
                 <div class="button-add">
-                    <button>Update</button>
+                    <input type="submit" value="Update">
                 </div>
             </div>
          </form>
