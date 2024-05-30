@@ -84,37 +84,50 @@ function addItem($dbconn) {
 
 //Update Items
 function updateItem($dbconn) {
-    if(isset($_POST['update'])){
+    if(isset($_POST['action']) && $_POST['action'] === 'updateItem'){
         $item_ID = $_POST['itemid'];
         $item_name = $_POST['itemname'];
         $item_price = $_POST['itemprice'];
         $item_pict = '';
 
-        // Handle file upload if a new file is provided
+        // Check if a new picture is uploaded
         if(isset($_FILES['itempict']) && $_FILES['itempict']['error'] == 0){
             $target_dir = "uploads/"; // Specify your upload directory
             $target_file = $target_dir . basename($_FILES["itempict"]["name"]);
             if(move_uploaded_file($_FILES["itempict"]["tmp_name"], $target_file)){
+                // New picture uploaded successfully
                 $item_pict = $target_file;
             } else {
+                // Error uploading new picture
                 echo "Sorry, there was an error uploading your file.";
             }
         } else {
-            // If no new file is uploaded, use the existing file path from the database
+            // No new picture uploaded, use the existing picture path from the database
             $sqlSel = "SELECT item_pict FROM item WHERE item_ID = '$item_ID'";
             $querySel = mysqli_query($dbconn, $sqlSel) or die("Error: " . mysqli_error($dbconn));
             $rowSel = mysqli_fetch_assoc($querySel);
             $item_pict = $rowSel['item_pict'];
         }
 
+        // Debugging: Output the values of variables
+        echo "Item ID: " . $item_ID . "<br>";
+        echo "Item Name: " . $item_name . "<br>";
+        echo "Item Price: " . $item_price . "<br>";
+        echo "Item Picture: " . $item_pict . "<br>";
+
         // Perform the update
         $sqlUpdate = "UPDATE item SET item_name = '$item_name', item_price = '$item_price', item_pict = '$item_pict' WHERE item_ID = '$item_ID'";
-        mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
-	
+        if(mysqli_query($dbconn, $sqlUpdate)) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . mysqli_error($dbconn);
+        }
 
+        // Redirect to a page after updating
+        header("Location: ../pages/items-1.php");
+        exit();
     }
 }
-
 
 
 // Main processing logic
@@ -127,6 +140,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
             break;
         case 'addItem':
             addItem($dbconn);
+            break;
+        case 'updateItem':
+            updateItem($dbconn);
             break;
         default:
             echo "Invalid action.";

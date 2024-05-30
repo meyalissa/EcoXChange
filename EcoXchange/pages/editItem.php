@@ -20,7 +20,6 @@ include('../includes/dbconn.php');
 	}
 	
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,12 +30,12 @@ include('../includes/dbconn.php');
 </head>
 <body>
     <div class="Container">
-        <form action="../includes/process.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="action" value="updateItem">
-
+    <form action= "updateItem.php" method = "post">
+    	
             <h2>Item Detail</h2>
             <div class="content">
-                <div class="input-box">
+
+    			<div class="input-box">
                     <label for="itemid">Item Id</label>
                     <input type="text" name="itemid" value="<?php echo $item_ID; ?>" disabled>
                 </div>
@@ -48,20 +47,14 @@ include('../includes/dbconn.php');
                     <label for="itemprice">Item Price</label>
                     <input type="text" name="itemprice" value="<?php echo $item_price; ?>">
                 </div>
-                <div class="input-box">
-                    <label for="currentitempict">Current Item Picture</label>
-                    <img src="<?php echo $item_pict; ?>" alt="Current Item Picture" width="200">
-                    <input type="hidden" name="currentitempict" value="<?php echo $item_pict; ?>" readonly>
-                </div>
-                <div class="input-box">
-                    <label for="itempict">New Item Picture</label>
-                    <input type="file" name="itempict">
-                </div>
-                <div class="button-add">
-                    <input type="submit" value="Update">
-                </div>
-            </div>
-        </form>
+
+    		<tr >
+    			<td colspan=3>
+    			<input type="submit" name = "update" value = "Update">
+    			<input type="submit" name = "delete" value = "Delete"></td>
+    		</tr>
+    
+    	
     </div>
-</body>
+    </body>
 </html>
