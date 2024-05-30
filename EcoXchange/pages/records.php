@@ -75,6 +75,7 @@ include('../includes/fetchUserData.php');
                                                 echo '<a href="status.php?collect_ID='.$row["collect_ID"].'&reward_status=success">Pending</a>';
                                             }                                             
                                             echo "</button></td>";
+                                            
                                             echo"<td>".$row["book_ID"]."</td>";
                                             echo"<td>".$row["staff_username"]."</td>";
                                         echo"</tr>";

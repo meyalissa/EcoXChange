@@ -1,4 +1,8 @@
-<form action="submit-records.php" method="post">
+<?php
+// Include database connection and fetch user data
+include('../includes/dbconn.php');
+include('../includes/fetchUserData.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,55 +32,42 @@
         border: 1px solid #ccc;
         outline: none;}
     </style>
-
 </head>
 <body>
     <!------Insert Coding--------->    
     <div class="Container">
-        
+        <form action="submit-records.php" method="post">
+            <input type="hidden" name="staff_ID" value="<?php echo $id; ?>">
             <h2>Add Collection Data</h2>
+            <?php echo $id; ?>
             <div class="content">
                 <div class="input-box">
-                    <label for="collect_ID">Collect Id</label>
-                    <input type="text" name="collect_ID" value="">
-                </div>
-                
-                <div class="input-box">
                     <label for="collect_weight">Collect Weight</label>
-                    <input type="text" name="collect_weight" value="">
+                    <input type="text" name="collect_weight" value="" required>
                 </div>
-                <div class="input-box">
-                    <label for="total_amount">Total Amount</label>
-                    <input type="text" name="total_amount" value="">
-                </div>
-                <div class="input-box">
-                    <label for="collect_date">Collect Date</label>
-                    <input type="text" name="collect_date" value="">
-                </div>
-                <div class="input-box">
-                    <label for="collect_time">Collect Time</label>
-                    <input type="text" name="collect_time" value="">
-                </div>
-                <div class="input-box">
-                    <label for="reward_status">Reward Status</label>
-                    <input type="text" name="reward_status" value="">
-                </div>
+               
                 <div class="input-box">
                     <label for="book_ID">Book ID</label>
-                    <input type="text" name="book_ID" value="">
+                    <input type="text" name="book_ID" value="" required>
                 </div>
-                <div class="input-box">
-                    <label for="item_ID">Item ID</label>
-                    <input type="text" name="item_ID" value="">
-                </div>
-                <div class="input-box">
-                    <label for="staff_ID">Staff ID</label>
-                    <input type="text" name="staff_ID" value="">
+                <div class="dropdown">
+                    <label for="item_ID">Item Type</label>
+                    <select name="item_ID" required>
+                        <?php
+                            $sql = "SELECT * FROM item";
+                            $query = mysqli_query($dbconn, $sql) or die ("Error: " . mysqli_error($dbconn));
+
+                            while ($row = mysqli_fetch_assoc($query)) {
+                                echo "<option value='".$row["item_ID"]."'>".$row["item_name"]."</option>";
+                            }
+                        ?>
+                    </select>
                 </div>
                 <div class="button-add">
-                        <a href='submit-records.php'><button>Submit</button></a> <!--submit-records.php-->
+                    <button type="submit">Submit</button>
                 </div>
             </div>
+        </form>
     </div>
 </body>
 </html>
