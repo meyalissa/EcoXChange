@@ -27,6 +27,10 @@ include('../includes/fetchUserData.php');
                     <div class="itemlist">
                         <div class="tableHeader">
                             <h2>Collection Records</h2>
+                            <!----Insert Button --->
+                            <div class="button-add">
+                                <a href='insert.php'><button>Insert Data</button></a> <!--Call insertRecords.php-->
+                            </div>
                         </div>
                         <?php
                             $sql = 
@@ -79,10 +83,7 @@ include('../includes/fetchUserData.php');
                                 echo '</table>';
                             } 
                         ?>
-                        <!----Insert Button --->
-                        <div class="button-add">
-                           <a href='insert.php'><button>Insert Data</button></a> <!--Call insertRecords.php-->
-                        </div>
+                        
                     </div>
                 </div>
             </div>

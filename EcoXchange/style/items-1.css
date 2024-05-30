@@ -60,13 +60,19 @@
 
 .button-add button{
     margin-top: 10px;
-    padding: 5px;
-    font-size: 18px;
+    padding: 8px;
+    font-size: 16px;
     color: #fff;
     border: none;
     border-radius: 5px;
     background: var(--primary-color);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); */
+}
+.button-add button:hover{
+ 
+  background: var(--dark-prim-color);
+  
 }
 
 /* ================== Item List ============== */
@@ -124,6 +130,9 @@
   .details .itemlist table tbody tr:hover {
     background: var(--primary-color);
     color: var(--white-color);
+  }
+  .details .itemlist table tbody tr button:hover {
+    background: var(--dark-prim-color);
   }
   .details .itemlist table tr td {
     padding: 10px;
