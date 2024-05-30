@@ -86,3 +86,7 @@
     text-decoration: none;
     color: var(--white-color);
   }
+
+  .btnStatus{
+    color: var(--white-color);
+  }

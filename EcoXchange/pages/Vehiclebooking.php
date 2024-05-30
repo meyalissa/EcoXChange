@@ -68,13 +68,20 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["vehicle_type"]."</td>";
                                             echo"<td>".$row["pickup_date"]."</td>";
                                             echo"<td>".$row["pickup_time"]."</td>";
-                                            echo '<td><img src="' . $row['deposit_receipt'] . '" alt=""></td>';
+                                            echo '<td> ';
+                                                $file_extension = pathinfo($row['deposit_receipt'], PATHINFO_EXTENSION);
+                                                if (strtolower($file_extension) === 'pdf') {
+                                                    echo '<a style="color: black;" href="' . $row['deposit_receipt'] . '">View PDF</a>';
+                                                } else {
+                                                    echo '<img src="' . $row['deposit_receipt'] . '" alt="">';
+                                                }
+                                            echo '</td>';
                                         
                                             echo"<td><button class='"; 
                                                 echo $row["deposit_status"] == 'success' ? "success" : "pending";
                                             echo "'>";
                                             if($row["deposit_status"] == 'success') {
-                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=pending">Success</a>';
+                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=pending">Approved</a>';
                                             } else {
                                                 echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=success">Pending</a>';
                                             }                                             
