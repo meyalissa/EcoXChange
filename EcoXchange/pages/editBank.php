@@ -50,11 +50,12 @@ include('../includes/dbconn.php');
 </head>
 <body>
     <div class="Container">
-        <form action="../includes/process.php" method="post">
+        
+        <form action="../includes/process.php" method="post" enctype="multipart/form-data">>
             <input type="hidden" name="action" value="updateBank">
-            <h2>Bank Detail</h2>
-            <input type="hidden" name="bank_id" value="<?php echo $bank_id; ?>">
             
+            <input type="hidden" name="bank_id" value="<?php echo $bank_id; ?>">
+            <h2>Bank Detail</h2>
             <div class="content">
                 <div class="input-box">
                     <label for="bank_id">Bank Id</label>

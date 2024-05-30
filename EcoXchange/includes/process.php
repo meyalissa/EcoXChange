@@ -85,6 +85,7 @@ function addItem($dbconn) {
 //Update Items
 function updateItem($dbconn) {
     if(isset($_POST['update']) && $_POST['update'] === 'updateItem'){
+
         $item_ID = $_POST['itemid'];
         $item_name = $_POST['itemname'];
         $item_price = $_POST['itemprice'];
@@ -131,14 +132,15 @@ function updateItem($dbconn) {
 }
 
 function updateBank($dbconn) {
-    if(isset($_POST['update']) && $_POST['update'] === 'updateBank'){
+    if(isset($_POST['action']) && $_POST['action'] === 'updateBank'){
         $bank_ID = $_POST['bank_id'];
+
         $bank_name = $_POST['bank_name'];
         $accno = $_POST['bank_acc_no'];
         $fullname = $_POST['bank_full_name'];
     
         $sqlUpdate = "UPDATE bank_details SET bank_name = '$bank_name', bank_acc_no = '$accno', bank_full_name = '$fullname' WHERE bank_ID = '$bank_ID'";
-        mysqli_query($dbconn, $sqlUpdate);
+        mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
     }
     header("Location: ../pages/profile-2.php");
     exit();
