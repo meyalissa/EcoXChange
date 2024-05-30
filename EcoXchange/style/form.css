@@ -1,3 +1,5 @@
+@import "style.css";
+
 *{
     padding:0;
     margin:0;
@@ -27,9 +29,9 @@ body{
 h2{
     font-size: 18px; 
     text-align: center;
-    color: black;
+    color: var(--dark-prim-color);
     padding-bottom: 8px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--dark-prim-color);
 }
 
 .content{
@@ -65,7 +67,23 @@ h2{
 }
 
 .button-add{
-    margin: 15px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px;
+    
+}
+
+.button-add input{
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 18px;
+    color:white;
+    border: none;
+    border-radius: 5px;
+    background:  #94AB6F;
+    cursor: pointer;
 }
 
 .button-add button{
@@ -77,7 +95,7 @@ h2{
     border: none;
     border-radius: 5px;
     background:  #94AB6F;
-    
+    cursor: pointer;
 }
 
 .indetail{

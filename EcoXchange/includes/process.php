@@ -84,7 +84,7 @@ function addItem($dbconn) {
 
 //Update Items
 function updateItem($dbconn) {
-    if(isset($_POST['action']) && $_POST['action'] === 'updateItem'){
+    if(isset($_POST['update']) && $_POST['update'] === 'updateItem'){
         $item_ID = $_POST['itemid'];
         $item_name = $_POST['itemname'];
         $item_price = $_POST['itemprice'];
@@ -92,7 +92,7 @@ function updateItem($dbconn) {
 
         // Check if a new picture is uploaded
         if(isset($_FILES['itempict']) && $_FILES['itempict']['error'] == 0){
-            $target_dir = "uploads/"; // Specify your upload directory
+            $target_dir = "../images/items/"; // Specify your upload directory
             $target_file = $target_dir . basename($_FILES["itempict"]["name"]);
             if(move_uploaded_file($_FILES["itempict"]["tmp_name"], $target_file)){
                 // New picture uploaded successfully
@@ -109,12 +109,6 @@ function updateItem($dbconn) {
             $item_pict = $rowSel['item_pict'];
         }
 
-        // Debugging: Output the values of variables
-        echo "Item ID: " . $item_ID . "<br>";
-        echo "Item Name: " . $item_name . "<br>";
-        echo "Item Price: " . $item_price . "<br>";
-        echo "Item Picture: " . $item_pict . "<br>";
-
         // Perform the update
         $sqlUpdate = "UPDATE item SET item_name = '$item_name', item_price = '$item_price', item_pict = '$item_pict' WHERE item_ID = '$item_ID'";
         if(mysqli_query($dbconn, $sqlUpdate)) {
@@ -122,11 +116,18 @@ function updateItem($dbconn) {
         } else {
             echo "Error updating record: " . mysqli_error($dbconn);
         }
-
-        // Redirect to a page after updating
-        header("Location: ../pages/items-1.php");
-        exit();
     }
+    else  ##If the delete button is clicked
+    {
+         
+        $item_ID = $_POST['itemid'];
+        ## execute SQL DELETE command 
+        $sqlDelete = "DELETE FROM item WHERE item_ID = '$item_ID'";
+        
+        mysqli_query($dbconn, $sqlDelete) or die ("Error: " . mysqli_error($dbconn));
+    }    
+    header("Location: ../pages/items-1.php");
+    exit();
 }
 
 
