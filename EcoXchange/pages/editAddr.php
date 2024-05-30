@@ -30,11 +30,15 @@ include('../includes/dbconn.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/form.css">
-    <title>Edit Item</title>
+    <title>Edit Address</title>
 </head>
 <body>
     <div class="Container">
-        <form action="update.php" method="post">
+    <form action="../includes/process.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="updateAddress">
+            
+            <input type="hidden" name="addr_id" value="<?php echo $addrID; ?>">
+            
             <h2>Edit Address Detail</h2>
             <div class="content">
                 <div class="input-box">
@@ -78,8 +82,9 @@ include('../includes/dbconn.php');
                     <input type="text" name="Country" value="Malaysia" disabled>
                 </div>
 
+                <!----Insert Button --->
                 <div class="button-add">
-                    <button>Update</button>
+                    <input type="submit" value="Update">
                 </div>
             </div>
          </form>

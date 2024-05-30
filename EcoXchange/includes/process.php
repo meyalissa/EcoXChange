@@ -148,10 +148,19 @@ function updateBank($dbconn) {
 
 function updateAddress($dbconn) {
     if(isset($_POST['action']) && $_POST['action'] === 'updateAddress'){
-
         
-    
-       
+        $addrID= $_POST['address_ID']; 
+        $addrname= $_POST['Name'];
+		$addrcontact= $_POST['Contact']; 
+		$houseno= $_POST['house_no'];
+        $strname= $_POST['street_name'];
+        $city= $_POST['city'];
+        $state= $_POST['state'];
+        $postcode= $_POST['postcode'];
+
+        $sqlUpdate = "UPDATE address SET Name = '$addrname', contact = '$addrcontact' , house_no = '$houseno', street_name = '$strname', city = '$city', state = '$state', postcode = '$postcode' WHERE address_ID = '$addrID'";
+        mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
+
     }
     header("Location: ../pages/profile-2.php");
     exit();
@@ -176,7 +185,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
         case 'updateBank':
             updateBank($dbconn);
             break;
+        
+        case 'updateAddress':
+            updateAddress($dbconn);
+            break;
         default:
+
             echo "Invalid action.";
             break;
     }
