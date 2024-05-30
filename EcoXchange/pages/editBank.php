@@ -51,7 +51,7 @@ include('../includes/dbconn.php');
 <body>
     <div class="Container">
         
-        <form action="../includes/process.php" method="post" enctype="multipart/form-data">>
+        <form action="../includes/process.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="action" value="updateBank">
             
             <input type="hidden" name="bank_id" value="<?php echo $bank_id; ?>">
