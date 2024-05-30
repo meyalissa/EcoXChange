@@ -146,6 +146,18 @@ function updateBank($dbconn) {
     exit();
 }
 
+function updateAddress($dbconn) {
+    if(isset($_POST['action']) && $_POST['action'] === 'updateAddress'){
+
+        
+    
+       
+    }
+    header("Location: ../pages/profile-2.php");
+    exit();
+}
+
+
 
 // Main processing logic
 if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET") {
