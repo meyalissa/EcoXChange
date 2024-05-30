@@ -121,4 +121,12 @@
     justify-content: space-between;
   }
 
-  
+  .btnAdd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    color: var(--primary-color);
+    
+  }
+

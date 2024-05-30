@@ -42,7 +42,11 @@ include('../includes/dbconn.php');
                     <input type="text" name="addr_id" value="<?php echo $addrID; ?>" disabled>
                 </div>
                 <div class="input-box">
-                    <label for="addrname">Deliver To</label>
+                    <!-- <label for="addr_id">Address ID</label>
+                    <input type="text" name="addr_id" value="<?php echo $addrID; ?>" disabled> -->
+                </div>
+                <div class="input-box">
+                    <label for="addrname">Person In Charge</label>
                     <input type="text" name="addrname" value="<?php echo $addrname; ?>">
                 </div>
                 <div class="input-box">
@@ -68,6 +72,10 @@ include('../includes/dbconn.php');
                 <div class="input-box">
                     <label for="postcode">PostCode</label>
                     <input type="text" name="postcode" value="<?php echo $postcode; ?>">
+                </div>
+                <div class="input-box">
+                    <label for="country">Country</label>
+                    <input type="text" name="Country" value="Malaysia" disabled>
                 </div>
 
                 <div class="button-add">

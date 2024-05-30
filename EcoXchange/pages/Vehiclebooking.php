@@ -95,13 +95,13 @@ include('../includes/fetchUserData.php');
                                                 
                                                 //change status in database if click
                                                 if($row["book_status"] == 'success') {
-                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=inProgress">Success</a>';
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=cancel">Success</a>';
                                                 } elseif ($row["book_status"] == 'pending'){
-                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=cancel">Pending</a>';
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=inProgress">Pending</a>';
                                                 } elseif ($row["book_status"] == 'inProgress'){
-                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=pending">In Progress</a>';
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=success">In Progress</a>';
                                                 } else {
-                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=success">Cancel</a>';
+                                                    echo '<a href="bookstatus.php?book_ID='.$row["book_ID"].'&book_status=pending">Cancel</a>';
                                                 }     
 
                                                 echo "</button></td>";        //                                     
