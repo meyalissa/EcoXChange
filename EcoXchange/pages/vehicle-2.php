@@ -41,8 +41,12 @@ include('../includes/fetchUserData.php');
                         </div>
                         <?php
                             include("../includes/dbconn.php");
-                            $sql = "SELECT * FROM booking k JOIN customer c ON k.cust_ID = c.cust_ID;";
-                            $query = mysqli_query($dbconn, $sql);
+                            
+                            $sql = "SELECT * FROM `booking` WHERE cust_ID = ?";
+                            $stmt = mysqli_prepare($dbconn, $sql);
+                            mysqli_stmt_bind_param($stmt, 's', $id);
+                            mysqli_stmt_execute($stmt);
+                            $query = mysqli_stmt_get_result($stmt);
                             $num_rows = mysqli_num_rows($query);
                             if($num_rows == 0){
                                 echo "No Booking Record";
@@ -58,7 +62,7 @@ include('../includes/fetchUserData.php');
                                 echo"<td>Deposit Status</td>";
                                 echo"<td>Book Status</td>";
                                 echo"<td>Address</td>";
-                                echo"<td>Username</td>";
+                                echo"<td>Action</td>";
                                 echo"</tr>";
                                 echo "</thead>";
 
@@ -83,9 +87,9 @@ include('../includes/fetchUserData.php');
                                             echo "'>";
                                             
                                             if($row["deposit_status"] == 'success') {
-                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=pending">Approved</a>';
+                                                echo "Approved";
                                             } else {
-                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=success">Pending</a>';
+                                                echo "Pending";
                                             }    
                                             echo "</button></td>";
 
@@ -115,7 +119,7 @@ include('../includes/fetchUserData.php');
                                                 echo "</button></td>";                                   
                                             
                                             echo '<td><a href="?address_id='.$row["address_ID"].'" class="btnAddr">Show</a></td>';
-                                            echo"<td>".$row["cust_username"]."</td>";
+                                            echo '<td><a class="btncancel" href="">Cancel Book</a></td>';
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
@@ -173,10 +177,14 @@ include('../includes/fetchUserData.php');
     </div>
 
     <!-- =========== Scripts =========  -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/main.js"></script>
-    
-
+    <script src="../js/searchbar.js"></script>
+    <script type="text/javascript">
+        function closePopup() {
+            document.getElementById('addr-popup').style.display = 'none';
+        }
+    </script>   
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

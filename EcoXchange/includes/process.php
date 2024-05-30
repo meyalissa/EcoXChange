@@ -147,7 +147,7 @@ function updateBank($dbconn) {
 }
 
 function updateAddress($dbconn) {
-    if(isset($_POST['action']) && $_POST['action'] === 'updateAddress'){
+    if(isset($_POST['update']) && $_POST['update'] === 'updateAddress'){
         
         $addrID= $_POST['addr_id']; 
         $addrname= $_POST['addrname'];
@@ -162,11 +162,38 @@ function updateAddress($dbconn) {
         mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
 
     }
+    else  ##If the delete button is clicked
+    {
+         
+        $addrID= $_POST['addr_id']; 
+        ## execute SQL DELETE command 
+        $sqlDelete = "DELETE FROM address WHERE address_ID = '$addrID'";
+        
+        mysqli_query($dbconn, $sqlDelete) or die ("Error: " . mysqli_error($dbconn));
+    }    
     header("Location: ../pages/profile-2.php");
     exit();
 }
 
 
+function updateProfile($dbconn) {
+    if(isset($_POST['action']) && $_POST['action'] === 'updateProfile'){
+
+        $id = $_POST['id'];
+        $username = $_POST['username'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $nophone = $_POST['nophone'];
+        $addemail = $_POST['addemail'];
+    
+        $sqlUpdate = "UPDATE CUSTOMER SET cust_username = '$username', cust_first_name = '$firstname', cust_last_name = '$lastname', 
+        cust_contact_no = '$nophone', cust_email = '$addemail' WHERE cust_ID = '$id'";
+
+        mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
+    }
+    header("Location: ../pages/profile-2.php");
+    exit();
+}
 
 // Main processing logic
 if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET") {
@@ -188,6 +215,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
         
         case 'updateAddress':
             updateAddress($dbconn);
+
+        case 'updateProfile':
+            updateProfile($dbconn);
             break;
         default:
 

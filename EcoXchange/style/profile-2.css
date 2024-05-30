@@ -25,7 +25,11 @@
     /* font-size: small; */
   }
 
- 
+
+ .inp{
+    display: flex;
+    justify-content: flex-end;
+ }
   .userdata {
     padding: 0 10px;
   }
@@ -43,15 +47,17 @@
   }
   
   input[type=submit] {
-    background-color: #04AA6D;
+    background-color: var(--primary-color);
     color: white;
+    width: 50%;
     padding: 12px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 15px;
   }
   
   input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: var(--dark-prim-color);
   }
   
   

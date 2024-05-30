@@ -65,22 +65,19 @@ $bankfullname = $row["bank_full_name"];
                                 </tr>
                             </table>
                         </div>
-                            <!-- <label for="bankname">Bank Name</label>
-                            <input type="text" id="bankname" name="bankname" <?php if($bankname == "") {echo 'placeholder="Enter Bank Name"';} else {echo 'value="' . $bankname . '"';} ?>>
-                            <label for="bankacc">Bank Account Number</label>
-                            <input type="text" id="bankacc" name="bankacc" <?php if($bankacc == "") {echo 'placeholder="Enter Bank Account No"';} else {echo 'value="' . $bankacc . '"';} ?>>
-                            <label for="bankfullname">Bank Full Name</label>
-                            <input type="text" id="bankfullname" name="bankfullname" <?php if($bankfullname == "") {echo 'placeholder="Enter Bank Full Name"';} else {echo 'value="' . $bankfullname . '"';} ?>> -->
-                        
                     </div>
 
                     <!-- +++++++++++++++++++PROFILE DETAILS<+++++++++++++++++++-->
                         <div class=userdata>
                             <div clas="nav-title"><h4>User Details</h4></div>
-                    <form action="/action_page.php">
-                        
+                            <form action="../includes/process.php" method="post">
+                            <input type="hidden" name="action" value="updateProfile">
+
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" id="uname" name="username" value="<?php echo $name ?>">
+
                             <label for="uname">Username</label>
-                            <input type="text" id="uname" name="username" value="<?php echo $name ?>">
+                            <input type="text" id="uname" name="username" value="<?php echo $name ?>" disabled>
 
                             <label for="fname">First Name</label>
                             <input type="text" id="fname" name="firstname" <?php if($first == "") {echo 'placeholder="Enter First Name"';} else {echo 'value="' . $first . '"';} ?>>
@@ -133,7 +130,14 @@ $bankfullname = $row["bank_full_name"];
                                             
                                         
                         </div>
-                        <input type="submit" value="Submit">
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                        <div class="inp">
+                            <input type="submit" value="Update">
+                        </div>
+                        
                     </form>
                   </div>
               </div>

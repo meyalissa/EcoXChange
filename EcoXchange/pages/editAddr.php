@@ -84,6 +84,7 @@ include('../includes/dbconn.php');
                 <!----Insert Button --->
                 <div class="button-add">
                     <input type="submit" value="Update">
+                    <input type="submit" value="Delete">
                 </div>
             </div>
          </form>

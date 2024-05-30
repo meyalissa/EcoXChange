@@ -90,3 +90,8 @@
   .btnStatus{
     color: var(--white-color);
   }
+
+  .btncancel {
+    background-color: none;
+    color: var(--dark-color);
+  }

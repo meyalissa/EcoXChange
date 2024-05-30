@@ -52,7 +52,7 @@ include('../includes/fetchUserData.php');
                                 echo"<td>Item Name</td>";
                                 echo"<td>Item Price per KG</td>";
                                 echo"<td>Item Picture</td>";
-                                echo"<td>Edit</td>";
+                                echo"<td>Action</td>";
                                 echo"</tr>";
                                 echo "</thead>";
 
