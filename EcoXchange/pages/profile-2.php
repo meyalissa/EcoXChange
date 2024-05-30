@@ -48,7 +48,7 @@ $bankfullname = $row["bank_full_name"];
                         <div class=bankdata>
                             <div class="topbarprof">
                                 <div class="nav-title"><h4>Bank Details</h4></div>
-                                <div ><a href="editBank.php?bank_id=<?php echo htmlspecialchars($row['bank_id'], ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit">Edit</a></div>
+                                <div ><a href="editBank.php?bank_id=<?php echo htmlspecialchars($row['bank_id'], ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit"><i class='bx bxs-edit'></i></a></div>
                             </div>
                             <table>
                                 <tr>
@@ -110,7 +110,7 @@ $bankfullname = $row["bank_full_name"];
                                             <div class="txtAddress">
                                                 <div class="topbarprof">
                                                     <h4 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
-                                                    <div ><a href="editAddr.php?addr_ID=<?php echo htmlspecialchars($addr_id, ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit"><i class='bx bxs-edit'></i></a></div>
+                                                    <div><a href="editAddr.php?addr_ID=<?php echo htmlspecialchars($addr_id, ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit"><i class='bx bxs-edit'></i></a></div>
                                                 </div>
                                               <p class="address"> <?php echo $full_address ?><p>
                                             </div>

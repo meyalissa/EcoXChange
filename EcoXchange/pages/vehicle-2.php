@@ -119,7 +119,7 @@ include('../includes/fetchUserData.php');
                                                 echo "</button></td>";                                   
                                             
                                             echo '<td><a href="?address_id='.$row["address_ID"].'" class="btnAddr">Show</a></td>';
-                                            echo '<td><a class="btncancel" href="">Cancel Book</a></td>';
+                                            echo '<td><a class="btncancel" href="javascript:void(0);" onclick="confirmCancellation(' . $row["book_ID"] . ')">Cancel Booking</a></td>';
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
@@ -183,6 +183,13 @@ include('../includes/fetchUserData.php');
     <script type="text/javascript">
         function closePopup() {
             document.getElementById('addr-popup').style.display = 'none';
+        }
+       
+        function confirmCancellation(book_ID) {
+            if (confirm("Are you sure you want to cancel this booking?")) {
+                // Proceed with cancellation
+                window.location.href = "../includes/cancel_booking.php?book_ID=" + book_ID;
+            }
         }
     </script>   
     <!-- ====== ionicons ======= -->
