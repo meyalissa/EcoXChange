@@ -149,11 +149,11 @@ function updateBank($dbconn) {
 function updateAddress($dbconn) {
     if(isset($_POST['action']) && $_POST['action'] === 'updateAddress'){
         
-        $addrID= $_POST['address_ID']; 
-        $addrname= $_POST['Name'];
-		$addrcontact= $_POST['Contact']; 
-		$houseno= $_POST['house_no'];
-        $strname= $_POST['street_name'];
+        $addrID= $_POST['addr_id']; 
+        $addrname= $_POST['addrname'];
+		$addrcontact= $_POST['addrcontact']; 
+		$houseno= $_POST['houseno'];
+        $strname= $_POST['strname'];
         $city= $_POST['city'];
         $state= $_POST['state'];
         $postcode= $_POST['postcode'];

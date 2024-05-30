@@ -46,8 +46,7 @@ include('../includes/dbconn.php');
                     <input type="text" name="addr_id" value="<?php echo $addrID; ?>" disabled>
                 </div>
                 <div class="input-box">
-                    <!-- <label for="addr_id">Address ID</label>
-                    <input type="text" name="addr_id" value="<?php echo $addrID; ?>" disabled> -->
+                    
                 </div>
                 <div class="input-box">
                     <label for="addrname">Person In Charge</label>
