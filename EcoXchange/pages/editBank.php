@@ -64,7 +64,7 @@ include('../includes/dbconn.php');
                 <div class="dropdown">
                     <label for="bank_name">Bank Name</label> <!----Bank Name in dropdown format---->
                         <select name="bank_name">
-                           <option value="<?php echo $bank_name; ?>"disabled selected><?php echo $bank_name; ?></option>
+                           <option value="<?php echo $bank_name; ?>"><?php echo $bank_name; ?></option>
                            <option value="Bank Islam">Bank Islam</option>
                            <option value="Cimb Bank">Cimb Islam</option>
                            <option value="Hong Leong Bank">Hong Leong Bank</option>
