@@ -15,7 +15,6 @@ include('../includes/dbconn.php');
         $bank_name= $r['bank_name'];
 		$bank_acc_no= $r['bank_acc_no']; 
 		$bank_full_name= $r['bank_full_name'];
-      
 	}
 ?>
 

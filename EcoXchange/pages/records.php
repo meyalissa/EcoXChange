@@ -79,6 +79,10 @@ include('../includes/fetchUserData.php');
                                 echo '</table>';
                             } 
                         ?>
+                        <!----Insert Button --->
+                        <div class="button-add">
+                           <a href='insert.php'><button>Insert Data</button></a> <!--Call insertRecords.php-->
+                        </div>
                     </div>
                 </div>
             </div>
