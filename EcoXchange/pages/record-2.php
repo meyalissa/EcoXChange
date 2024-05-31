@@ -27,10 +27,6 @@ include('../includes/fetchUserData.php');
                     <div class="itemlist">
                         <div class="tableHeader">
                             <h2>Collection Records</h2>
-                            <!----Insert Button --->
-                            <div class="button-add">
-                                <a href='insert.php'><button>Insert Data</button></a> <!--Call insertRecords.php-->
-                            </div>
                         </div>
                         <?php
                             $sql = 
@@ -39,6 +35,7 @@ include('../includes/fetchUserData.php');
                             JOIN STAFF s ON s.staff_ID = r.staff_ID
                             JOIN ITEM i ON i.item_ID = r.item_ID
                             WHERE b.cust_ID = ?";
+
                             $stmt = mysqli_prepare($dbconn, $sql);
                             mysqli_stmt_bind_param($stmt, 's', $id);
                             mysqli_stmt_execute($stmt);
