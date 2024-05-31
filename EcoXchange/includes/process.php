@@ -186,7 +186,7 @@ function updateProfile($dbconn) {
         $nophone = $_POST['nophone'];
         $addemail = $_POST['addemail'];
     
-        if (substr($id, 0, 2) === 'C_') {
+        if (substr($id, 0, 1) === 'C') {
             $sqlUpdate = "UPDATE CUSTOMER SET cust_username = '$username', cust_first_name = '$firstname', 
             cust_last_name = '$lastname', cust_contact_no = '$nophone', cust_email = '$addemail' WHERE cust_ID = '$id'";
         } else
@@ -195,7 +195,7 @@ function updateProfile($dbconn) {
         
         mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
     }
-    if (substr($id, 0, 2) === 'C_') {
+    if (substr($id, 0, 1) === 'C') {
         header("Location: ../pages/profile-2.php");
         exit();
     } else
