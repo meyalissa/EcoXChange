@@ -74,7 +74,7 @@ if ($address) {
                                 booking b
                                 JOIN collection_record cr ON b.book_ID = cr.book_ID
                             WHERE 
-                                b.cust_ID = ?
+                                b.cust_ID = ? AND cr.reward_status='success'
                             GROUP BY 
                                 b.book_ID
                         ) AS subquery";
