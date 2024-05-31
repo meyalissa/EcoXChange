@@ -43,9 +43,9 @@
         <li>
             <a href="record-2.php">
                 <span class="icon">
-                    <i class='bx bxs-car'></i>
+                    <i class='bx bxs-receipt'></i>
                 </span>
-                <span class="title">Vehicle Booking</span>
+                <span class="title">Collection Record</span>
             </a>
         </li>
         <li>
