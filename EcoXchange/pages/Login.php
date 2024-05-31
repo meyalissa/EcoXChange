@@ -30,13 +30,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="../index.html" >Home</a>
+                        <a href="../index.php" >Home</a>
                     </li>
                     <li>
-                        <a href="../index.html">About</a>
+                        <a href="../index.php">About</a>
                     </li>
                     <li>
-                        <a href="../index.html">FAQ</a>
+                        <a href="../index.php">FAQ</a>
                     </li>
                     <li>
                         <a href="../pages/groupMembers.html">Developer</a>

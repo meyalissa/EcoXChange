@@ -29,7 +29,7 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="index.html" class="active">Home</a>
+                        <a href="index.php" class="active">Home</a>
                     </li>
                     <li>
                         <a href="#about">About</a>
@@ -96,22 +96,24 @@
       <section class="faq" id="faq">
         <div class="faq-container">
             <div class="faq-text">
-                <h1>Frequently Asked Question (FAQ)</h1>
-                <div class="button-faq">
-                    <img src="images/lampfaq.png" alt="" class="faq-lamp">
-                    What is EcoXchange?
-                    <img src="images/scrolldown.png" alt="" class="faq-icon">
-                    <i></i>
-                </div>
-                <div class="faq-answer">
-                    <p>
-                        EcoXchange is a system where consumers may recycle everything they want to without worrying about transportation because our runner will pick up the recyclables.  
-                    </p>
+                <h1 class=txttitle>Frequently Asked Question (FAQ)</h1>
+                <div class="faq-text">
+                    <div class="button-faq">
+                        <img src="images/lampfaq.png" alt="" class="faq-lamp">
+                        <span class="faq-text" > What is EcoXchange?</span>
+                        <img src="images/scrolldown.png" alt="" class="faq-icon">
+                        <i></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            EcoXchange is a system where consumers may recycle everything they want to without worrying about transportation because our runner will pick up the recyclables.  
+                        </p>
+                    </div>
                 </div>
                 <div class="faq-text">
                     <div class="button-faq">
                         <img src="images/lampfaq.png" alt="" class="faq-lamp">
-                        Do we need to make any payments?
+                        <span class="faq-text" >Do we need to make any payments?</span>
                         <img src="images/scrolldown.png" alt="" class="faq-icon">
                         <i></i>
                     </div>
@@ -124,7 +126,7 @@
                 <div class="faq-text">
                     <div class="button-faq">
                         <img src="images/lampfaq.png" alt="" class="faq-lamp">
-                        What type of waste does EcoXchange accept for recycling?
+                        <span class="faq-text" >What type of waste does EcoXchange accept for recycling?</span>
                         <img src="images/scrolldown.png" alt="" class="faq-icon">
                         <i></i>
                     </div>
@@ -137,7 +139,7 @@
                 <div class="faq-text">
                     <div class="button-faq">
                         <img src="images/lampfaq.png" alt="" class="faq-lamp">
-                        Can I track the status of my waste?
+                        <span class="faq-text" >Can I track the status of my waste?</span>
                         <img src="images/scrolldown.png" alt="" class="faq-icon">
                         <i></i>
                     </div>
@@ -186,6 +188,11 @@
         hamburger.onclick = function() {
             nav.classList.toggle("active");
         }
+    </script>
+    <script language="JavaScript">
+        gsap.from('.greenimg', { opacity: 0, duration: 2, delay: .5, x: 60 })
+        // gsap.from('.home-text', { opacity: 0, duration: 2, delay: .5, y: 25 });
+        // gsap.from('.home-greet, .EcoXchange, .home-system, .button-gs', { opacity: 0, duration: 2, delay: 1, y: 25, ease: 'expo.out', stagger: .2 });
     </script>
 </body>
 </html>
