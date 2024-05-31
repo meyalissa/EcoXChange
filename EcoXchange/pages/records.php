@@ -61,8 +61,8 @@ include('../includes/fetchUserData.php');
                                         echo"<tr>";
                                             echo"<td>".$row["collect_ID"]."</td>";
                                             echo"<td>".$row["item_name"]."</td>";
-                                            echo"<td>".$row["collect_weight"]."</td>";
-                                            echo"<td>".$row["total_amount"]."</td>";
+                                            echo"<td>".$row["collect_weight"]."KG</td>";
+                                            echo"<td>RM".$row["total_amount"]."</td>";
                                             echo"<td>".$row["collect_date"]."</td>";
                                             echo"<td>".$row["collect_time"]."</td>";
                                             // Change Status when clicked

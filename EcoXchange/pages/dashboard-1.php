@@ -72,7 +72,7 @@ include('../includes/fetchUserData.php');
             <div class="card">
                 <div>
                     <div class="numbers"><?php echo $data['rewards']; ?></div>
-                    <div class="cardName">Rewards</div>
+                    <div class="cardName">Rewards (RM)</div>
                 </div>
                 <div class="iconBx">
                     <ion-icon name="cash-outline"></ion-icon>
