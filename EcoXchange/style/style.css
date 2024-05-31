@@ -84,7 +84,7 @@ body {
   font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
   background-color: var(--background-color);
-  color: var(--dark-color);
+  /* color: var(--dark-color); */
   line-height: 1.6;
   
 }

@@ -10,6 +10,30 @@ if (isset($_POST["submit"])) {
   $confpassword = $_POST["password2"];
   $defaultpict = "../images/profile_pict/default.png";
 
+  include("functions.inc.php");
+  //ERROR MESSAGE
+  if(emptyInputSignup($email, $username, $password, $confpassword) !== false) {
+    header("location: ../pages/signup.php?error=emptyinput");
+    exit();
+  }
+  if(invalidUid($username) !== false) {
+    header("location: ../pages/signup.php?error=invalidusername");
+    exit();
+  }
+  if(invalidEmail($email) !== false) {
+    header("location: ../pages/signup.php?error=invalidemail");
+    exit();
+  }
+  if(pwdMatch($password, $confpassword) !== false) {
+    header("location: ../pages/signup.php?error=passwordsdontmatch");
+    exit();
+  }
+  if(uidExists($dbconn, $username, $email) !== false) {
+    header("location: ../pages/signup.php?error=usernametaken");
+    exit();
+  }
+
+
   //Generate Customer ID
   $result = mysqli_query($dbconn, "SELECT MAX(Cust_ID) AS max_id FROM customer");
   $row = mysqli_fetch_assoc($result);
@@ -33,13 +57,23 @@ if (isset($_POST["submit"])) {
 
 function createUser($dbconn, $Cust_ID, $username, $email, $password, $defaultpict, $bank) {
   $sql = "INSERT INTO customer (cust_ID, cust_username, cust_password, cust_email, cust_pict, bank_ID) 
-          VALUES ('$Cust_ID','$username','$password','$email', '$defaultpict', '$bank');";
+          VALUES (?,?,?,?,?,?);";
   
-  if (mysqli_query($dbconn, $sql)) {
-    echo "User created successfully.";
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
+  $stmt = mysqli_stmt_init($dbconn);
+
+  if(!mysqli_stmt_prepare($stmt, $sql)) {
+    header("location: ../pages/signup?error=stmtfailed");
+    exit();
   }
+
+  $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+
+  mysqli_stmt_bind_param($stmt, "ssssss", $Cust_ID, $username, $hashedPwd, $email, $defaultpict, $bank);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+
+  header("location: ../pages/signup.php?error=none");
+  exit();
 }
 
 function createBank($dbconn) {

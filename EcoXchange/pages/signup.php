@@ -2,7 +2,7 @@
      Date : 6/4/2024
      Programmer : Melissa 
 
-     Page : LOG IN PAGE
+     Page : SIGN UP PAGE
 -->
 
 <!DOCTYPE html>
@@ -11,9 +11,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExcoXchange</title>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ++++++++ CSS ++++++++-->
     <link rel="stylesheet" href="../style/signup.css">
-
+    <link rel="stylesheet" href="../style/alert.css">
 
     <!-- ++++++++ ICONS ++++++++-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -118,6 +119,173 @@
             </div>
         </div>
       </section>
+      <?php
+
+      if(isset($_GET["error"])) {
+        if($_GET["error"] == "emptyinput") {
+          echo '
+          <div class="alert_wrapper active1">
+          <div class="alert_backdrop"></div>
+          <div class="alert_inner">
+            <div class="alert_item alert_error">
+              <div class="icon data_icon">
+                <i class="bx bxs-x-circle"></i>
+              </div>
+              <div class="data">
+                <p class="title"><span>Error:</span>
+                  User action error
+                </p>
+                <p class="sub">Fill all the required fields!</p>
+              </div>
+              <div class="icon close">
+                <i class="bx bx-x" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          ';
+        }
+        else if($_GET["error"] == "invalidusername"){
+          echo '
+          <div class="alert_wrapper active1">
+          <div class="alert_backdrop"></div>
+          <div class="alert_inner">
+            <div class="alert_item alert_error">
+              <div class="icon data_icon">
+              <i class="bx bxs-x-circle" ></i>
+              </div>
+              <div class="data">
+                <p class="title"><span>Error:</span>
+                  User action error
+                </p>
+                <p class="sub">Invalid Username!</p>
+              </div>
+              <div class="icon close">
+                <i class="bx bx-x" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          ';
+        }
+        else if($_GET["error"] == "invalidemail"){
+          echo '
+          <div class="alert_wrapper active1">
+          <div class="alert_backdrop"></div>
+          <div class="alert_inner">
+            <div class="alert_item alert_error">
+              <div class="icon data_icon">
+              <i class="bx bxs-x-circle" ></i>
+              </div>
+              <div class="data">
+                <p class="title"><span>Error:</span>
+                  User action error
+                </p>
+                <p class="sub">Invalid Email!</p>
+              </div>
+              <div class="icon close">
+                <i class="bx bx-x" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          ';
+        }
+        else if($_GET["error"] == "passwordsdontmatch"){
+          echo '
+          <div class="alert_wrapper active1">
+          <div class="alert_backdrop"></div>
+          <div class="alert_inner">
+            <div class="alert_item alert_error">
+              <div class="icon data_icon">
+              <i class="bx bxs-x-circle" ></i>
+              </div>
+              <div class="data">
+                <p class="title"><span>Error:</span>
+                  User action error
+                </p>
+                <p class="sub">Password does not match!</p>
+              </div>
+              <div class="icon close">
+                <i class="bx bx-x" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          ';
+        }
+        else if($_GET["error"] == "usernametaken"){
+          echo '
+          <div class="alert_wrapper active1">
+          <div class="alert_backdrop"></div>
+          <div class="alert_inner">
+            <div class="alert_item alert_error">
+              <div class="icon data_icon">
+              <i class="bx bxs-x-circle" ></i>
+              </div>
+              <div class="data">
+                <p class="title"><span>Error:</span>
+                  User action error
+                </p>
+                <p class="sub">Ops sorry, but this username has already been taken!</p>
+              </div>
+              <div class="icon close">
+                <i class="bx bx-x" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          ';
+        }
+        else if($_GET["error"] == "stmtfailed"){
+          echo '
+          <div class="alert_wrapper active1">
+          <div class="alert_backdrop"></div>
+          <div class="alert_inner">
+            <div class="alert_item alert_error">
+              <div class="icon data_icon">
+              <i class="bx bxs-x-circle" ></i>
+              </div>
+              <div class="data">
+                <p class="title"><span>Error:</span>
+                  User action error
+                </p>
+                <p class="sub">Something when wrong. Try again!</p>
+              </div>
+              <div class="icon close">
+                <i class="bx bx-x" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          ';
+        }
+        else if($_GET["error"] == "none"){
+          echo '
+          <div class="alert_wrapper active1">
+          <div class="alert_backdrop"></div>
+          <div class="alert_inner">
+            <div class="alert_item alert_success">
+              <div class="icon data_icon">
+                <i class="bx bxs-check-circle" ></i>
+              </div>
+              <div class="data">
+                <p class="title"><span>Success:</span>
+                  User action success
+                </p>
+                <p class="sub">you have successfully Sign Up.</p>
+              </div>
+              <div class="icon close">
+                <i class="bx bx-x" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          ';
+        }
+      }
+
+      ?>
     <!-- ++++++++ FOOTER ++++++++-->
     <footer class="footer">
         <div class="footer-container">
@@ -131,6 +299,8 @@
           <p class="footer-slogan">&#169; ExoXChange. Reuse, Reduce, Recycle.</p>
         </div>
       </footer>
+
+    <!-- ++++++++ JavaScript ++++++++-->
     <script>
         hamburger = document.querySelector(".hamburger");
         nav = document.querySelector(".header-left nav");
@@ -138,5 +308,6 @@
             nav.classList.toggle("active");
         }
     </script>
+    <script src="../js/alert-notification.js"></script>
 </body>
 </html>
