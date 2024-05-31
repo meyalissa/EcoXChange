@@ -34,12 +34,17 @@ include('../includes/fetchUserData.php');
                         </div>
                         <?php
                             $sql = 
-                            "SELECT * FROM collection_record r 
-                            JOIN staff s ON r.staff_ID = s.staff_ID 
-                            JOIN item i ON r.item_ID = i.item_ID;";
-                            $query = mysqli_query($dbconn, $sql);
-                            $num_rows = mysqli_num_rows($query);
-                            if($num_rows == 0){
+                            "SELECT * FROM BOOKING B 
+                            JOIN COLLECTION_RECORD r ON b.book_ID = r.book_ID 
+                            JOIN STAFF s ON s.staff_ID = r.staff_ID
+                            JOIN ITEM i ON i.item_ID = r.item_ID
+                            WHERE b.cust_ID = ?";
+                            $stmt = mysqli_prepare($dbconn, $sql);
+                            mysqli_stmt_bind_param($stmt, 's', $id);
+                            mysqli_stmt_execute($stmt);
+                            $query = mysqli_stmt_get_result($stmt);
+                            $row = mysqli_num_rows($query);
+                            if($row == 0){
                                 echo "No item found";
                             } else {
                                 echo '<table class="table1">';
@@ -66,7 +71,7 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["collect_date"]."</td>";
                                             echo"<td>".$row["collect_time"]."</td>";
                                             // Change Status when clicked
-                                            echo"<td><button class='"; 
+                                            echo"<td><button class='btnstatus "; 
                                                 echo $row["reward_status"] == 'success' ? "success" : "pending";
                                             echo "'>";
                                             if($row["reward_status"] == 'success') {
