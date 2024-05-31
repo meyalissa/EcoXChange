@@ -24,3 +24,7 @@
     text-decoration: none;
     color: var(--white-color);
   }
+
+  .btnstatus{
+    color: var(--white-color);
+  }

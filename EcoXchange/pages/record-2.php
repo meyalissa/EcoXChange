@@ -17,7 +17,7 @@ include('../includes/fetchUserData.php');
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <?php include('sidebar-1.php'); ?>
+        <?php include('sidebar-2.php'); ?>
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
@@ -27,19 +27,21 @@ include('../includes/fetchUserData.php');
                     <div class="itemlist">
                         <div class="tableHeader">
                             <h2>Collection Records</h2>
-                            <!----Insert Button --->
-                            <div class="button-add">
-                                <a href='insert.php'><button>Insert Data</button></a> <!--Call insertRecords.php-->
-                            </div>
                         </div>
                         <?php
                             $sql = 
-                            "SELECT * FROM collection_record r 
-                            JOIN staff s ON r.staff_ID = s.staff_ID 
-                            JOIN item i ON r.item_ID = i.item_ID;";
-                            $query = mysqli_query($dbconn, $sql);
-                            $num_rows = mysqli_num_rows($query);
-                            if($num_rows == 0){
+                            "SELECT * FROM BOOKING B 
+                            JOIN COLLECTION_RECORD r ON b.book_ID = r.book_ID 
+                            JOIN STAFF s ON s.staff_ID = r.staff_ID
+                            JOIN ITEM i ON i.item_ID = r.item_ID
+                            WHERE b.cust_ID = ?";
+
+                            $stmt = mysqli_prepare($dbconn, $sql);
+                            mysqli_stmt_bind_param($stmt, 's', $id);
+                            mysqli_stmt_execute($stmt);
+                            $query = mysqli_stmt_get_result($stmt);
+                            $row = mysqli_num_rows($query);
+                            if($row == 0){
                                 echo "No item found";
                             } else {
                                 echo '<table class="table1">';
@@ -66,13 +68,13 @@ include('../includes/fetchUserData.php');
                                             echo"<td>".$row["collect_date"]."</td>";
                                             echo"<td>".$row["collect_time"]."</td>";
                                             // Change Status when clicked
-                                            echo"<td><button class='"; 
+                                            echo"<td><button class='btnstatus "; 
                                                 echo $row["reward_status"] == 'success' ? "success" : "pending";
                                             echo "'>";
                                             if($row["reward_status"] == 'success') {
-                                                echo '<a href="status.php?collect_ID='.$row["collect_ID"].'&reward_status=pending">Success</a>';
+                                                echo "Success";
                                             } else {
-                                                echo '<a href="status.php?collect_ID='.$row["collect_ID"].'&reward_status=success">Pending</a>';
+                                                echo "Pending";
                                             }                                             
                                             echo "</button></td>";
                                             

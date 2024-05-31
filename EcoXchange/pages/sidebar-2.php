@@ -41,6 +41,14 @@
             </a>
         </li>
         <li>
+            <a href="record-2.php">
+                <span class="icon">
+                    <i class='bx bxs-receipt'></i>
+                </span>
+                <span class="title">Collection Record</span>
+            </a>
+        </li>
+        <li>
             <a href="profile-2.php">
                 <span class="icon">
                     <i class='bx bx-user-circle'></i>

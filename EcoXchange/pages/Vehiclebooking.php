@@ -81,9 +81,9 @@ include('../includes/fetchUserData.php');
                                                 echo $row["deposit_status"] == 'success' ? "success" : "pending";
                                             echo "'>";
                                             if($row["deposit_status"] == 'success') {
-                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=pending">Approved</a>';
+                                                echo '<a href="depositstatus.php?book_ID='.$row["book_ID"].'&deposit_status=pending">Approved</a>';
                                             } else {
-                                                echo '<a href="status.php?book_ID='.$row["book_ID"].'&deposit_status=success">Pending</a>';
+                                                echo '<a href="depositstatus.php?book_ID='.$row["book_ID"].'&deposit_status=success">Pending</a>';
                                             }                                             
                                             echo "</button></td>";
 
