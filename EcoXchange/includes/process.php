@@ -131,6 +131,7 @@ function updateItem($dbconn) {
     exit();
 }
 
+// Function to Update an Bank Details
 function updateBank($dbconn) {
     if(isset($_POST['action']) && $_POST['action'] === 'updateBank'){
         $bank_ID = $_POST['bank_id'];

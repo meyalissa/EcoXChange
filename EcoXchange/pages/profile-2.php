@@ -3,13 +3,25 @@
 include('../includes/dbconn.php');
 include('../includes/fetchUserData.php');
 
-$sql = "SELECT * FROM customer c JOIN bank_details b ON c.bank_id = b.bank_id";
-$query = mysqli_query($dbconn, $sql);
-$row = mysqli_fetch_array($query);
-$bankname = $row["bank_name"];
-$bankacc = $row["bank_acc_no"];
-$bankfullname = $row["bank_full_name"];
+$sql = "SELECT * FROM customer c JOIN bank_details b ON c.bank_id = b.bank_id HAVING c.cust_ID = ?";
+$stmt = mysqli_prepare($dbconn, $sql);
+mysqli_stmt_bind_param($stmt, 's', $id);
+mysqli_stmt_execute($stmt);
+$query = mysqli_stmt_get_result($stmt);
+$row = mysqli_num_rows($query);
+
+if (mysqli_num_rows($query) > 0) {
+    $row = mysqli_fetch_assoc($query);
+
+    $bankname = $row["bank_name"];
+    $bankacc = $row["bank_acc_no"];
+    $bankfullname = $row["bank_full_name"];
+} else {
+    // Handle case when no results are returned
+    echo "No data found for the given customer ID.";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
