@@ -70,9 +70,9 @@ include('../includes/fetchUserData.php');
                                                 echo $row["reward_status"] == 'success' ? "success" : "pending";
                                             echo "'>";
                                             if($row["reward_status"] == 'success') {
-                                                echo '<a href="status.php?collect_ID='.$row["collect_ID"].'&reward_status=pending">Success</a>';
+                                                echo "Success";
                                             } else {
-                                                echo '<a href="status.php?collect_ID='.$row["collect_ID"].'&reward_status=success">Pending</a>';
+                                                echo "Pending";
                                             }                                             
                                             echo "</button></td>";
                                             
