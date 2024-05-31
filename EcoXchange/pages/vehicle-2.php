@@ -1,10 +1,9 @@
 <?php
-
 // Include database connection and fetch user data
 include('../includes/dbconn.php');
 include('../includes/fetchUserData.php');
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +17,8 @@ include('../includes/fetchUserData.php');
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/booking-1.css">
 </head>
+
 <body>
-    
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-2.php'); ?>
@@ -27,21 +26,19 @@ include('../includes/fetchUserData.php');
         <div class="main">
             <?php include('header.php'); ?>
             <div class="content">
-                <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->
                 <div class="details">
                     <div class="itemlist">
                         <div class="tableHeader">
                             <h2>Vehicle Booking</h2>
                             <div class="searchbar">
                                 <label>
-                                <input type="text" name="" id="search-member" placeholder="Search here" onkeyup="searchmember()">
-                                <ion-icon name="search-outline"></ion-icon>
+                                    <input type="text" name="" id="search-member" placeholder="Search here"
+                                        onkeyup="searchmember()">
+                                    <ion-icon name="search-outline"></ion-icon>
                                 </label>
                             </div>
                         </div>
                         <?php
-                            include("../includes/dbconn.php");
-                            
                             $sql = "SELECT * FROM `booking` WHERE cust_ID = ?";
                             $stmt = mysqli_prepare($dbconn, $sql);
                             mysqli_stmt_bind_param($stmt, 's', $id);
@@ -53,74 +50,72 @@ include('../includes/fetchUserData.php');
                             } else {
                                 echo '<table class="table1">';
                                 echo "<thead>";
-                                echo"<tr>";
-                                echo"<td>Booking ID</td>";
-                                echo"<td>Vehicle Type</td>";
-                                echo"<td>Booking Date</td>";
-                                echo"<td>Pickup Time</td>";
-                                echo"<td>Deposit Receipt</td>";
-                                echo"<td>Deposit Status</td>";
-                                echo"<td>Book Status</td>";
-                                echo"<td>Address</td>";
-                                echo"<td>Action</td>";
-                                echo"</tr>";
+                                echo "<tr>";
+                                echo "<td>Booking ID</td>";
+                                echo "<td>Vehicle Type</td>";
+                                echo "<td>Booking Date</td>";
+                                echo "<td>Pickup Time</td>";
+                                echo "<td>Deposit Receipt</td>";
+                                echo "<td>Deposit Status</td>";
+                                echo "<td>Book Status</td>";
+                                echo "<td>Address</td>";
+                                echo "<td>Action</td>";
+                                echo "</tr>";
                                 echo "</thead>";
-
 
                                 while($row = mysqli_fetch_array($query)){ 
                                     echo "<tbody>";
-                                        echo"<tr>";
-                                            echo"<td>".$row["book_ID"]."</td>";
-                                            echo"<td>".$row["vehicle_type"]."</td>";
-                                            echo"<td>".$row["pickup_date"]."</td>";
-                                            echo"<td>".$row["pickup_time"]."</td>";
-                                            echo '<td> ';
-                                                $file_extension = pathinfo($row['deposit_receipt'], PATHINFO_EXTENSION);
-                                                if (strtolower($file_extension) === 'pdf') {
-                                                    echo '<a style="color: black;" href="' . $row['deposit_receipt'] . '">View PDF</a>';
-                                                } else {
-                                                    echo '<img src="' . $row['deposit_receipt'] . '" alt="">';
-                                                }
-                                            echo '</td>';
-                                            echo"<td><button class='btnStatus "; 
-                                                echo $row["deposit_status"] == 'success' ? "success" : "pending";
-                                            echo "'>";
-                                            
-                                            if($row["deposit_status"] == 'success') {
-                                                echo "Approved";
-                                            } else {
-                                                echo "Pending";
-                                            }    
-                                            echo "</button></td>";
+                                    echo "<tr>";
+                                    echo "<td>".$row["book_ID"]."</td>";
+                                    echo "<td>".$row["vehicle_type"]."</td>";
+                                    echo "<td>".$row["pickup_date"]."</td>";
+                                    echo "<td>".$row["pickup_time"]."</td>";
+                                    echo '<td>';
+                                    $file_extension = pathinfo($row['deposit_receipt'], PATHINFO_EXTENSION);
+                                    if (strtolower($file_extension) === 'pdf') {
+                                        echo '<a style="color: black;" href="' . $row['deposit_receipt'] . '">View PDF</a>';
+                                    } else {
+                                        echo '<img src="' . $row['deposit_receipt'] . '" alt="">';
+                                    }
+                                    echo '</td>';
+                                    echo "<td><button class='btnStatus ";
+                                    echo $row["deposit_status"] == 'success' ? "success" : "pending";
+                                    echo "'>";
+                                    
+                                    if($row["deposit_status"] == 'success') {
+                                        echo "Approved";
+                                    } else {
+                                        echo "Pending";
+                                    }    
+                                    echo "</button></td>";
 
-                                            echo"<td><button class='btnStatus "; 
-                                                //class name to change colour
-                                                if($row["book_status"] == 'success') {
-                                                    echo "success";
-                                                } elseif ($row["book_status"] == 'pending'){
-                                                    echo "pending";
-                                                } elseif ($row["book_status"] == 'inProgress'){
-                                                    echo "inProgress";
-                                                } else {
-                                                    echo "cancel";
-                                                }
-                                                echo "'>";
-
-                                                //Change format of the status
-                                                if($row["book_status"] == 'success') {
-                                                    echo 'Success';
-                                                } elseif ($row["book_status"] == 'pending'){
-                                                    echo 'Pending';
-                                                } elseif ($row["book_status"] == 'inProgress'){
-                                                    echo 'In Progress';
-                                                } else {
-                                                    echo 'Cancel';
-                                                }    
-                                                echo "</button></td>";                                   
-                                            
-                                            echo '<td><a href="?address_id='.$row["address_ID"].'" class="btnAddr">Show</a></td>';
-                                            echo '<td><a class="btncancel" href="javascript:void(0);" onclick="confirmCancellation(' . $row["book_ID"] . ')">Cancel Booking</a></td>';
-                                        echo"</tr>";
+                                    echo "<td><button class='btnStatus ";
+                                    //class name to change colour
+                                    if($row["book_status"] == 'success') {
+                                        echo "success";
+                                    } elseif ($row["book_status"] == 'pending'){
+                                        echo "pending";
+                                    } elseif ($row["book_status"] == 'inProgress'){
+                                        echo "inProgress";
+                                    } else {
+                                        echo "cancel";
+                                    }
+                                    echo "'>";
+                                    //Change format of the status
+                                    if($row["book_status"] == 'success') {
+                                        echo 'Success';
+                                    } elseif ($row["book_status"] == 'pending'){
+                                        echo 'Pending';
+                                    } elseif ($row["book_status"] == 'inProgress'){
+                                        echo 'In Progress';
+                                    } else {
+                                        echo 'Cancel';
+                                    }    
+                                    echo "</button></td>";                                   
+                                    
+                                    echo '<td><a href="?address_id='.$row["address_ID"].'" class="btnAddr">Show</a></td>';
+                                    echo '<td><a class="btncancel" href="../includes/cancel_booking.php?book_ID=' . $row["book_ID"] . '">Cancel Booking</a></td>';
+                                    echo "</tr>";
                                     echo "</tbody>";
                                 }
                                 echo '</table>';
@@ -183,13 +178,6 @@ include('../includes/fetchUserData.php');
     <script type="text/javascript">
         function closePopup() {
             document.getElementById('addr-popup').style.display = 'none';
-        }
-       
-        function confirmCancellation(book_ID) {
-            if (confirm("Are you sure you want to cancel this booking?")) {
-                // Proceed with cancellation
-                window.location.href = "../includes/cancel_booking.php?book_ID=" + book_ID;
-            }
         }
     </script>   
     <!-- ====== ionicons ======= -->
