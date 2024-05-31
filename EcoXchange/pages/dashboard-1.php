@@ -44,6 +44,7 @@ include('../includes/fetchUserData.php');
                 } else {
                     $data = [
                         'total_members' => 0,
+                        'total_amount' => 0,
                         'total_collection_record' => 0
                     ];
                 }

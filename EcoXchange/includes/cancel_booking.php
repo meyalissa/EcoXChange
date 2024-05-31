@@ -9,13 +9,14 @@ if (isset($_GET['book_ID'])) {
     
     if (mysqli_query($dbconn, $sql)) {
         // Redirect back to the bookings page with a success message
-        header("Location: bookings.php?message=Booking canceled successfully");
+        header("Location: ../pages/vehicle-2.php?message=Booking canceled successfully");
     } else {
         // Redirect back to the bookings page with an error message
-        header("Location: bookings.php?message=Error canceling booking");
+        header("Location: ../pages/vehicle-2.php?message=Error canceling booking");
     }
-} else {
+} 
+else {
     // Redirect back to the bookings page with an error message
-    header("Location: bookings.php?message=Invalid booking ID");
+    header("Location: ../pages/vehicle-2.php?message=Invalid booking ID");
 }
 ?>
