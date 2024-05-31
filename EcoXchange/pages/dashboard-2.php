@@ -55,6 +55,9 @@ if ($address) {
             <?php include('header.php'); ?>
 
             <!-- ============== Content ============== -->
+        <div class="content">
+            <div class="nav-title"><h3>Dashboard</h3></div>
+            <!-- !!!!!!!!!!CODES HERE!!!!!!!! -->            
             <div class="in-content">
                 <?php
                 include("../includes/dbconn.php");
@@ -312,6 +315,7 @@ if ($address) {
                 </div>
             </div>
         </div>
+        
     </div>
 
 
