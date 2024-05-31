@@ -148,6 +148,7 @@ if (mysqli_num_rows($query) > 0) {
                         </div>
                         <div class="inp">
                             <input type="submit" value="Update">
+                        
                         </div>
                         
                     </form>

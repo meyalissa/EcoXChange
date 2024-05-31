@@ -25,7 +25,7 @@ function addAddress($dbconn) {
         $address_ID = 'A001';
     }
     //Insert Data
-    $sqlInsert = "INSERT INTO address VALUES ('$address_ID', '$addrname', '$addrcontact', '$houseno', '$strname', '$city', '$state', '$postcode', '$id')";
+    $sqlInsert = "INSERT INTO address VALUES ('$address_ID', '$addrname', '$addrcontact', '$houseno', '$strname', '$city','$postcode', '$state',  '$id')";
     mysqli_query($dbconn, $sqlInsert) or die ("Error: " . mysqli_error($dbconn));
 
     header("Location: ../pages/profile-2.php");
@@ -148,12 +148,11 @@ function updateBank($dbconn) {
 }
 
 function updateAddress($dbconn) {
-    if(isset($_POST['update']) && $_POST['update'] === 'updateAddress'){
-        
+    if(isset($_POST['submit_action']) && $_POST['submit_action'] === 'Update'){
         $addrID= $_POST['addr_id']; 
         $addrname= $_POST['addrname'];
-		$addrcontact= $_POST['addrcontact']; 
-		$houseno= $_POST['houseno'];
+        $addrcontact= $_POST['addrcontact']; 
+        $houseno= $_POST['houseno'];
         $strname= $_POST['strname'];
         $city= $_POST['city'];
         $state= $_POST['state'];
@@ -161,17 +160,13 @@ function updateAddress($dbconn) {
 
         $sqlUpdate = "UPDATE address SET Name = '$addrname', contact = '$addrcontact' , house_no = '$houseno', street_name = '$strname', city = '$city', state = '$state', postcode = '$postcode' WHERE address_ID = '$addrID'";
         mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
-
     }
-    else  ##If the delete button is clicked
-    {
-         
+    else if (isset($_POST['submit_action']) && $_POST['submit_action'] === 'Delete'){
         $addrID= $_POST['addr_id']; 
-        ## execute SQL DELETE command 
+
         $sqlDelete = "DELETE FROM address WHERE address_ID = '$addrID'";
-        
         mysqli_query($dbconn, $sqlDelete) or die ("Error: " . mysqli_error($dbconn));
-    }    
+    }
     header("Location: ../pages/profile-2.php");
     exit();
 }
@@ -226,10 +221,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
         
         case 'updateAddress':
             updateAddress($dbconn);
+            break;
 
         case 'updateProfile':
             updateProfile($dbconn);
             break;
+
         default:
 
             echo "Invalid action.";
