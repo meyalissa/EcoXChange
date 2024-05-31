@@ -57,23 +57,32 @@ if ($address) {
             <!-- ============== Content ============== -->
             <div class="in-content">
                 <?php
-
                 include("../includes/dbconn.php");
-            
-                $sql = "SELECT b.*, r.*, 
-                        (SELECT SUM(total_amount) FROM collection_record WHERE book_id = b.book_ID) as rewards,
-                        (SELECT SUM(collect_weight) FROM collection_record WHERE item_id='I004' AND book_id = b.book_ID) as bottle,
-                        (SELECT SUM(collect_weight) FROM collection_record WHERE item_id='I005' AND book_id = b.book_ID) as alCan,
-                        (SELECT SUM(collect_weight) FROM collection_record WHERE item_id='I008' AND book_id = b.book_ID) as usedOil
-                        FROM  booking b 
-                        JOIN collection_record r ON b.book_ID = r.book_ID 
-                        WHERE b.cust_ID = ?";
-
+                $sql = "SELECT 
+                            SUM(rewards) AS total_rewards,
+                            SUM(bottle) AS total_bottle,
+                            SUM(alCan) AS total_aluminum_can,
+                            SUM(usedOil) AS total_used_oil
+                        FROM (
+                            SELECT 
+                                b.book_ID,
+                                SUM(CASE WHEN cr.item_id = 'I004' THEN cr.collect_weight ELSE 0 END) AS bottle,
+                                SUM(CASE WHEN cr.item_id = 'I005' THEN cr.collect_weight ELSE 0 END) AS alCan,
+                                SUM(CASE WHEN cr.item_id = 'I008' THEN cr.collect_weight ELSE 0 END) AS usedOil,
+                                SUM(cr.total_amount) AS rewards
+                            FROM 
+                                booking b
+                                JOIN collection_record cr ON b.book_ID = cr.book_ID
+                            WHERE 
+                                b.cust_ID = ?
+                            GROUP BY 
+                                b.book_ID
+                        ) AS subquery";
                 $stmt = mysqli_prepare($dbconn, $sql);
                 if ($stmt === false) {
                     die('MySQL prepare error: ' . mysqli_error($dbconn));
                 }
-                mysqli_stmt_bind_param($stmt, "s", $id); 
+                mysqli_stmt_bind_param($stmt, "s", $id);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 if (!$result) {
@@ -83,28 +92,28 @@ if ($address) {
                 mysqli_stmt_close($stmt);
                 mysqli_close($dbconn);
                 ?>
-                
+
                 <div class="row1">
                     <div class="box1">
                         <p class="topic">Total Rewards</p>
-                        <h2 class="values"><?php echo $data['rewards']; ?></h2>
+                        <h2 class="values"><?php echo $data['total_rewards']; ?></h2>
                         <p class="unit">RM</p>
                     </div>
                 </div>
                 <div class="row2">
                     <div class="box1">
                         <p class="topic">Bottle</p>
-                        <h2 class="values"><?php echo $data['bottle']; ?></h2>
+                        <h2 class="values"><?php echo $data['total_bottle']; ?></h2>
                         <p class="unit">KG</p>
                     </div>
                     <div class="box1">
                         <p class="topic">Aluminium Can</p>
-                        <h2 class="values"><?php echo $data['alCan']; ?></h2>
+                        <h2 class="values"><?php echo $data['total_aluminum_can']; ?></h2>
                         <p class="unit">KG</p>
                     </div>
                     <div class="box1">
                         <p class="topic">Used Cooking Oil</p>
-                        <h2 class="values"><?php echo $data['usedOil']; ?></h2>
+                        <h2 class="values"><?php echo $data['total_used_oil']; ?></h2>
                         <p class="unit">KG</p>
                     </div>
                 </div>
