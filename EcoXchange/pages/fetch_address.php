@@ -19,6 +19,8 @@ if (isset($_POST['address_id'])) {
 
     // Check if the query was successful
     if ($result) {
+
+        if (mysqli_num_rows($result) > 0) {
         // Fetch the address details as an associative array
         $row = mysqli_fetch_assoc($result);
 
@@ -29,6 +31,10 @@ if (isset($_POST['address_id'])) {
 
         // Return the full address string
         echo $full_address;
+        } else {
+            // If no rows were returned, return a message indicating no address found
+            echo "No address found for ID: $address_id";
+        }
     } else {
         // If the query fails, return an error message
         echo "Error fetching address details.";
