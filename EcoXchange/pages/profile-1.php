@@ -17,12 +17,50 @@ include('../includes/fetchUserData.php');
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/profile-2.css">
     <link rel="stylesheet" href="../style/profile-1.css">
-    
+    <link rel="stylesheet" href="../style/alert.css">
     
    
 </head>
 
 <body>
+<?php
+if(isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'updateprofile':
+                $message = 'You have successfully updated your profile.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            default:
+                $message = 'Unknown action.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+        }
+        echo '
+          <div class="alert_wrapper active1">
+            <div class="alert_backdrop"></div>
+            <div class="alert_inner">
+                <div class="alert_item '.$alert_class.'">
+                    <div class="icon data_icon">
+                      <i class="bx '.$icon.'" ></i>
+                    </div>
+                    <div class="data">
+                      <p class="title"><span>'.$title.':</span>
+                        User action result
+                      </p>
+                      <p class="sub">'.$message.'</p>
+                    </div>
+                    <div class="icon close">
+                      <i class="bx bx-x" ></i>
+                    </div>
+                </div>
+            </div>
+          </div>
+        ';
+      }
+    ?>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-1.php'); ?>
@@ -33,12 +71,17 @@ include('../includes/fetchUserData.php');
                 <div clas="nav-title"><h3>Profile</h3></div>
                 <div class="details">
                     <div class="column1">
+                    <form action="../includes/process.php" method="post">
+                        <input type="hidden" name="action" value="updateProfile">
+
                         <div class="profile">
                             <label for="profile-picture" class="avatar">
-                                <img src="<?php echo $image?>" alt="Avatar" class="avatar">
+                                <img src="<?php echo $image ?>" alt="Avatar" class="avatar" id="avatar">
                                 <span class="change-text">Tap to change</span>
                             </label>
-                            <input type="file" id="profile-picture" accept="image/*" hidden>
+                            <div id="upload">
+                                <input type="file" id="profile-picture" name="profile-picture" accept="image/* " hidden>
+                            </div>
                         </div>
                         
                     </div>
@@ -46,8 +89,8 @@ include('../includes/fetchUserData.php');
                     <!-- +++++++++++++++++++PROFILE DETAILS<+++++++++++++++++++-->
                         <div class=userdata>
                             <div clas="nav-title"><h4>User Details</h4></div>
-                            <form action="../includes/process.php" method="post">
-                            <input type="hidden" name="action" value="updateProfile">
+                            
+                            
 
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <input type="hidden" id="uname" name="username" value="<?php echo $name ?>">
@@ -83,6 +126,15 @@ include('../includes/fetchUserData.php');
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
+    <script src="../js/alert-notification.js"></script>
+    <script type="text/javascript">
+      document.getElementById("profile-picture").onchange = function(){
+        const [file] = this.files;
+        if (file) {
+            document.getElementById("avatar").src = URL.createObjectURL(file); // Preview new image
+        }
+      }
+    </script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

@@ -45,16 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the query
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: ../pages/records.php");
-        exit();
+        header("Location: ../pages/records.php?action=insertData");
+        
+   
     } else {
-        echo "Error: " . mysqli_error($dbconn);
+        header("Location: ../pages/records.php?action=default");
+        
     }
+    
+     // Close the prepared statement and database connection
+     mysqli_stmt_close($stmt);
+     mysqli_close($dbconn);
 
-    // Close the statement
-    mysqli_stmt_close($stmt);
+     exit();
 }
 
-// Close the database connection
-mysqli_close($dbconn);
 ?>
