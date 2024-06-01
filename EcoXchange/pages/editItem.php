@@ -63,8 +63,8 @@ include('../includes/dbconn.php');
                     <input type="file" name="itempict">
                 </div>
                 <div class="button-add">
-                    <input type="submit" value="Update">
-                    <input type="submit" value="Delete">
+                    <input type="submit" name="submit_action" value="Update">
+                    <input type="submit" name="submit_action" value="Delete">
                 </div>
             </div>
         </form>

@@ -77,14 +77,14 @@ function addItem($dbconn) {
     
     mysqli_query($dbconn, $sqlInsert) or die ("Error: " . mysqli_error($dbconn));
     
-    header("Location: ../pages/items-1.php");
+    header("Location: ../pages/items-1.php?action=additem");
     exit();
 }
 
 
 //Update Items
 function updateItem($dbconn) {
-    if(isset($_POST['update']) && $_POST['update'] === 'updateItem'){
+    if(isset($_POST['submit_action']) && $_POST['submit_action'] === 'Update'){
 
         $item_ID = $_POST['itemid'];
         $item_name = $_POST['itemname'];
@@ -113,12 +113,13 @@ function updateItem($dbconn) {
         // Perform the update
         $sqlUpdate = "UPDATE item SET item_name = '$item_name', item_price = '$item_price', item_pict = '$item_pict' WHERE item_ID = '$item_ID'";
         if(mysqli_query($dbconn, $sqlUpdate)) {
-            echo "Record updated successfully";
+            header("Location: ../pages/items-1.php?action=updateitem");
+            exit();
         } else {
             echo "Error updating record: " . mysqli_error($dbconn);
         }
     }
-    else  ##If the delete button is clicked
+    else if (isset($_POST['submit_action']) && $_POST['submit_action'] === 'Delete')
     {
          
         $item_ID = $_POST['itemid'];
@@ -126,9 +127,11 @@ function updateItem($dbconn) {
         $sqlDelete = "DELETE FROM item WHERE item_ID = '$item_ID'";
         
         mysqli_query($dbconn, $sqlDelete) or die ("Error: " . mysqli_error($dbconn));
+        header("Location: ../pages/items-1.php?action=deleteitem");
+        exit();
+    
     }    
-    header("Location: ../pages/items-1.php");
-    exit();
+    
 }
 
 // Function to Update an Bank Details

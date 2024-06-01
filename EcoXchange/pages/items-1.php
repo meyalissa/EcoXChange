@@ -17,6 +17,7 @@ include('../includes/fetchUserData.php');
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/items-1.css">
+    <link rel="stylesheet" href="../style/alert.css">
     <!-- <link rel="stylesheet" href="../style/form.css"> -->
     
 </head>
@@ -80,36 +81,63 @@ include('../includes/fetchUserData.php');
                         ?>
                     </div>
                 </div>
-                <!-- +++++++++++++++ EDIT FORM +++++++++++++++ -->
-                <!-- <div class="edit-popup" id="edit-popup">
-                    
-
-                </div> -->
             </div>
         </div>
     </div>
-
+    <?php
+      if(isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'additem':
+                $message = 'You have successfully add an item.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            case 'updateitem':
+                $message = 'You have successfully update an item.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            case 'deleteitem':
+                $message = 'You have successfully delete an item.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            default:
+                $message = 'Unknown action.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+        }
+        echo '
+          <div class="alert_wrapper active1">
+            <div class="alert_backdrop"></div>
+            <div class="alert_inner">
+                <div class="alert_item '.$alert_class.'">
+                    <div class="icon data_icon">
+                      <i class="bx '.$icon.'" ></i>
+                    </div>
+                    <div class="data">
+                      <p class="title"><span>'.$title.':</span>
+                        User action result
+                      </p>
+                      <p class="sub">'.$message.'</p>
+                    </div>
+                    <div class="icon close">
+                      <i class="bx bx-x" ></i>
+                    </div>
+                </div>
+            </div>
+          </div>
+        ';
+      }
+    ?>
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
-    <!-- Include jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            // Function to handle closing popups
-            $('.close-popup').click(function() {
-                var popupId = $(this).data('popup');
-                $(popupId).fadeOut();
-            });
-
-            // Code for opening popups
-            $('.btnedit').click(function() {
-                $('#edit-popup').fadeIn().css("display", "flex");
-            });
-
-        });
-    </script> -->
+    <script src="../js/alert-notification.js"></script>
     
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
