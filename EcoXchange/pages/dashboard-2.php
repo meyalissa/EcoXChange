@@ -242,7 +242,7 @@ if ($address) {
                                     </tr>
                                    
                                 </table>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -324,7 +324,7 @@ if ($address) {
                                                 <div class="inpbox">
                                                     
                                                                         
-                                                    <input class="inpfile" type="file" id="file" name="file" accept="image/png, image/jpeg" />
+                                                    <input class="inpfile" type="file" id="file" name="file" accept="image/*,.pdf" />
                                                     <i class="fa fa-download" aria-hidden="true"></i>
                                                 </div>
                                                                     
@@ -355,7 +355,7 @@ if ($address) {
                                         </div>
                                     </div>  
                             </div>
-                                                    
+                            </form>                        
                         </div>
                     </div>
                 </div>
@@ -416,21 +416,6 @@ if ($address) {
                         console.error(xhr.responseText);
                     }
                 });
-            });
-            // Function to handle form submission
-            // Function to handle form submission
-            $('#btnSubmit').click(function () {
-                // Get the values from form fields
-                var address = $('.txtAddress').text();
-                var vehicle = $('select[name="vehicle"]').val();
-                var pickup = $('select[name="pickup"]').val();
-                // Handling file upload
-                var formData = new FormData();
-                formData.append('address', address);
-                formData.append('vehicle', vehicle);
-                formData.append('pickup', pickup);
-                formData.append('receipt', $('input[type="file"]')[0].files[0]);
-
             });
 
             $(document).ready(function() {
