@@ -16,11 +16,11 @@ if (isset($_POST['Submit'])) {
     // Check if the user is an administrator
     $sql_admin = "SELECT * FROM staff WHERE staff_username = '$username'";
     $query_admin = mysqli_query($dbconn, $sql_admin) or die("Error: " . mysqli_error($dbconn));
-    $admin = mysqli_fetch_assoc($query_admin);
+    $staff = mysqli_fetch_assoc($query_admin);
 
-    if ($admin) {
+    if ($staff) {
         // Verify the password
-        if (password_verify($password, $admin['staff_password'])) {
+        if (password_verify($password, $staff['staff_password'])) {
             $_SESSION['username'] = $username;
             $_SESSION['role'] = "Staff";
             header("location: ../pages/dashboard-1.php?action=loginsuccess");

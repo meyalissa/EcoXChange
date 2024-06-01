@@ -42,32 +42,32 @@ if (mysqli_num_rows($query) > 0) {
 if(isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'updateprofile':
-                $message = 'You have successfully update your profile.';
+                $message = 'You have successfully updated your profile.';
                 $title = 'Success';
                 $icon = 'bxs-check-circle';
                 $alert_class = 'alert_success';
                 break;
             
             case 'addnewaddress':
-                $message = 'You have successfully add new address.';
+                $message = 'You have successfully added a new address.';
                 $title = 'Success';
                 $icon = 'bxs-check-circle';
                 $alert_class = 'alert_success';
                 break;
             case 'updatebank':
-                $message = 'You have successfully update your bank details.';
+                $message = 'You have successfully updated your bank details.';
                 $title = 'Success';
                 $icon = 'bxs-check-circle';
                 $alert_class = 'alert_success';
                 break;
             case 'updateaddress':
-                $message = 'You have successfully update your bank details.';
+                $message = 'You have successfully updated your address.';
                 $title = 'Success';
                 $icon = 'bxs-check-circle';
                 $alert_class = 'alert_success';
                 break;
             case 'deleteaddress':
-                $message = 'You have successfully delete your bank details.';
+                $message = 'You have successfully deleted your address.';
                 $title = 'Success';
                 $icon = 'bxs-check-circle';
                 $alert_class = 'alert_success';
@@ -108,20 +108,25 @@ if(isset($_GET['action'])) {
         <div class="main">
             <?php include('header.php'); ?>
             <div class="content">
-                <div clas="nav-title"><h3>Profile</h3></div>
+                <div class="nav-title"><h3>Profile</h3></div>
                 <div class="details">
                     <div class="column1">
+                    <form action="../includes/process.php" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="action" value="updateProfile">
+                        
                         <div class="profile">
                             <label for="profile-picture" class="avatar">
-                                <img src="<?php echo $image?>" alt="Avatar" class="avatar">
+                                <img src="<?php echo $image ?>" alt="Avatar" class="avatar" id="avatar">
                                 <span class="change-text">Tap to change</span>
                             </label>
-                            <input type="file" id="profile-picture" accept="image/*" hidden>
+                            <div id="upload">
+                                <input type="file" id="profile-picture" name="profile-picture" accept="image/* " hidden>
+                            </div>
                         </div>
-                        <div class=bankdata>
+                        <div class="bankdata">
                             <div class="topbarprof">
                                 <div class="nav-title"><h4>Bank Details</h4></div>
-                                <div ><a href="editBank.php?bank_id=<?php echo htmlspecialchars($row['bank_id'], ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit"><i class='bx bxs-edit'></i></a></div>
+                                <div><a href="editBank.php?bank_id=<?php echo htmlspecialchars($row['bank_id'], ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit"><i class='bx bxs-edit'></i></a></div>
                             </div>
                             <table>
                                 <tr>
@@ -140,11 +145,9 @@ if(isset($_GET['action'])) {
                         </div>
                     </div>
 
-                    <!-- +++++++++++++++++++PROFILE DETAILS<+++++++++++++++++++-->
-                        <div class=userdata>
-                            <div clas="nav-title"><h4>User Details</h4></div>
-                            <form action="../includes/process.php" method="post">
-                            <input type="hidden" name="action" value="updateProfile">
+                    <!-- +++++++++++++++++++PROFILE DETAILS+++++++++++++++++++-->
+                        <div class="userdata">
+                            <div class="nav-title"><h4>User Details</h4></div>
 
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <input type="hidden" id="uname" name="username" value="<?php echo $name ?>">
@@ -164,9 +167,9 @@ if(isset($_GET['action'])) {
                             <input type="text" id="aemail" name="addemail" value="<?php echo $email ?>">
                         </div>
 
-                        <!-- +++++++++++++++++++ADDRESS DETAILS<+++++++++++++++++++--> 
-                        <div class=addrdata>
-                            <div clas="nav-title"><h4>My Address</h4></div>
+                        <!-- +++++++++++++++++++ADDRESS DETAILS+++++++++++++++++++--> 
+                        <div class="addrdata">
+                            <div class="nav-title"><h4>My Address</h4></div>
                             
                             <?php
                                  // Fetch addresses from the database based on user ID
@@ -182,7 +185,7 @@ if(isset($_GET['action'])) {
                                         <div class="inpbox addr">
                                             <div class="txtAddress">
                                                 <div class="topbarprof">
-                                                    <h4 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                                    <h4 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h4>
                                                     <div><a href="editAddr.php?addr_ID=<?php echo htmlspecialchars($addr_id, ENT_QUOTES, 'UTF-8'); ?>" class="linkEdit"><i class='bx bxs-edit'></i></a></div>
                                                 </div>
                                               <p class="address"> <?php echo $full_address ?><p>
@@ -196,22 +199,18 @@ if(isset($_GET['action'])) {
                                 }
                             ?>       
                                         
-                                        <a href="addAddr.php" class="btnAdd">
-                                            <i class='bx bx-plus-circle'></i>
-                                            <p>Add New Address</p>
-                                        </a>
-                                            
-                                        
+                            <a href="addAddr.php" class="btnAdd">
+                                <i class='bx bx-plus-circle'></i>
+                                <p>Add New Address</p>
+                            </a>
                         </div>
                         <div>
-                        </div>
+                        </div>   
                         <div>
-                        </div>
+                        </div> 
                         <div class="inp">
                             <input type="submit" value="Update">
-                        
                         </div>
-                        
                     </form>
                   </div>
               </div>
@@ -222,6 +221,15 @@ if(isset($_GET['action'])) {
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
     <script src="../js/alert-notification.js"></script>
+    <script type="text/javascript">
+      document.getElementById("profile-picture").onchange = function(){
+        const [file] = this.files;
+        if (file) {
+            document.getElementById("avatar").src = URL.createObjectURL(file); // Preview new image
+        }
+      }
+    </script>
+
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

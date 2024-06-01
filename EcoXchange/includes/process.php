@@ -181,33 +181,49 @@ function updateAddress($dbconn) {
 
 
 function updateProfile($dbconn) {
-    if(isset($_POST['action']) && $_POST['action'] === 'updateProfile'){
-
+    if(isset($_POST['action']) && $_POST['action'] === 'updateProfile') {
         $id = $_POST['id'];
         $username = $_POST['username'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $nophone = $_POST['nophone'];
         $addemail = $_POST['addemail'];
-    
+
+        // Check if a new profile picture is uploaded
+        if (isset($_FILES['profile-picture']) && $_FILES['profile-picture']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = '../images/profile-pict/';
+            $uploadFile = $uploadDir . basename($id . '.jpg'); // Save the file as <id>.jpg
+
+            // Check if the directory exists, if not, create it
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            // Move the uploaded file to the target directory
+            if (!move_uploaded_file($_FILES['profile-picture']['tmp_name'], $uploadFile)) {
+                die("Error: Unable to move the uploaded file.");
+            }
+        }
+
         if (substr($id, 0, 1) === 'C') {
-            $sqlUpdate = "UPDATE CUSTOMER SET cust_username = '$username', cust_first_name = '$firstname', 
-            cust_last_name = '$lastname', cust_contact_no = '$nophone', cust_email = '$addemail' WHERE cust_ID = '$id'";
-        } else
-            $sqlUpdate = "UPDATE STAFF SET staff_username = '$username', staff_first_name = '$firstname', 
-            staff_last_name = '$lastname', staff_contact_no = '$nophone', staff_email = '$addemail' WHERE staff_ID = '$id'";
-        
-        mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
+            $sqlUpdate = "UPDATE CUSTOMER SET cust_username = ?, cust_first_name = ?, cust_last_name = ?, cust_contact_no = ?, cust_email = ?, cust_pict =? WHERE cust_ID = ?";
+        } else {
+            $sqlUpdate = "UPDATE STAFF SET staff_username = ?, staff_first_name = ?, staff_last_name = ?, staff_contact_no = ?, staff_email = ?,staff_pict=? WHERE staff_ID = ?";
+        }
+
+        $stmt = mysqli_prepare($dbconn, $sqlUpdate);
+        mysqli_stmt_bind_param($stmt, 'sssssss', $username, $firstname, $lastname, $nophone, $addemail,$uploadFile, $id);
+        mysqli_stmt_execute($stmt) or die ("Error: " . mysqli_error($dbconn));
+
+        if (substr($id, 0, 1) === 'C') {
+            header("Location: ../pages/profile-2.php?action=updateprofile");
+        } else {
+            header("Location: ../pages/profile-1.php?action=updateprofile");
+        }
+        exit();
     }
-    if (substr($id, 0, 1) === 'C') {
-        header("Location: ../pages/profile-2.php?action=updateprofile");
-        exit();
-    } else
-        header("Location: ../pages/profile-1.php?action=updateprofile");
-        exit();
-    
-    
 }
+
 
 // Main processing logic
 if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET") {
@@ -242,3 +258,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
     }
 }
 ?>
+
+
+<div class="upload">
+        <img src="img/<?php echo $user['image']; ?>" id = "image">
+
+        <div class="rightRound" id = "upload">
+          <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
+          <i class = "fa fa-camera"></i>
+        </div>
+
+        <div class="leftRound" id = "cancel" style = "display: none;">
+          <i class = "fa fa-times"></i>
+        </div>
+        <div class="rightRound" id = "confirm" style = "display: none;">
+          <input type="submit">
+          <i class = "fa fa-check"></i>
+        </div>
+      </div>
