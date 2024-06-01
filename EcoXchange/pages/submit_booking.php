@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insert data into the database using prepared statement
     $sql = "INSERT INTO booking (book_ID, vehicle_type, pickup_date, pickup_time, deposit_receipt, deposit_status, book_status, address_ID, cust_ID) 
-            VALUES (?, ?, CURDATE(), ?, ?, 'Pending', 'Pending', ?, ?)";
+            VALUES (?, ?, CURDATE(), ?, ?, 'pending', 'pending', ?, ?)";
 
     $stmt = mysqli_prepare($dbconn, $sql);
     mysqli_stmt_bind_param($stmt, "ssssss", $book_ID, $vehicle, $pickup, $target_file, $addr_id, $cust_ID);

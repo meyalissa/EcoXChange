@@ -34,12 +34,73 @@ if (mysqli_num_rows($query) > 0) {
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/profile-2.css">
-    
-    
-   
+    <link rel="stylesheet" href="../style/alert.css">
 </head>
 
 <body>
+<?php
+if(isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'updateprofile':
+                $message = 'You have successfully update your profile.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            
+            case 'addnewaddress':
+                $message = 'You have successfully add new address.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            case 'updatebank':
+                $message = 'You have successfully update your bank details.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            case 'updateaddress':
+                $message = 'You have successfully update your bank details.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            case 'deleteaddress':
+                $message = 'You have successfully delete your bank details.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            default:
+                $message = 'Unknown action.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+        }
+        echo '
+          <div class="alert_wrapper active1">
+            <div class="alert_backdrop"></div>
+            <div class="alert_inner">
+                <div class="alert_item '.$alert_class.'">
+                    <div class="icon data_icon">
+                      <i class="bx '.$icon.'" ></i>
+                    </div>
+                    <div class="data">
+                      <p class="title"><span>'.$title.':</span>
+                        User action result
+                      </p>
+                      <p class="sub">'.$message.'</p>
+                    </div>
+                    <div class="icon close">
+                      <i class="bx bx-x" ></i>
+                    </div>
+                </div>
+            </div>
+          </div>
+        ';
+      }
+    ?>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-2.php'); ?>
@@ -160,7 +221,7 @@ if (mysqli_num_rows($query) > 0) {
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
-
+    <script src="../js/alert-notification.js"></script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -28,7 +28,7 @@ function addAddress($dbconn) {
     $sqlInsert = "INSERT INTO address VALUES ('$address_ID', '$addrname', '$addrcontact', '$houseno', '$strname', '$city','$postcode', '$state',  '$id')";
     mysqli_query($dbconn, $sqlInsert) or die ("Error: " . mysqli_error($dbconn));
 
-    header("Location: ../pages/profile-2.php");
+    header("Location: ../pages/profile-2.php?action=addnewaddress");
     exit();
 }
 
@@ -143,32 +143,40 @@ function updateBank($dbconn) {
         $sqlUpdate = "UPDATE bank_details SET bank_name = '$bank_name', bank_acc_no = '$accno', bank_full_name = '$fullname' WHERE bank_ID = '$bank_ID'";
         mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
     }
-    header("Location: ../pages/profile-2.php");
+    header("Location: ../pages/profile-2.php?action=updatebank");
     exit();
 }
 
 function updateAddress($dbconn) {
     if(isset($_POST['submit_action']) && $_POST['submit_action'] === 'Update'){
-        $addrID= $_POST['addr_id']; 
-        $addrname= $_POST['addrname'];
-        $addrcontact= $_POST['addrcontact']; 
-        $houseno= $_POST['houseno'];
-        $strname= $_POST['strname'];
-        $city= $_POST['city'];
-        $state= $_POST['state'];
-        $postcode= $_POST['postcode'];
+        $addrID = $_POST['addr_id']; 
+        $addrname = $_POST['addrname'];
+        $addrcontact = $_POST['addrcontact']; 
+        $houseno = $_POST['houseno'];
+        $strname = $_POST['strname'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
+        $postcode = $_POST['postcode'];
 
-        $sqlUpdate = "UPDATE address SET Name = '$addrname', contact = '$addrcontact' , house_no = '$houseno', street_name = '$strname', city = '$city', state = '$state', postcode = '$postcode' WHERE address_ID = '$addrID'";
-        mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
-    }
-    else if (isset($_POST['submit_action']) && $_POST['submit_action'] === 'Delete'){
-        $addrID= $_POST['addr_id']; 
+        $sqlUpdate = "UPDATE address SET Name = ?, contact = ?, house_no = ?, street_name = ?, city = ?, state = ?, postcode = ? WHERE address_ID = ?";
+        $stmt = $dbconn->prepare($sqlUpdate);
+        $stmt->bind_param("ssssssss", $addrname, $addrcontact, $houseno, $strname, $city, $state, $postcode, $addrID);
+        $stmt->execute();
 
-        $sqlDelete = "DELETE FROM address WHERE address_ID = '$addrID'";
-        mysqli_query($dbconn, $sqlDelete) or die ("Error: " . mysqli_error($dbconn));
+        header("Location: ../pages/profile-2.php?action=updateaddress");
+        exit();
+    
+    } else if (isset($_POST['submit_action']) && $_POST['submit_action'] === 'Delete'){
+        $addrID = $_POST['addr_id']; 
+
+        $sqlDelete = "DELETE FROM address WHERE address_ID = ?";
+        $stmt = $dbconn->prepare($sqlDelete);
+        $stmt->bind_param("s", $addrID);
+        $stmt->execute();
+
+        header("Location: ../pages/profile-2.php?action=deleteaddress");
+        exit();
     }
-    header("Location: ../pages/profile-2.php");
-    exit();
 }
 
 
@@ -192,10 +200,10 @@ function updateProfile($dbconn) {
         mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
     }
     if (substr($id, 0, 1) === 'C') {
-        header("Location: ../pages/profile-2.php");
+        header("Location: ../pages/profile-2.php?action=updateprofile");
         exit();
     } else
-        header("Location: ../pages/profile-1.php");
+        header("Location: ../pages/profile-1.php?action=updateprofile");
         exit();
     
     
