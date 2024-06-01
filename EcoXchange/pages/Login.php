@@ -15,10 +15,12 @@
     <title>ExcoXchange</title>
     <!-- ++++++++ CSS ++++++++-->
     <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/alert.css">
     <!-- ++++++++ ICONS ++++++++-->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="../images/logo.png" />
+    
     
 </head>
 <body>
@@ -102,7 +104,81 @@
             </div>
         </div>
       </section>
+      <?php
 
+if(isset($_GET["error"])) {
+  if($_GET["error"] == "emptyinput") {
+    echo'
+    <div class="alert_wrapper active1">
+    <div class="alert_backdrop"></div>
+      <div class="alert_inner">
+        <div class="alert_item alert_error">
+          <div class="icon data_icon">
+            <i class="bx bxs-x-circle" ></i>
+          </div>
+          <div class="data">
+            <p class="title"><span>Error:</span>
+              User action error 
+            </p>
+            <p class="sub">Fill all the required fields!</p>
+          </div>
+          <div class="icon close">
+            <i class="bx bx-x" ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    ';
+  }
+
+  else if($_GET["error"] == "invalidusernameorpwd") {
+    echo'
+    <div class="alert_wrapper active1">
+      <div class="alert_backdrop"></div>
+      <div class="alert_inner">
+        <div class="alert_item alert_error">
+          <div class="icon data_icon">
+          <i class="bx bxs-x-circle" ></i>
+          </div>
+          <div class="data">
+            <p class="title"><span>Error:</span>
+              User action error
+            </p>
+            <p class="sub">Invalid Username/Email or Password!</p>
+          </div>
+          <div class="icon close">
+            <i class="bx bx-x" ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    ';
+  }
+  else if($_GET["error"] == "invalidpassword") {
+    echo'
+    <div class="alert_wrapper active1">
+      <div class="alert_backdrop"></div>
+      <div class="alert_inner">
+        <div class="alert_item alert_error">
+          <div class="icon data_icon">
+          <i class="bx bxs-x-circle" ></i>
+          </div>
+          <div class="data">
+            <p class="title"><span>Error:</span>
+              User action error
+            </p>
+            <p class="sub">Invalid Password!</p>
+          </div>
+          <div class="icon close">
+            <i class="bx bx-x" ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    ';
+  }
+}
+?>
     <!-- ++++++++ FOOTER ++++++++-->
     <footer class="footer">
         <div class="footer-container">
@@ -122,19 +198,8 @@
         hamburger.onclick = function() {
             nav.classList.toggle("active");
         }
-        
-        function checkEmptyFields()
-        {
-        	var username = document.form.username.value;
-        	var password = document.form.password.value;
-        	if(username == "" || password == "")
-        	{
-        		alert("Please enter username/password!");
-        		return false;
-        	}
-        	else
-        		return true;
-        }
+    
     </script>
+    <script src="../js/alert-notification.js"></script>
 </body>
 </html>

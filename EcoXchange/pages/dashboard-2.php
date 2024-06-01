@@ -31,10 +31,84 @@ if ($address) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../style/SidebarUser.css">
     <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/alert.css">
 </head>
 <body>
-    <!-- testing User Info later delete -->
-    <!-- Hi, <?php echo $name; ?> -->
+<?php
+      if(isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'loginsuccess':
+                $message = 'You have successfully logged in.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            case 'emptyinput':
+                $message = 'Please fill out all required fields.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+                break;
+            case 'filetoolarge':
+                $message = 'Sorry, your file is too large.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+                break;
+            case 'invalidfiletype':
+                $message = 'Sorry, only PDF files are allowed.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+                break;
+            case 'uploaderror':
+                $message = 'Sorry, there was an error uploading your file.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+                break;
+            case 'dberror':
+                $message = 'Database error occurred.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+                break;
+            case 'booksuccessful':
+                $message = 'You have successfully booked a vehicle.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            default:
+                $message = 'Unknown action.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+        }
+        echo '
+          <div class="alert_wrapper active1">
+            <div class="alert_backdrop"></div>
+            <div class="alert_inner">
+                <div class="alert_item '.$alert_class.'">
+                    <div class="icon data_icon">
+                      <i class="bx '.$icon.'" ></i>
+                    </div>
+                    <div class="data">
+                      <p class="title"><span>'.$title.':</span>
+                        User action result
+                      </p>
+                      <p class="sub">'.$message.'</p>
+                    </div>
+                    <div class="icon close">
+                      <i class="bx bx-x" ></i>
+                    </div>
+                </div>
+            </div>
+          </div>
+        ';
+      }
+    ?>
+    
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-2.php'); ?>
@@ -42,7 +116,7 @@ if ($address) {
         <!-- ========================= Main ==================== -->
         <div class="main">
             <?php include('header.php'); ?>
-
+        
             <!-- ============== Content ============== -->
             <div class="content">
                 <div class="nav-title"><h3>Dashboard</h3></div>
@@ -357,27 +431,6 @@ if ($address) {
                 formData.append('pickup', pickup);
                 formData.append('receipt', $('input[type="file"]')[0].files[0]);
 
-                // AJAX request to submit the form data
-                $.ajax({
-                  url: 'submit_booking.php',
-                  type: 'POST',
-                  data: formData,
-                  processData: false,
-                  contentType: false,
-                  success: function (response) {
-                    // Handle success response
-                    console.log(response);
-                    // Show success message to the user
-                    alert("Booking submitted successfully!");
-                    // You can redirect the user to the dashboard or perform any other action here
-                  },
-                  error: function (xhr, status, error) {
-                    // Handle error response
-                    console.error(xhr.responseText);
-                    // Show error message to the user
-                    alert("Error: Unable to submit booking. Please try again later.");
-                    }
-                });
             });
 
             $(document).ready(function() {
@@ -395,6 +448,7 @@ if ($address) {
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="../js/alert-notification.js"></script>
 </body>
 
 </html>

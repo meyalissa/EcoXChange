@@ -2,7 +2,7 @@
             <ul>
                 <li class = "comp-name">
                     <a href="#">
-                        <span class="icon">
+                        <span class="icons">
                             <img src="../images/logo-white-border.png" class="sidebar-logo" />
                         </span>
                         <span class="title">EcoXchange</span>
@@ -12,7 +12,7 @@
 
                 <li class="active" >
                     <a href="dashboard-1.php">
-                        <span class="icon">
+                        <span class="icons">
                             <i class='bx bx-history'></i>
                         </span>
                         <span class="title">Dashboard</span>
@@ -21,7 +21,7 @@
 
                 <li>
                     <a href="items-1.php">
-                        <span class="icon">
+                        <span class="icons">
                             <i class='bx bxl-spring-boot'></i>
                         </span>
                         <span class="title">Items</span>
@@ -30,7 +30,7 @@
 
                 <li>
                     <a href="Members.php">
-                        <span class="icon">
+                        <span class="icons">
                             <i class='bx bxs-group'></i>
                         </span>
                         <span class="title">Members</span>
@@ -39,7 +39,7 @@
 
                 <li>
                     <a href="VehicleBooking.php">
-                        <span class="icon">
+                        <span class="icons">
                             <i class='bx bxs-car'></i>
                         </span>
                         <span class="title">Vehicle Booking</span>
@@ -48,7 +48,7 @@
 
                 <li>
                     <a href="records.php">
-                        <span class="icon">
+                        <span class="icons">
                             <i class='bx bxs-receipt'></i>
                         </span>
                         <span class="title">Collection Records</span>
@@ -56,7 +56,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="javascript:void(0);" onclick="toggleDropdown()">
-                        <span class="icon">
+                        <span class="icons">
                             <i class='bx bxs-bar-chart-alt-2'></i>
                         </span>
                         <span class="title">Reports</span>
@@ -68,7 +68,7 @@
                 </li>
                 <li>
                     <a href="profile-1.php">
-                        <span class="icon">
+                        <span class="icons">
                             <i class='bx bx-user-circle'></i>
                         </span>
                         <span class="title">Profile</span>
@@ -77,7 +77,7 @@
 
                 <li class="sign-out">
                     <a href="../includes/logout.inc.php">
-                        <span class="icon">
+                        <span class="icons">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
                         <span class="title">Sign Out</span>

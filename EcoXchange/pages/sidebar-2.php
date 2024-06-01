@@ -2,7 +2,7 @@
     <ul>
         <li class="comp-name">
             <a href="#">
-                <span class="icon">
+                <span class="icons">
                     <img src="../images/logo-white-border.png" class="sidebar-logo" />
                 </span>
                 <span class="title">EcoXchange</span>
@@ -10,7 +10,7 @@
         </li>
         <li>
             <a href="dashboard-2.php">
-                <span class="icon">
+                <span class="icons">
                     <i class='bx bx-history'></i>
                 </span>
                 <span class="title">Dashboard</span>
@@ -18,7 +18,7 @@
         </li>
         <li class="active">
             <a href="items-2.php">
-                <span class="icon">
+                <span class="icons">
                     <i class='bx bxl-spring-boot'></i>
                 </span>
                 <span class="title">Items</span>
@@ -26,7 +26,7 @@
         </li>
         <li>
             <a href="calculator-2.php">
-                <span class="icon">
+                <span class="icons">
                     <i class='bx bxs-calculator'></i>
                 </span>
                 <span class="title">Calculator</span>
@@ -34,7 +34,7 @@
         </li>
         <li>
             <a href="vehicle-2.php">
-                <span class="icon">
+                <span class="icons">
                     <i class='bx bxs-car'></i>
                 </span>
                 <span class="title">Vehicle Booking</span>
@@ -42,7 +42,7 @@
         </li>
         <li>
             <a href="record-2.php">
-                <span class="icon">
+                <span class="icons">
                     <i class='bx bxs-receipt'></i>
                 </span>
                 <span class="title">Collection Record</span>
@@ -50,7 +50,7 @@
         </li>
         <li>
             <a href="profile-2.php">
-                <span class="icon">
+                <span class="icons">
                     <i class='bx bx-user-circle'></i>
                 </span>
                 <span class="title">Profile</span>
@@ -58,7 +58,7 @@
         </li>
         <li class="sign-out">
             <a href="../includes/logout.inc.php">
-                <span class="icon">
+                <span class="icons">
                     <ion-icon name="log-out-outline"></ion-icon>
                 </span>
                 <span class="title">Sign Out</span>

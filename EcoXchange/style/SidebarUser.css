@@ -50,12 +50,15 @@ body {
   width: 100%;
 }
 
-.icon{
-  padding-top:3px;
+.icons{
+  /* padding-top:3px; */
+  display: flex;
+  justify-content: center;
   align-content: center;
   position: fixed;
   font-size: 30px;
 }
+
 
 .navigation ul li {
   position: relative;
@@ -90,7 +93,7 @@ body {
   color: var(--primary-color);
 }
 
-.navigation ul li a .icon {
+.navigation ul li a .icons {
   position: relative;
   display: block;
   min-width: 60px;
@@ -98,7 +101,7 @@ body {
   line-height: 75px;
   text-align: center;
 }
-.navigation ul li a .icon ion-icon {
+.navigation ul li a .icons ion-icon {
   font-size: 1.75rem;
 }
 

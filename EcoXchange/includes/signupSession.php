@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
   $confpassword = $_POST["password2"];
   $defaultpict = "../images/profile_pict/default.png";
 
-  include("functions.inc.php");
+  include("functions.php");
   //ERROR MESSAGE
   if(emptyInputSignup($email, $username, $password, $confpassword) !== false) {
     header("location: ../pages/signup.php?error=emptyinput");

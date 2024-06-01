@@ -19,10 +19,41 @@ include('../includes/fetchUserData.php');
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../style/dashboard-1.css">
+    <link rel="stylesheet" href="../style/alert.css">
 </head>
 
 <body>
-    <!-- Hi, <?php echo $_SESSION['username']; ?> -->
+<?php
+      if(isset($_GET['action'])) {
+        if($_GET['action'] == 'loginsuccess') {
+        echo '
+          <div class="alert_wrapper active1">
+            <div class="alert_backdrop"></div>
+            <div class="alert_inner">
+                <div class="alert_item alert_success">
+
+                    <div class="icon data_icon">
+                      <i class="bx bxs-check-circle" ></i>
+                    </div>
+
+                    <div class="data">
+                      <p class="title"><span>Success:</span>
+                        User action success
+                      </p>
+                      <p class="sub">You have successfully Log In.</p>
+                    </div>
+                    
+                    <div class="icon close">
+                      <i class="bx bx-x" ></i>
+                    </div>
+
+                </div>
+            </div>
+          </div>
+          ';
+        }
+      }
+    ?>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <?php include('sidebar-1.php'); ?>
@@ -192,7 +223,7 @@ include('../includes/fetchUserData.php');
 
     <!-- =========== Scripts =========  -->
     <script src="../js/main.js"></script>
-
+    <script src="../js/alert-notification.js"></script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
