@@ -191,6 +191,7 @@ function updateProfile($dbconn) {
         $lastname = $_POST['lastname'];
         $nophone = $_POST['nophone'];
         $addemail = $_POST['addemail'];
+        // $picture = $_FILES['profile-picture']
 
         // Check if a new profile picture is uploaded
         if (isset($_FILES['profile-picture']) && $_FILES['profile-picture']['error'] === UPLOAD_ERR_OK) {
@@ -201,17 +202,17 @@ function updateProfile($dbconn) {
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
             }
-
+            
             // Move the uploaded file to the target directory
             if (!move_uploaded_file($_FILES['profile-picture']['tmp_name'], $uploadFile)) {
-                die("Error: Unable to move the uploaded file.");
+                header("Location: ../pages/profile-2.php?action=error");
             }
         }
-
+        
         if (substr($id, 0, 1) === 'C') {
             $sqlUpdate = "UPDATE CUSTOMER SET cust_username = ?, cust_first_name = ?, cust_last_name = ?, cust_contact_no = ?, cust_email = ?, cust_pict =? WHERE cust_ID = ?";
         } else {
-            $sqlUpdate = "UPDATE STAFF SET staff_username = ?, staff_first_name = ?, staff_last_name = ?, staff_contact_no = ?, staff_email = ?,staff_pict=? WHERE staff_ID = ?";
+            $sqlUpdate = "UPDATE STAFF SET staff_username = ?, staff_first_name = ?, staff_last_name = ?, staff_contact_no = ?, staff_email = ?, staff_pict = ? WHERE staff_ID = ?";
         }
 
         $stmt = mysqli_prepare($dbconn, $sqlUpdate);
@@ -263,19 +264,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
 ?>
 
 
-<div class="upload">
-        <img src="img/<?php echo $user['image']; ?>" id = "image">
-
-        <div class="rightRound" id = "upload">
-          <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
-          <i class = "fa fa-camera"></i>
-        </div>
-
-        <div class="leftRound" id = "cancel" style = "display: none;">
-          <i class = "fa fa-times"></i>
-        </div>
-        <div class="rightRound" id = "confirm" style = "display: none;">
-          <input type="submit">
-          <i class = "fa fa-check"></i>
-        </div>
-      </div>
