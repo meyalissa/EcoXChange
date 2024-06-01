@@ -417,6 +417,7 @@ if ($address) {
                     }
                 });
             });
+    
 
             $(document).ready(function() {
                 $('input[type="file"]').val('');
