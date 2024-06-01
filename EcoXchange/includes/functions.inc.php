@@ -136,7 +136,6 @@ function loginUser($conn, $username, $pwd) {
     session_start();
     $_SESSION["userid"] = $uidExists["usersId"];
     $_SESSION["useruid"] = $uidExists["usersUid"];
-    $_SESSION["usertypes"] = $uidExists["user_types"];
     $_SESSION["username"] = $uidExists["usersName"];
     $_SESSION["useremail"] = $uidExists["usersEmail"];
 
