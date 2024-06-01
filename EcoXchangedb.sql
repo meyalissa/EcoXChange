@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2024 at 05:51 PM
+-- Generation Time: Jun 01, 2024 at 07:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -23,7 +23,6 @@ SET time_zone = "+00:00";
 DROP DATABASE IF EXISTS `ecoxchangedb`;
 CREATE DATABASE IF NOT EXISTS `ecoxchangedb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `ecoxchangedb`;
-
 -- --------------------------------------------------------
 
 --
@@ -52,7 +51,8 @@ INSERT INTO `address` (`address_ID`, `Name`, `Contact`, `house_no`, `street_name
 ('A003', 'Norhashidah Sharif', '01136699192', 'No 1', 'Jalan Putra Heights 2', 'Subang Jaya', 43901, 'Selangor', 'C001'),
 ('A004', 'Siti Nursyuhada', '012378028', 'Lot 2001', 'Lorong Haji Mat', 'Jerantut', 26400, 'Pahang', 'C004'),
 ('A005', 'Rohana Binti Jaafar', '0126689080', 'A-02-01', 'Jalan RSKU 3 ', 'Putra Heights', 43800, 'Selangor', 'C002'),
-('A006', 'Rohaidah Has', '01266082982', 'Lot 1009', 'Jalan Semarak kubang ulu', 'Bukit Mertajam', 14000, 'Pulau Pinang', 'C003');
+('A006', 'Rohaidah Has', '01266082982', 'Lot 1009', 'Jalan Semarak kubang ulu', 'Bukit Mertajam', 14000, 'Pulau Pinang', 'C003'),
+('A007', 'Ellysha Diana', '01137341592', 'B-2-1 KKKA', 'Kg Pandan', 'Kuala Lumpur', 55100, 'W.P. Kuala Lumpur', 'C007');
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,7 @@ INSERT INTO `bank_details` (`bank_id`, `bank_name`, `bank_acc_no`, `bank_full_na
 ('B103', 'Maybank', '7063486780', 'Farah Adibah Binti Abdul Malek'),
 ('B104', 'Rhb Bank', '190988290111', 'Siti Nursyuhada Binti Nur Azman'),
 ('B105', '', '', ''),
-('B111', '', '', '');
+('B106', 'Maybank', '1623098092132', 'Ellysha Diana Binti Shahran');
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,7 @@ INSERT INTO `customer` (`cust_ID`, `cust_username`, `cust_password`, `cust_first
 ('C003', 'farah', '$2y$10$JpUsnyJOVyFlyarOu9Nrkeo5MDmlF/OXJ88AfSafHKO30.X8joKrm', 'Farah', 'Adibahh', '0192367890', 'farah@gmail.com', '../images/profile_pict/pict5.jpg', 'B103'),
 ('C004', 'syuhada', '$2y$10$TQag7e.Ex5.H0DgWYEJtiuQpa0BBE3w3dhk.XDnlTVPgOyd3ST5YW', 'Siti', 'Nursyuhada', '0112309789', 'syuhada@yahoo.com', '../images/profile_pict/pict6.jpg', 'B104'),
 ('C006', 'ahmadzaki', '$2y$10$ABhjHG.3oIUiU9Qp1/zvl.dRG.NDx/HHu5UN.NfmJpDsygdEe9J5C', 'Ahmad', 'Zaki', '01132323232', 'zaki@gmail.com', '../images/profile_pict/default.png', 'B105'),
-('C007', 'elly', '$2y$10$BBxhb6fLTMcslRyun0a.meA6D3OBa49EJ4dRYiIKG4za4ZWMSoYzS', '', '', '', 'elly@gmail.com', '../images/profile_pict/default.png', 'B111');
+('C007', 'elly', '$2y$10$Q/GL4TjZ3cqMJXG4myKzbe8zGE4HWPtl/N5jRgusSZTZtuOneF8Sa', 'Ellysha', 'Diana', '', 'elly@gmail.com', '../images/profile-pict/C007.jpg', 'B106');
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,7 @@ INSERT INTO `item` (`item_ID`, `item_name`, `item_price`, `item_pict`) VALUES
 CREATE TABLE `staff` (
   `staff_ID` varchar(10) NOT NULL,
   `staff_username` varchar(20) NOT NULL,
-  `staff_password` varchar(20) NOT NULL,
+  `staff_password` varchar(200) NOT NULL,
   `staff_first_name` varchar(30) NOT NULL,
   `staff_last_name` varchar(30) NOT NULL,
   `staff_contact_no` varchar(12) NOT NULL,
@@ -228,12 +228,11 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staff_ID`, `staff_username`, `staff_password`, `staff_first_name`, `staff_last_name`, `staff_contact_no`, `staff_email`, `category`, `staff_pict`) VALUES
-('S001', 'meyalissa', '$2y$10$clOX2AgadWQOk', 'Melissa', 'Sofia', '0136653982', 'melissa.sofia0204@gmail.com', 'admin', '../images/profile_pict/pict8.jpg'),
-('S002', 'fadlan', '$2y$10$rJ791m9KaecW1', 'Fadlan', 'Amzar', '0187087819', 'fadlan04@gmail.com', 'rider', '../images/profile_pict/pict4.jpg'),
-('S003', 'dina', '$2y$10$8uwSoyjGatfj2', 'Irdina', 'Ghafar', '0134768901', 'irdina.cntk@gmail.com', 'admin', '../images/profile_pict/pict12.jpg'),
-('S004', 'amira', '$2y$10$9gbHfzgR./mND', 'Amalia', 'Amira', '0123450987', 'amalia@gmail.com', 'admin', '../images/profile_pict/pict14.jpg'),
-('S005', 'imanMalek', '$2y$10$vg6u4ITpfcceP', 'Iman', 'Danish', '0199228901', 'imanDanish@gmail.com', 'rider', '../images/profile_pict/pict10.jpg'),
-('S006', 'Danial09', '$2y$10$HY60syMnE6a7e', 'Danial', 'Amin', '0123450900', 'danial02.haikal@gmail.com', 'rider', '../images/profile_pict/pict11.jpg');
+('S001', 'meyalissa', '$2y$10$/PP.9qWHmj7TwwCIqEbJD.BU6VA9crKQR1vQuaoGY5ml.8Y/iLhQ6', 'Melissa', 'Sofia', '0136653982', 'melissa.sofia0204@gmail.com', 'admin', '../images/profile_pict/pict8.jpg'),
+('S002', 'fadlan', '$2y$10$h3A1.oalHCh/.qN6rl3iS.B42c8VWTA0HS2V6PdQtGHrFli/PQYTa', 'Fadlan', 'Amzar', '0187087819', 'fadlan04@gmail.com', 'rider', '../images/profile_pict/pict4.jpg'),
+('S003', 'dina', '$2y$10$rWvr6y7sugyvzHn9qjn09.Uofc8OlOO/5M9CJHZqHIJJEJnkEsZRK', 'Irdina', 'Ghafar', '0134768901', 'irdina.cntk@gmail.com', 'admin', '../images/profile_pict/pict12.jpg'),
+('S004', 'amira', '$2y$10$TyQowrCwmQhFwg.9weQgWuDC.f/B/wwkA8ekCmyc.1k2jmKHh/fEK', 'Amalia', 'Amira', '0123450987', 'amalia@gmail.com', 'admin', '../images/profile_pict/pict14.jpg'),
+('S005', 'Danial09', '$2y$10$nI1VlWDxvLpvgD8l.UI0qukD4YY/y9RuGlE7nJyZ64eqaQryXOQ8y', 'Danial', 'Amin', '0123450900', 'danial02.haikal@gmail.com', 'rider', '../images/profile_pict/pict11.jpg');
 
 --
 -- Indexes for dumped tables
