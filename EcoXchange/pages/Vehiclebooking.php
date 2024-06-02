@@ -32,7 +32,7 @@ include('../includes/fetchUserData.php');
                             <h2>Vehicle Booking</h2>
                             <div class="searchbar">
                                 <label>
-                                <input type="text" name="" id="search-member" placeholder="member's name" onkeyup="searchmember()">
+                                <input type="text" name="" id="search-member" placeholder="search" onkeyup="searchmember()">
                                 <ion-icon name="search-outline"></ion-icon>
                                 </label>
                             </div>
