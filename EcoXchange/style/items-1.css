@@ -138,10 +138,10 @@
     padding: 10px;
   }
   .details .itemlist table tr td:last-child {
-    text-align: end;
+    text-align: center;
   }
   .details .itemlist table tr td:nth-child(2) {
-    text-align: end;
+    text-align: center;
   }
   .details .itemlist table tr td:nth-child(3) {
     text-align: center;
