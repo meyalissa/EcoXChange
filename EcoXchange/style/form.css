@@ -86,15 +86,15 @@ h2{
 } */
 
 .button-add button{
-    margin-top:20%;
-    height:fit-content;
     color:var(--white-color);
     background-color: var(--primary-color);
     border: 0;
+    margin: 22px 15px;
     padding:10px 20px;
     border-radius: 8px;
     font-size: var(--normal-font-size);
     cursor: pointer;
+    height:50%;
 }
 
 .indetail{

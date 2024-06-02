@@ -40,7 +40,6 @@ include('../includes/fetchUserData.php');
         <form action="submit-records.php" method="post">
             <input type="hidden" name="staff_ID" value="<?php echo $id; ?>">
             <h2>Add Collection Data</h2>
-           
             <div class="content">
                 <div class="input-box">
                     <label for="collect_weight">Collect Weight</label>
