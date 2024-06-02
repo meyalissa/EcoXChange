@@ -117,7 +117,7 @@ include('../includes/fetchUserData.php');
                     <div class="cardName">Recycle Centre</div>
                 </div>
                 <div class="iconBx">
-                    <ion-icon name="home-outline"></ion-icon>
+                    <ion-icon name="business-outline"></ion-icon>
                 </div>
             </div>
         </div>
