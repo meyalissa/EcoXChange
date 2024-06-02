@@ -73,8 +73,8 @@ include('../includes/dbconn.php');
                     <input type="text" name="state" value="<?php echo $state; ?>">
                 </div>
                 <div class="input-box">
-                    <label for="postcode">PostCode</label>
-                    <input type="text" name="postcode" value="<?php echo $postcode; ?>">
+                    <label for="postcode">Postcode</label>
+                    <input type="number" name="postcode" value="<?php echo $postcode; ?>">
                 </div>
                 <div class="input-box">
                     <label for="country">Country</label>

@@ -14,7 +14,7 @@
 .btn_grp .btn.btn_error,
 .alert_item.alert_error {
   background: #fc5c5c;
-  color: #cc0000;
+  color: var(--white-color);
 }
 
 .btn_grp .btn.btn_success,
