@@ -28,3 +28,8 @@
   .btnstatus{
     color: var(--white-color);
   }
+
+  .bx-trash{
+    color:var(--dark-color);
+  }
+
