@@ -195,7 +195,7 @@ function updateProfile($dbconn) {
 
         // Check if a new profile picture is uploaded
         if (isset($_FILES['profile-picture']) && $_FILES['profile-picture']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = '../images/profile-pict/';
+            $uploadDir = '../images/profile_pict/';
             $uploadFile = $uploadDir . basename($id . '.jpg'); // Save the file as <id>.jpg
 
             // Check if the directory exists, if not, create it
@@ -206,13 +206,16 @@ function updateProfile($dbconn) {
             // Move the uploaded file to the target directory
             if (!move_uploaded_file($_FILES['profile-picture']['tmp_name'], $uploadFile)) {
                 header("Location: ../pages/profile-2.php?action=error");
+                exit();
             }
         }
         
         if (substr($id, 0, 1) === 'C') {
-            $sqlUpdate = "UPDATE CUSTOMER SET cust_username = ?, cust_first_name = ?, cust_last_name = ?, cust_contact_no = ?, cust_email = ?, cust_pict =? WHERE cust_ID = ?";
+            $sqlUpdate = "UPDATE CUSTOMER SET cust_username = ?, cust_first_name = ?, cust_last_name = ?, 
+                        cust_contact_no = ?, cust_email = ?, cust_pict =? WHERE cust_ID = ?";
         } else {
-            $sqlUpdate = "UPDATE STAFF SET staff_username = ?, staff_first_name = ?, staff_last_name = ?, staff_contact_no = ?, staff_email = ?, staff_pict = ? WHERE staff_ID = ?";
+            $sqlUpdate = "UPDATE STAFF SET staff_username = ?, staff_first_name = ?, staff_last_name = ?, 
+                        staff_contact_no = ?, staff_email = ?, staff_pict = ? WHERE staff_ID = ?";
         }
 
         $stmt = mysqli_prepare($dbconn, $sqlUpdate);

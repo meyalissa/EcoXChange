@@ -112,7 +112,7 @@ if(isset($_GET['action'])) {
                 <div class="details">
                     <div class="column1">
                     <form action="../includes/process.php" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="action" value="updateProfile">
+                        <input type="hidden" name="action" value="updateProfile">
                         
                         <div class="profile">
                             <label for="profile-picture" class="avatar">

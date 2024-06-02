@@ -71,7 +71,7 @@ if(isset($_GET['action'])) {
                 <div clas="nav-title"><h3>Profile</h3></div>
                 <div class="details">
                     <div class="column1">
-                    <form action="../includes/process.php" method="post">
+                    <form action="../includes/process.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="updateProfile">
 
                         <div class="profile">
