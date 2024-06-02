@@ -233,6 +233,38 @@ function updateProfile($dbconn) {
     }
 }
 
+//Update Customer Details
+function updateCustomerDetail($dbconn) {
+    if(isset($_POST['submit_action']) && $_POST['submit_action'] === 'Update'){
+
+        $cust_ID= $_POST['cust_ID']; 
+		$cust_first_name= $_POST['cust_first_name'];
+        $cust_last_name= $_POST['cust_last_name'];
+        $cust_contact_no= $_POST['cust_contact_no'];
+        $cust_email= $_POST['cust_email'];
+
+        // Perform the update
+        $sqlUpdate = "UPDATE customer SET cust_first_name = '$cust_first_name', cust_last_name = '$cust_last_name', cust_contact_no = '$cust_contact_no', cust_email = '$cust_email' WHERE cust_ID = '$cust_ID'";
+       
+        if(mysqli_query($dbconn, $sqlUpdate)) {
+            header("Location: ../pages/members.php?");
+            exit();
+        } else {
+            echo "Error updating record: " . mysqli_error($dbconn);
+        }
+    }
+    else if (isset($_POST['submit_action']) && $_POST['submit_action'] === 'Delete')
+    {
+         
+        $cust_ID = $_POST['cust_ID'];
+        ## execute SQL DELETE command 
+        $sqlDelete = "DELETE FROM customer WHERE cust_ID = '$cust_ID'";
+        
+        mysqli_query($dbconn, $sqlDelete) or die ("Error: " . mysqli_error($dbconn));
+        header("Location: ../pages/members.php?");
+        exit();    
+    }    
+}
 
 // Main processing logic
 if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET") {
@@ -259,6 +291,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET")
         case 'updateProfile':
             updateProfile($dbconn);
             break;
+
+        case 'updateCustomerDetail':
+             updateCustomerDetail($dbconn);
+             break;
 
         default:
 
