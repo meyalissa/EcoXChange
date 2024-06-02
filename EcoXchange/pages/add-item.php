@@ -26,7 +26,7 @@
                     <input type="file" name="itempict" required>
                 </div>
                 <div class="button-add">
-                    <button type="submit">Add New Item</button>
+                    <button type="submit">Add Item</button>
                 </div>
             </div>
         </form>

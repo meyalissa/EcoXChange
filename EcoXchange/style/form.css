@@ -87,15 +87,15 @@ h2{
 }
 
 .button-add button{
-    width: 100%;
-    margin-top: 10px;
-    padding: 5px;
-    font-size: 18px;
-    color:white;
-    border: none;
-    border-radius: 5px;
-    background:  #94AB6F;
+    color:var(--white-color);
+    background-color: var(--primary-color);
+    border: 0;
+    margin: 22px 15px;
+    padding:10px 20px;
+    border-radius: 8px;
+    font-size: var(--normal-font-size);
     cursor: pointer;
+    height:50%;
 }
 
 .indetail{
