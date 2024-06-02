@@ -71,7 +71,7 @@ include('../includes/fetchUserData.php');
                                             //         <button type="button" class="btnedit" data-item-id="' . $row["item_ID"] . '">Edit</button>
                                             //     </form>
                                             // </td>';
-                                            echo"<td><a href='editItem.php?item_ID=".$row["item_ID"]."'>Edit</a></td>";
+                                            echo"<td><a href='editItem.php?item_ID=".$row["item_ID"]."'><i class='bx bxs-edit'></a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
