@@ -55,6 +55,7 @@ include('../includes/fetchUserData.php');
                                 echo"<td>Rewards Status</td>";
                                 echo"<td>Book ID</td>";
                                 echo"<td>PIC Staff</td>";
+                                echo"<td>Action</td>";
                                 echo"</tr>";
                                 echo "</thead>";
                                 while($row = mysqli_fetch_array($query)){ 
@@ -79,6 +80,7 @@ include('../includes/fetchUserData.php');
                                             
                                             echo"<td>".$row["book_ID"]."</td>";
                                             echo"<td>".$row["staff_username"]."</td>";
+                                            echo"<td><a href='removerecord.php?collect_ID=".$row["collect_ID"]."'><i class='bx bx-trash'></i></a></td>";
                                         echo"</tr>";
                                     echo "</tbody>";
                                 }
@@ -95,12 +97,17 @@ include('../includes/fetchUserData.php');
       if(isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'insertData':
-                $message = 'You have successfully add an item.';
+                $message = 'You have successfully add new data.';
                 $title = 'Success';
                 $icon = 'bxs-check-circle';
                 $alert_class = 'alert_success';
                 break;
-            
+            case 'deleterecord':
+                $message = 'You have successfully delete a data.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
             default:
                 $message = 'Unknown action.';
                 $title = 'Error';

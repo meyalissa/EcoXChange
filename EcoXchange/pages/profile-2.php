@@ -113,6 +113,8 @@ if(isset($_GET['action'])) {
                     <div class="column1">
                     <form action="../includes/process.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="action" value="updateProfile">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <input type="hidden" name="current-picture" value= "<?php echo $image; ?>">
                         
                         <div class="profile">
                             <label for="profile-picture" class="avatar">
@@ -120,7 +122,7 @@ if(isset($_GET['action'])) {
                                 <span class="change-text">Tap to change</span>
                             </label>
                             <div id="upload">
-                                <input type="file" id="profile-picture" name="profile-picture" accept="image/* " hidden>
+                                <input type="file" id="profile-picture" name="profile-picture" value= "<?php echo $image?>" accept="image/* " hidden>
                             </div>
                         </div>
                         <div class="bankdata">
@@ -148,8 +150,7 @@ if(isset($_GET['action'])) {
                     <!-- +++++++++++++++++++PROFILE DETAILS+++++++++++++++++++-->
                         <div class="userdata">
                             <div class="nav-title"><h4>User Details</h4></div>
-
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            
                             <input type="hidden" id="uname" name="username" value="<?php echo $name ?>">
 
                             <label for="uname">Username</label>

@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../pages/dashboard-2.php?action=filetoolarge");
         exit();
     }
+    
     if ($imageFileType != "pdf") {
         header("Location: ../pages/dashboard-2.php?action=invalidfiletype");
         exit();

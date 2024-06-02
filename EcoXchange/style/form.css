@@ -74,17 +74,16 @@ h2{
     
 }
 
-.button-add input{
+/* .button-add input{
     width: 100%;
-    margin-top: 10px;
-    padding: 5px 10px;
-    font-size: 18px;
+
+    font-size: 16px;
     color:white;
     border: none;
     border-radius: 5px;
     background:  #94AB6F;
     cursor: pointer;
-}
+} */
 
 .button-add button{
     color:var(--white-color);
