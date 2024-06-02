@@ -72,7 +72,7 @@ function createUser($dbconn, $Cust_ID, $username, $email, $password, $defaultpic
   mysqli_stmt_execute($stmt);
   mysqli_stmt_close($stmt);
 
-  header("location: ../pages/signup.php?error=none");
+  header("location: ../pages/login.php?error=none");
   exit();
 }
 
