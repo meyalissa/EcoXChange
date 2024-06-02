@@ -42,15 +42,15 @@
                     </li>
                 </ul>
                 <div class="login-signup">
-                    <a href="pages/Login.php">LogIn</a>  
-                    <a href="pages/signup.php">SignUp</a>
+                    <a href="pages/Login.php">Log In</a>  
+                    <a href="pages/signup.php">Sign Up</a>
                 </div>
             </nav>
         </div>
         <div class="header-right">
             <div class="login-signup">
-                <a href="pages/Login.php">LogIn</a>  
-                <a href="pages/signup.php">SignUp</a>
+                <a href="pages/Login.php">Log In</a>  
+                <a href="pages/signup.php">Sign Up</a>
             </div>
             <!-- Navigation Icon -->
             <div class="hamburger">

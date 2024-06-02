@@ -44,15 +44,15 @@
                     </li>
                 </ul>
                 <div class="login-signup">
-                    <a href="login.php" >LogIn</a>  
-                    <a href="signup.php" class="actives">SignUp</a>
+                    <a href="login.php" >Log In</a>  
+                    <a href="signup.php" class="actives">Sign Up</a>
                 </div>
             </nav>
         </div>
         <div class="header-right">
             <div class="login-signup">
-                <a href="login.php" >LogIn</a>  
-                <a href="signup.php" class="actives">SignUp</a>
+                <a href="login.php" >Log In</a>  
+                <a href="signup.php" class="actives">Sign Up</a>
             </div>
             <!-- Navigation Icon -->
             <div class="hamburger">
@@ -113,7 +113,7 @@
                             
                             <input type="submit" name="submit" value="Sign Up" class="btnSignup">
                         </form>
-                        <span >Always a member?<a href="login.php" class="btnLink"> Login</a></span>
+                        <span >Already a member?<a href="login.php" class="btnLink"> Login</a></span>
                     </div>
                 </div>
             </div>

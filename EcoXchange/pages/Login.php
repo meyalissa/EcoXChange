@@ -49,15 +49,15 @@ session_destroy();
                     </li>
                 </ul>
                 <div class="login-signup">
-                    <a href="login.php" class="actives">LogIn</a>  
-                    <a href="signup.php">SignUp</a>
+                    <a href="login.php" class="actives">Log In</a>  
+                    <a href="signup.php">Sign Up</a>
                 </div>
             </nav>
         </div>
         <div class="header-right">
             <div class="login-signup">
-                <a href="login.php" class="actives">LogIn</a>  
-                <a href="signup.php">SignUp</a>
+                <a href="login.php" class="actives">Log In</a>  
+                <a href="signup.php">Sign Up</a>
             </div>
             <!-- Navigation Icon -->
             <div class="hamburger">
