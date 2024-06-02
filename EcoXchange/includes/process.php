@@ -186,12 +186,14 @@ function updateAddress($dbconn) {
 function updateProfile($dbconn) {
     if(isset($_POST['action']) && $_POST['action'] === 'updateProfile') {
         $id = $_POST['id'];
+        $currentpict = $_POST['current-picture'];
         $username = $_POST['username'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $nophone = $_POST['nophone'];
         $addemail = $_POST['addemail'];
-        // $picture = $_FILES['profile-picture']
+        
+        $uploadFile = $currentpict; // Default to current picture
 
         // Check if a new profile picture is uploaded
         if (isset($_FILES['profile-picture']) && $_FILES['profile-picture']['error'] === UPLOAD_ERR_OK) {
@@ -202,24 +204,24 @@ function updateProfile($dbconn) {
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
             }
-            
+
             // Move the uploaded file to the target directory
             if (!move_uploaded_file($_FILES['profile-picture']['tmp_name'], $uploadFile)) {
                 header("Location: ../pages/profile-2.php?action=error");
                 exit();
             }
         }
-        
+
         if (substr($id, 0, 1) === 'C') {
             $sqlUpdate = "UPDATE CUSTOMER SET cust_username = ?, cust_first_name = ?, cust_last_name = ?, 
-                        cust_contact_no = ?, cust_email = ?, cust_pict =? WHERE cust_ID = ?";
+                        cust_contact_no = ?, cust_email = ?, cust_pict = ? WHERE cust_ID = ?";
         } else {
             $sqlUpdate = "UPDATE STAFF SET staff_username = ?, staff_first_name = ?, staff_last_name = ?, 
                         staff_contact_no = ?, staff_email = ?, staff_pict = ? WHERE staff_ID = ?";
         }
 
         $stmt = mysqli_prepare($dbconn, $sqlUpdate);
-        mysqli_stmt_bind_param($stmt, 'sssssss', $username, $firstname, $lastname, $nophone, $addemail,$uploadFile, $id);
+        mysqli_stmt_bind_param($stmt, 'sssssss', $username, $firstname, $lastname, $nophone, $addemail, $uploadFile, $id);
         mysqli_stmt_execute($stmt) or die ("Error: " . mysqli_error($dbconn));
 
         if (substr($id, 0, 1) === 'C') {
