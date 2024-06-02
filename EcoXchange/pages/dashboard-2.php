@@ -56,7 +56,7 @@ if ($address) {
                 $alert_class = 'alert_error';
                 break;
             case 'invalidfiletype':
-                $message = 'Sorry, only PDF files are allowed.';
+                $message = 'Sorry, only PDF format are allowed.';
                 $title = 'Error';
                 $icon = 'bxs-error';
                 $alert_class = 'alert_error';
@@ -324,7 +324,7 @@ if ($address) {
                                                 <div class="inpbox">
                                                     
                                                                         
-                                                    <input class="inpfile" type="file" id="file" name="file" accept="image/*,.pdf" />
+                                                    <input class="inpfile" type="file" id="file" name="file" accept=".pdf" />
                                                     <i class="fa fa-download" aria-hidden="true"></i>
                                                 </div>
                                                                     
