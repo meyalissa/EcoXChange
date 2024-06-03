@@ -1,5 +1,8 @@
 @import "items-1.css";
 
+body{
+  overflow-x: none;
+}
 #bank-popup {
     position: fixed;
     top: 0;

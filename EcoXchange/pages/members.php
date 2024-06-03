@@ -115,6 +115,50 @@ include('../includes/fetchUserData.php');
             </div>
         </div>
     </div>
+    <?php
+      if(isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'updatemember':
+                $message = 'You have successfully update member profile.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            case 'deletemember':
+                $message = 'You have successfully delete member profile.';
+                $title = 'Success';
+                $icon = 'bxs-check-circle';
+                $alert_class = 'alert_success';
+                break;
+            default:
+                $message = 'Unknown action.';
+                $title = 'Error';
+                $icon = 'bxs-error';
+                $alert_class = 'alert_error';
+        }
+        echo '
+          <div class="alert_wrapper active1">
+            <div class="alert_backdrop"></div>
+            <div class="alert_inner">
+                <div class="alert_item '.$alert_class.'">
+                    <div class="icon data_icon">
+                      <i class="bx '.$icon.'" ></i>
+                    </div>
+                    <div class="data">
+                      <p class="title"><span>'.$title.':</span>
+                        User action result
+                      </p>
+                      <p class="sub">'.$message.'</p>
+                    </div>
+                    <div class="icon close">
+                      <i class="bx bx-x" ></i>
+                    </div>
+                </div>
+            </div>
+          </div>
+        ';
+      }
+    ?>
 
     <!-- =========== Scripts =========  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery Library -->
@@ -138,6 +182,9 @@ include('../includes/fetchUserData.php');
         });
     </script>   
 
+    <!-- =========== Scripts =========  -->
+    <script src="../js/main.js"></script>
+    <script src="../js/alert-notification.js"></script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -247,7 +247,7 @@ function updateCustomerDetail($dbconn) {
         $sqlUpdate = "UPDATE customer SET cust_first_name = '$cust_first_name', cust_last_name = '$cust_last_name', cust_contact_no = '$cust_contact_no', cust_email = '$cust_email' WHERE cust_ID = '$cust_ID'";
        
         if(mysqli_query($dbconn, $sqlUpdate)) {
-            header("Location: ../pages/members.php?");
+            header("Location: ../pages/members.php?action=updatemember");
             exit();
         } else {
             echo "Error updating record: " . mysqli_error($dbconn);
@@ -261,7 +261,7 @@ function updateCustomerDetail($dbconn) {
         $sqlDelete = "DELETE FROM customer WHERE cust_ID = '$cust_ID'";
         
         mysqli_query($dbconn, $sqlDelete) or die ("Error: " . mysqli_error($dbconn));
-        header("Location: ../pages/members.php?");
+        header("Location: ../pages/members.php?action=deletemember");
         exit();    
     }    
 }
