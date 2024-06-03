@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2024 at 07:05 PM
+-- Generation Time: Jun 03, 2024 at 03:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -62,9 +62,9 @@ INSERT INTO `address` (`address_ID`, `Name`, `Contact`, `house_no`, `street_name
 
 CREATE TABLE `bank_details` (
   `bank_id` varchar(10) NOT NULL,
-  `bank_name` varchar(50) NOT NULL,
-  `bank_acc_no` varchar(20) NOT NULL,
-  `bank_full_name` varchar(70) NOT NULL
+  `bank_name` varchar(50) DEFAULT NULL,
+  `bank_acc_no` varchar(20) DEFAULT NULL,
+  `bank_full_name` varchar(70) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -107,9 +107,7 @@ INSERT INTO `booking` (`book_ID`, `vehicle_type`, `pickup_date`, `pickup_time`, 
 ('B003', 'motorcycle', '2024-07-15', 'Pickup in 30 minutes', '../filepdf/receipt1.pdf', 'success', 'inProgress', 'A003', 'C003'),
 ('B004', 'car', '2024-07-16', 'Pickup in 1 hour', '../filepdf/receipt1.pdf', 'success', 'inProgress', 'A004', 'C004'),
 ('B005', 'motorcycle', '2024-07-22', 'Immediately', '../filepdf/receipt1.pdf', 'success', 'success', 'A005', 'C002'),
-('B006', 'car', '2024-07-23', 'Pickup in 30 minutes', '../filepdf/receipt1.pdf', 'success', 'success', 'A006', 'C001'),
-('B007', 'Motorcycle', '2024-06-01', 'Immediately', '../filepdf/MELISSA YURAN PENGAJIAN RESIT.pdf', 'pending', 'pending', 'A002', 'C001'),
-('B008', 'Motorcycle', '2024-06-01', 'Immediately', '../filepdf/YURAN MYTECC MELISSA SOFIA BINTI SHAHRAN.pdf', 'pending', 'pending', 'A001', 'C001');
+('B006', 'car', '2024-07-23', 'Pickup in 30 minutes', '../filepdf/receipt1.pdf', 'success', 'success', 'A006', 'C001');
 
 -- --------------------------------------------------------
 
@@ -158,9 +156,9 @@ CREATE TABLE `customer` (
   `cust_ID` varchar(10) NOT NULL,
   `cust_username` varchar(20) NOT NULL,
   `cust_password` varchar(128) NOT NULL,
-  `cust_first_name` varchar(30) NOT NULL,
-  `cust_last_name` varchar(30) NOT NULL,
-  `cust_contact_no` varchar(12) NOT NULL,
+  `cust_first_name` varchar(30) DEFAULT NULL,
+  `cust_last_name` varchar(30) DEFAULT NULL,
+  `cust_contact_no` varchar(12) DEFAULT NULL,
   `cust_email` varchar(30) NOT NULL,
   `cust_pict` varchar(255) NOT NULL,
   `bank_id` varchar(10) DEFAULT NULL
