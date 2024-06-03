@@ -59,7 +59,7 @@ include('../includes/fetchUserData.php');
                                 echo "<td>Email</td>";
                                 echo "<td>Picture</td>";
                                 echo "<td>Bank</td>";
-                                echo "<td>Action</td>";
+                                
                                 echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -74,7 +74,7 @@ include('../includes/fetchUserData.php');
                                     echo "<td>" . $row["cust_email"] . "</td>";
                                     echo '<td><img src="' . $row['cust_pict'] . '" alt=""></td>';
                                     echo '<td><button type="button" class="btnBank" id="btnBank" data-bank-name="' . $row["bank_name"] . '" data-bank-acc-no="' . $row["bank_acc_no"] . '" data-bank-full-name="' . $row["bank_full_name"] . '">Show</button></td>';
-                                    echo "<td><a href='editMem-1.php?cust_ID=".$row["cust_ID"]."'><i class='bx bxs-edit'></a></td>";
+                                
                                     echo "</tr>";
                                 }
 

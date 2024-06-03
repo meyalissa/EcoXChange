@@ -117,6 +117,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    /* min-width: 800px; */
   }
   .details table thead td {
     font-weight: 600;
