@@ -11,6 +11,14 @@
     
   }
 
+  @media only screen and (max-width: 700px) {
+    .details {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        
+    }
+}
+
   .profile {
     display: flex;
     justify-content: center;
