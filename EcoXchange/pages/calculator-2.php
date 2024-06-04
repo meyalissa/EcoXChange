@@ -60,7 +60,7 @@ $query = mysqli_query($dbconn, $sql) or die("Error: " . mysqli_error($dbconn));
                                         <p class="txtcalc">Enter the weight:</p>
                                         <div class="inputbar">
                                             <label>
-                                                <input type="number" id="weight-<?php echo $row['item_ID']; ?>" placeholder="0.00" oninput="calculateSubtotal('<?php echo $row['item_ID']; ?>', <?php echo $row['item_price']; ?>)">
+                                                <input type="number" id="weight-<?php echo $row['item_ID']; ?>" placeholder="0.00 KG" oninput="calculateSubtotal('<?php echo $row['item_ID']; ?>', <?php echo $row['item_price']; ?>)">
                                             </label>
                                         </div>
                                     </div>
