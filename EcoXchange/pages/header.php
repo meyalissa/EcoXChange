@@ -12,7 +12,8 @@
     </div> -->
     
     <div class="user">
-        <img src="<?php echo $image; ?>" alt="">
+        <img src="<?php echo $image; ?>" alt="profile picture">
+        <!-- <a href="profile-2.php" ><img src="<?php echo $image; ?>" alt="profile picture"></a> -->
         <div class="info">
             <p><?php echo $name; ?></p>
             <small><?php echo $role; ?></small>  
