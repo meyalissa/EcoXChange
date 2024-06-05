@@ -215,13 +215,13 @@ if ($address) {
                                             <div class="lbladdrs">
                                                 <span class="booklabel">Type of Vehicles</span>
                                             </div>
-                                            <select name="vehicle" class="inpbox">
+                                            <select name="vehicle" class="inpbox" id="vehicleSelect">
                                                 <option value="Motorcycle">Motorcycle</option>
                                                 <option value="Car">Car</option>
                                                 <option value="Truck">Lorry</option>
                                             </select>
                                         </td>
-                                        <td rowspan ="2"><img src="../images/vehiclemotor.png" class="vehicleimg"></td>
+                                        <td rowspan ="2"><img src="../images/vehiclemotor.png" class="vehicleimg" id="vehicleImage"></td>
                                         <td rowspan ="2" >
                                             <button type = "button" class = "btnCont" id="btnCont">Continue</button>
                                         </td>
@@ -429,7 +429,21 @@ if ($address) {
                 $('input[name="selected_address"]:first').prop('checked', true);
             });
         });
+
+        document.getElementById('vehicleSelect').addEventListener('change', function() {
+        var vehicleImage = document.getElementById('vehicleImage');
+        var selectedVehicle = this.value;
+
+        if (selectedVehicle === 'Motorcycle') {
+            vehicleImage.src = '../images/vehiclemotor.png';
+        } else if (selectedVehicle === 'Car') {
+            vehicleImage.src = '../images/vehiclecar.png';
+        } else if (selectedVehicle === 'Truck') {
+            vehicleImage.src = '../images/vehiclelorry.png';
+        }
+    });
     </script>
+    
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
