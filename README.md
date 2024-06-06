@@ -23,5 +23,12 @@ CSC264 - INTRODUCTION TO WEB AND MOBILE APPLICATION (MDM. AISYAH MAT JASIN)
 # GUIDELINE:
 1. Activate XAMPP server
 2. Start with this URL : http://localhost/ecoXChange/EcoXchange/index.php
+3. Sign Up for customer account
+4. Log In Accounts
+   - Admin (username: meyalissa/ password: mel123)
+   - Customer (username: melda/ password: melda123) or sign up account
+
+
+![image](https://github.com/meyalissa/EcoXChange/assets/159762097/28ffa787-a622-4659-b102-3cc6a84f6252)
 
 
