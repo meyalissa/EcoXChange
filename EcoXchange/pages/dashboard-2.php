@@ -327,14 +327,15 @@ if ($address) {
                                                     <input class="inpfile" type="file" id="file" name="file" accept=".pdf" />
                                                     <i class="fa fa-download" aria-hidden="true"></i>
                                                 </div>
-                                                                    
+                                                <p>Please pay RM5 for booking deposit.    
                                             </div>
                                         </td>
                                                                 
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p>The deposit will receive with rewards after the items successfully collected</p>
+                                            
+                                            <p>Notes: The deposit will receive with rewards after the items successfully collected</p>
                                         </td>
                                                             
                                     </tr>
