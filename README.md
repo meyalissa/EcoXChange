@@ -35,3 +35,10 @@ Homepage:
 Log In Page:
 ![image](https://github.com/meyalissa/EcoXChange/assets/159762097/ad59b971-3aa9-488a-b34c-65b239044359)
 
+Customer Session:
+![image](https://github.com/meyalissa/EcoXChange/assets/159762097/46850c96-6ca6-4061-ac66-8bf883a60618)
+
+Staff Session:
+![image](https://github.com/meyalissa/EcoXChange/assets/159762097/f63fd085-0e9a-4344-aa6a-b6b7cc0b11f4)
+
+
