@@ -28,7 +28,10 @@ CSC264 - INTRODUCTION TO WEB AND MOBILE APPLICATION (MDM. AISYAH MAT JASIN)
    - Admin (username: meyalissa/ password: mel123)
    - Customer (username: melda/ password: melda123) or sign up account
 
-
+# PREVIEW:
+Homepage:
 ![image](https://github.com/meyalissa/EcoXChange/assets/159762097/28ffa787-a622-4659-b102-3cc6a84f6252)
 
+Log In Page:
+![image](https://github.com/meyalissa/EcoXChange/assets/159762097/ad59b971-3aa9-488a-b34c-65b239044359)
 
