@@ -20,7 +20,7 @@ CSC264 - INTRODUCTION TO WEB AND MOBILE APPLICATION (MDM. AISYAH MAT JASIN)
 4. SITI NURSYUHADA BINTI MOHAMAD YUSOF (2022895014) 
 
 ---
-Guideline
+# Guideline:
 1. Activate XAMPP server
 2. Start with this URL : http://localhost/ecoXChange/EcoXchange/index.php
 
