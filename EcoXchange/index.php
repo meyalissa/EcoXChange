@@ -3,7 +3,6 @@
      Programmer : Melissa Sofia
 
      Page : HOME PAGE
-
      Probem to check : z-index at navigation bar > try Order in css.
 -->
 <!DOCTYPE html>
