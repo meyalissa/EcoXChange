@@ -37,10 +37,10 @@
                         <a href="../index.php">About</a>
                     </li>
                     <li>
-                        <a href="../index.php">FAQ</a>
+                      <a href="../index.php">Our Team</a>
                     </li>
                     <li>
-                        <a href="../pages/groupMembers.html">Developer</a>
+                        <a href="../index.php">FAQ</a>
                     </li>
                 </ul>
                 <div class="login-signup">
