@@ -3,8 +3,7 @@
      Programmer : Melissa Sofia
 
      Page : HOME PAGE
-
-     Probem to check : z-index at navigation bar > try Order in css.
+     Probem to check : z-index at navigation bar > try Order in CSS..
 -->
 <!DOCTYPE html>
 <html lang="en">
