@@ -1,25 +1,16 @@
-/*==== ERROR AND SUCCESS MESSAGES =====*/
-.btn_grp .btn.btn_info,
-.alert_item.alert_info {
-  background: #68c0e0;
-  color: #0099cc;
-}
+@import "style.css";
 
-.btn_grp .btn.btn_warning,
-.alert_item.alert_warning {
-  background: #ffc145;
-  color: #ff8800;
-}
-
+/* Error Message Box*/
 .btn_grp .btn.btn_error,
 .alert_item.alert_error {
-  background: #fc5c5c;
-  color: var(--white-color);
+  background: var(--white-color);
+  color: #c62a2a;
 }
 
+/* Success Message Box */
 .btn_grp .btn.btn_success,
 .alert_item.alert_success {
-  background: #03ca53;
+  background: var(--white-color);
   color: #007e33;
 }
 
@@ -80,7 +71,7 @@
 .alert_item.alert_warning .close:hover,
 .alert_item.alert_error .close:hover,
 .alert_item.alert_success .close:hover {
-  color: #fff;
+  color: #939393;
 }
 
 .alert_wrapper.active1 {

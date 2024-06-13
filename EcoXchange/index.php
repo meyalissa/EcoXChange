@@ -35,11 +35,14 @@
                         <a href="#about">About</a>
                     </li>
                     <li>
-                        <a href="#faq">FAQ</a>
+                      <a href="#team">Our Team</a>
                     </li>
                     <li>
-                        <a href="pages/groupMembers.html">Developer</a>
+                        <a href="#faq">FAQ</a>
                     </li>
+                    <!-- <li>
+                        <a href="pages/groupMembers.html">Developer</a>
+                    </li> -->
                 </ul>
                 <div class="login-signup">
                     <a href="pages/Login.php">Log In</a>  
@@ -91,7 +94,34 @@
             </div>
         </div>
       </section>
-
+      <!-- ++++++++ OURTEAM ++++++++-->
+      <section class="team" id="team">
+            <div class="team-container">
+                <span class="home-system">Our Team</span>
+                <div class="row">
+                    <div class="team-col">
+                        <img src="images/Melissa.png" alt="" class="profileImg" />
+                        <h3 class="role">Team Leader</h3>
+                        <p class="name">Melissa Sofia Binti Shahran</p>
+                    </div>
+                    <div class="team-col">
+                        <img src="images/Irdina.png" alt="" class="profileImg" />
+                        <h3 class="role">Database Designer</h3>
+                        <p class="name">Nur Irdina Iman Binti Abd. Ghafar</p>
+                    </div>
+                    <div class="team-col">
+                        <img src="images/Farah.png" alt="" class="profileImg" />
+                        <h3 class="role">Front-End Developer</h3>
+                        <p class="name">Farah Adibah Binti Mustafa Kafal</p>
+                    </div>
+                    <div class="team-col">
+                        <img src="images/Syuhada.png" alt="" class="profileImg" />
+                        <h3 class="role">Back-End Developer</h3>
+                        <p class="name">Siti Nursyuhada Binti Mohamad Yusof</p>
+                    </div>
+                </div>
+            </div>
+        </section>
       <!-- ++++++++ FAQ ++++++++-->
       <section class="faq" id="faq">
         <div class="faq-container">

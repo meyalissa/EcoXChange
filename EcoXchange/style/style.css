@@ -332,6 +332,68 @@ header .header-right .hamburger div {
     margin:0;
   }
 }
+  /* ++++++++ OUR TEAM ++++++++ */  
+.team{
+  height: auto;
+}
+.team-container{
+  padding-bottom: 100px;
+  width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+.team-container > * {
+  width: 100%;
+  padding: 1rem;
+}
+
+.profileImg{
+  width: 120px;
+}
+.role{
+  color:var(--white-color);
+}
+.name{
+    color:var(--white-color);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+} 
+.row{
+    display:grid;
+    justify-content: center;
+    gap:20px;
+    grid-template-columns: repeat(auto-fit, minmax(120px,250px));
+}
+
+.team-col{
+    flex-basis: 31%;
+    background: var(--primary-color);
+    border-radius: 10px; /*bagi ada bucu */
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+}
+h3{
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.team-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+    background: var(--dark-prim-color);
+}
+
+@media(max-width: 700px){
+    .row{
+        flex-direction:column;
+
+    }
+}
+
 
   /* ++++++++ FAQ ++++++++ */ 
 .faq {
