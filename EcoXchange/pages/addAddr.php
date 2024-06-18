@@ -16,7 +16,7 @@ include('../includes/fetchUserData.php');
         <form action="../includes/process.php" method="post">
             <input type="hidden" name="action" value="addAddress">
             <input type="hidden" name="cust_ID" value="<?php echo $id; ?>">
-            <h2>Edit Address Detail</h2>
+            <h2>Add Address</h2>
             <div class="content">
                 <div class="input-box">
                     <label for="addrname">Person In Charge</label>
