@@ -213,8 +213,8 @@ if(isset($_GET['action'])) {
                             <input type="submit" value="Update">
                         </div>
                     </form>
-                  </div>
-              </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
