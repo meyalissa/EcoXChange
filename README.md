@@ -55,4 +55,5 @@ Funtions:
 3. Manage customer vehicle booking
 4. Edit profile
 5. Manage waste items avaialble to recycle
-
+6. Manage members
+7. View reports base on collected items data
