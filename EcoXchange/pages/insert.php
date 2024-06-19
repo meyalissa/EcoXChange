@@ -46,9 +46,19 @@ include('../includes/fetchUserData.php');
                     <input type="text" name="collect_weight" value="" required>
                 </div>
                
-                <div class="input-box">
+                <div class="dropdown">
                     <label for="book_ID">Book ID</label>
-                    <input type="text" name="book_ID" value="" required>
+                    <select name="book_ID" required>
+                    <?php
+                            $sql = "SELECT * FROM booking WHERE book_status = 'inProgress'";
+                            $query = mysqli_query($dbconn, $sql) or die ("Error: " . mysqli_error($dbconn));
+
+                            while ($row = mysqli_fetch_assoc($query)) {
+                                echo "<option value='".$row["book_ID"]."'>".$row["book_ID"]."</option>";
+                            }
+                    ?>
+                    </select>
+                    
                 </div>
                 <div class="dropdown">
                     <label for="item_ID">Item Type</label>
