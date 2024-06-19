@@ -47,11 +47,11 @@ include('../includes/dbconn.php');
                 </div>
                 <div class="input-box">
                     <label for="itemname">Item Name</label>
-                    <input type="text" name="itemname" value="<?php echo $item_name; ?>">
+                    <input type="text" name="itemname" value="<?php echo $item_name; ?>" required>
                 </div>
                 <div class="input-box">
                     <label for="itemprice">Item Price</label>
-                    <input type="text" name="itemprice" value="<?php echo $item_price; ?>">
+                    <input type="text" name="itemprice" value="<?php echo $item_price; ?>" required>
                 </div>
                 <div class="input-box">
                     <label for="currentitempict">Current Item Picture</label>

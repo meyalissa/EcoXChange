@@ -62,7 +62,7 @@ function createUser($dbconn, $Cust_ID, $username, $email, $password, $defaultpic
   $stmt = mysqli_stmt_init($dbconn);
 
   if(!mysqli_stmt_prepare($stmt, $sql)) {
-    header("location: ../pages/signup?error=stmtfailed");
+    header("location: ../pages/signup.php?error=stmtfailed");
     exit();
   }
 

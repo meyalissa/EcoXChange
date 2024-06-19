@@ -181,6 +181,29 @@ if(isset($_GET["error"])) {
     </div>
     ';
   }
+  else if($_GET["error"] == "none"){
+    echo '
+    <div class="alert_wrapper active1">
+    <div class="alert_backdrop"></div>
+    <div class="alert_inner">
+      <div class="alert_item alert_success">
+        <div class="icon data_icon">
+          <i class="bx bxs-check-circle" ></i>
+        </div>
+        <div class="data">
+          <p class="title"><span>Success:</span>
+            User action success
+          </p>
+          <p class="sub">you have successfully Sign Up.</p>
+        </div>
+        <div class="icon close">
+          <i class="bx bx-x" ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+    ';
+  }
 }
 ?>
     <!-- ++++++++ FOOTER ++++++++-->
