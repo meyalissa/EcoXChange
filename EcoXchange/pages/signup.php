@@ -84,14 +84,14 @@
                             <div class="logbox">
                                 <i class="fa fa-user" aria-hidden="true" ></i>
                                 <div class="linebox"></div>
-                                <input name="username" type="text" id="username" placeholder="Username" class="inputbox">
+                                <input name="username" type="text" id="username" placeholder="Username" class="inputbox" required>
                                
                             </div>
                             
                             <div class="logbox" >
                                 <i class="fa fa-envelope" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="email" type="email" id="email" placeholder="Email Address" class="inputbox">
+                                <input name="email" type="email" id="email" placeholder="Email Address" class="inputbox" required>
                                 
                             </div>
 
@@ -99,7 +99,7 @@
                             <div class="logbox" >
                                 <i class="fa fa-lock" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="password" type="password" id="password" placeholder="Create Password" class="inputbox password" >
+                                <input name="password" type="password" id="password" placeholder="Create Password" class="inputbox password" required>
                                 
                             </div>
 
@@ -107,7 +107,7 @@
                             <div class="logbox" >
                                 <i class="fa fa-lock" aria-hidden="true" ></i></i>
                                 <div class="linebox"></div>
-                                <input name="password2" type="password" id="password2" placeholder="Confirm Password" class="inputbox">
+                                <input name="password2" type="password" id="password2" placeholder="Confirm Password" class="inputbox"required>
                                 
                             </div>
                             
