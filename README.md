@@ -37,8 +37,22 @@ Log In Page:
 
 Customer Session:
 ![image](https://github.com/meyalissa/EcoXChange/assets/159762097/46850c96-6ca6-4061-ac66-8bf883a60618)
+Funtions:
+1. Create a vehicle booking
+2. View booking status
+3. Cancel created vehicle booking
+3. View collected waste item and rewards status
+4. Edit profile
+5. Calculator features
+6. View available items to recycle
+
 
 Staff Session:
 ![image](https://github.com/meyalissa/EcoXChange/assets/159762097/f63fd085-0e9a-4344-aa6a-b6b7cc0b11f4)
-
+Funtions:
+1. Create available items to recycle
+2. Insert waste items data that have been collected
+3. Manage customer vehicle booking
+4. Edit profile
+5. Manage waste items avaialble to recycle
 
