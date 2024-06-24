@@ -86,6 +86,7 @@
     width: 700px;
     height: 500px;
     text-align: left;
+    
   }
   
   .top-form{
@@ -134,6 +135,7 @@
   .btnCont:hover{background-color: var(--dark-prim-color);}
 
 /* ++++++++ CHANGE ADDRESS ++++++++ */
+
 .lbladdrs{
     display: flex;
     justify-content: flex-start;
@@ -149,6 +151,11 @@
     justify-content: flex-start;
     flex-direction: row;
     
+}
+
+.tbladdr{
+    height:350px;
+    overflow-y: auto;
 }
 
 .btnChangeAdd{
@@ -183,6 +190,7 @@
 .adrdivision{
     border: 0.2px solid var(--text-grey);
 }
+
 
 .addr-info{
     margin: 20px 50px;

@@ -255,48 +255,50 @@ if ($address) {
                         <div class="addrcb">
                             <h2>My Address</h2>
                             <hr class="adrdivision">
-                            <table border="0" >
-                    
-                                <?php
-                                    include("../includes/dbconn.php");
-                                    $sql = "SELECT * FROM address WHERE cust_ID='$id'";
-                                    $result = mysqli_query($dbconn, $sql);
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while($row = mysqli_fetch_assoc($result)) {
-                                            $addr_ID = $row["address_ID"];
-                                            $addr_name = $row["Name"];
-                                            $addr_contact = $row["Contact"];
-                                            $full_address = "$addr_name, $addr_contact\n$house_no, $street_name, $city, $state $postcode";
-                                ?>
-                                         <!-- LOOP -->
-                                         <tr>
-                                            <td>
-                                                        
-                                                <input type="radio" name="selected_address" value="<?php echo $addr_ID ?>">
-                                            </td>
-                                            <td>
-                                                <div class="addr-info">
-                                                    <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
-                                                    <p class="address"> <?php echo $full_address ?><p>
-                                                </div>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <hr class="adrdivision">
+                            <div class="tbladdr">
+                                <table border="0" >
+
+                                    <?php
+                                        include("../includes/dbconn.php");
+                                        $sql = "SELECT * FROM address WHERE cust_ID='$id'";
+                                        $result = mysqli_query($dbconn, $sql);
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while($row = mysqli_fetch_assoc($result)) {
+                                                $addr_ID = $row["address_ID"];
+                                                $addr_name = $row["Name"];
+                                                $addr_contact = $row["Contact"];
+                                                $full_address = "$addr_name, $addr_contact\n$house_no, $street_name, $city, $state $postcode";
+                                    ?>
+                                             <!-- LOOP -->
+                                             <tr>
+                                                <td>
+
+                                                    <input type="radio" name="selected_address" value="<?php echo $addr_ID ?>">
                                                 </td>
-                                            </tr>
-                                            <!-- LOOP END-->
-                                            <?php
-                                        }
-                                    } else {
-                                        echo "<p>No addresses found</p>";
-                                }
-                                        ?>
-                                  </table>
-                                  <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
+                                                <td>
+                                                    <div class="addr-info">
+                                                        <h3 class="pic"> <?php echo $addr_name ?> | <?php echo $addr_contact ?></h3>
+                                                        <p class="address"> <?php echo $full_address ?><p>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <hr class="adrdivision">
+                                                    </td>
+                                                </tr>
+                                                <!-- LOOP END-->
+                                                <?php
+                                            }
+                                        } else {
+                                            echo "<p>No addresses found</p>";
+                                    }
+                                                ?>
+                                </table>
+                            </div>
 
                             </div>
+                            <button type = "button" class = "btnChange" id="btnChange">Change Address</button>
                         </div>
                     </div>
                     <!-- +++++++++++++++ PAYMENT +++++++++++++++ -->
