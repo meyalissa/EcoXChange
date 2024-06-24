@@ -37,7 +37,8 @@ include('../includes/fetchUserData.php');
                             $sql = 
                             "SELECT * FROM collection_record r 
                             JOIN staff s ON r.staff_ID = s.staff_ID 
-                            JOIN item i ON r.item_ID = i.item_ID;";
+                            JOIN item i ON r.item_ID = i.item_ID 
+                            ORDER BY r.collect_ID DESC; ";
                             $query = mysqli_query($dbconn, $sql);
                             $num_rows = mysqli_num_rows($query);
                             if($num_rows == 0){

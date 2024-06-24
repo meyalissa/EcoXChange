@@ -34,7 +34,8 @@ include('../includes/fetchUserData.php');
                             JOIN COLLECTION_RECORD r ON b.book_ID = r.book_ID 
                             JOIN STAFF s ON s.staff_ID = r.staff_ID
                             JOIN ITEM i ON i.item_ID = r.item_ID
-                            WHERE b.cust_ID = ?";
+                            WHERE b.cust_ID = ?
+                            ORDER BY r.collect_ID DESC;";
 
                             $stmt = mysqli_prepare($dbconn, $sql);
                             mysqli_stmt_bind_param($stmt, 's', $id);

@@ -39,7 +39,7 @@ include('../includes/fetchUserData.php');
                             </div>
                         </div>
                         <?php
-                            $sql = "SELECT * FROM `booking` WHERE cust_ID = ?";
+                            $sql = "SELECT * FROM `booking` WHERE cust_ID = ? ORDER BY book_ID DESC;";
                             $stmt = mysqli_prepare($dbconn, $sql);
                             mysqli_stmt_bind_param($stmt, 's', $id);
                             mysqli_stmt_execute($stmt);

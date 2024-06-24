@@ -39,7 +39,8 @@ include('../includes/fetchUserData.php');
                         </div>
                         <?php
                             include("../includes/dbconn.php");
-                            $sql = "SELECT * FROM booking k JOIN customer c ON k.cust_ID = c.cust_ID;";
+                            $sql = "SELECT * FROM booking k JOIN customer c ON k.cust_ID = c.cust_ID
+                                    ORDER BY k.book_ID DESC;";
                             $query = mysqli_query($dbconn, $sql);
                             $num_rows = mysqli_num_rows($query);
                             if($num_rows == 0){
