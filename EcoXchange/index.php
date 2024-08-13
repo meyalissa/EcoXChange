@@ -3,8 +3,6 @@
      Programmer : Melissa Sofia sdsds
 
      Page : HOME PAGE
-     
-    
 -->
 <!DOCTYPE html>
 <html lang="en">
